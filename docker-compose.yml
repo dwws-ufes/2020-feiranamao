@@ -1,16 +1,47 @@
-version: "3"
+version: '3.8'
 
 services:
-
-  postgresdb:
-    image: postgres:13.2
-    restart: always
+  postgres:
+    image: "postgres:13"
+    container_name: postgres
+    volumes:
+      - feiranamao-data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - 5432:5432 
     environment:
-      POSTGRES_PASSWORD: feiranamao
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     networks:
-      - feiranamao_network
+      - net_feiranamao
+
+#docker run -p 8090:80 -e 'PGADMIN_DEFAULT_EMAIL=user@domain.com' -e 'PGADMIN_DEFAULT_PASSWORD=SuperSecret' --name pgAdmin4 --network 2020-feiranamao_net_feiranamao -d dpage/pgadmin4
+  #server: container_name do postgres 
+
+  backend:
+    build: ./backend
+    container_name: backend
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+    networks:
+      - net_feiranamao
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - 80:80
+    depends_on:
+      - backend
+    networks:
+      - net_feiranamao
+
+#CRIA O VOLUME QUE É USADO PARA O BANCO
+volumes:
+  feiranamao-data: #DEFAULT, WINDOWS COM WSL: \\wsl$\docker-desktop-data\version-pack-data\community\docker\volumes\
 
 networks:
-  feiranamao_network:
+  net_feiranamao:
+    driver: bridge
