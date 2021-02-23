@@ -1,0 +1,64 @@
+package {{ package.Name }};
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class {{ class.Name }} {% if generalizations is not empty %}extends {{ ((generalizations[0]).GeneralizationSets[0]).Name }} {% endif %}implements {{ class.Name | replace({'Impl': ''}) }} {
+	
+	{% for association in associations %}
+	@Autowired
+	private {{ association.TargetMember.Type.Name }} {{ association.TargetMember.Type.Name | lower_first }};
+	{% endfor %}
+
+	{% for association in associations %}
+		{% set associationClassName = association.TargetMember.Type.Name %}
+		{% set associationClassNameCamelCase = associationClassName | lower_first %}
+		{% set domainClassName = association.TargetMember.Type.Name | replace({'Repository' : ''}) %}
+		{% set domainClassNameCamelCase = domainClassName | lower_first %}
+	@Override
+	public Optional<{{ domainClassName }}> find{{ domainClassName }}ById(Long id) {
+		return {{ associationClassNameCamelCase }}.findById(id);
+	}	
+	
+	@Override
+	public List<{{ domainClassName }}> findAll{{ domainClassName }}s() {
+		return {{ associationClassNameCamelCase }}.findAll();
+	}
+	
+	@Override
+	public {{ domainClassName }} save{{ domainClassName }}({{ domainClassName }} {{ domainClassNameCamelCase }}) {
+		return {{ associationClassNameCamelCase }}.save({{ domainClassNameCamelCase }});
+	}
+	
+	@Override
+	public void delete{{ domainClassName }}({{ domainClassName }} {{ domainClassNameCamelCase }}) {
+		{{ associationClassNameCamelCase }}.delete({{ domainClassNameCamelCase }});
+	}
+	{% endfor %}
+	
+	{% for attribute in attributes %}
+	private {{ attribute.Type.Name }} {{ attribute.Name }};
+	{% endfor %}
+
+	{% for attribute in attributes %}	
+	public {{ attribute.Type.Name }} get{{ attribute.Name | title }}() {
+		return {{ attribute.Name }};
+	}
+	
+	public void set{{ attribute.Name | title }}({{ attribute.Type.Name }} {{ attribute.Name }}) {
+		this.{{ attribute.Name }} = {{ attribute.Name }};
+	}
+	{% endfor %}
+	
+	{% for method in methods %}
+	@Override
+	{{ method.Visibility.Name }} {% if method.MethodType is null %}void{% else %}{{ method.MethodType.Name }}{% endif %} {{ method.Name }}({% for parameter in method.OwnedParameters %}{{ parameter.Type.Name }} {{ parameter.Name }}{% if loop.last == false %}, {% endif %}{% endfor %}) {
+		// TODO Auto-generated method stub
+		return{% if method.MethodType is not null %} null{% endif %};
+	}
+	{% endfor %}
+}

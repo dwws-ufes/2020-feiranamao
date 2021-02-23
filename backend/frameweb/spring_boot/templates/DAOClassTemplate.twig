@@ -1,0 +1,20 @@
+package {{ package.Name }};
+
+import org.springframework.stereotype.Repository;
+import javax.persistence.PersistenceContext;
+
+@Repository
+public class {{ class.Name }} {% if generalizations is not empty %}extends {{ ((generalizations[0]).GeneralizationSets[0]).Name }} {% endif %}implements {{ class.Name | replace({'Impl': ''}) }}{
+
+    @PersistenceContext
+    EntityManager entityManager;
+    
+    {% for method in methods %}
+    @Override
+	{{ method.Visibility.Name }} {% if method.MethodType is null %}void{% else %}{{ method.MethodType.Name }}{% endif %} {{ method.Name }}({% for parameter in method.OwnedParameters %}{{ parameter.Type.Name }} {{ parameter.Name }}{% if loop.last == false %}, {% endif %}{% endfor %}) {
+		// TODO Auto-generated method stub
+		return{% if method.MethodType is not null %} null{% endif %};
+	}
+	{% endfor %}
+
+}

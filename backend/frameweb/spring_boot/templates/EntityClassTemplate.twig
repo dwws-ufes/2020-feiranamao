@@ -1,0 +1,241 @@
+package {{ package.Name }};
+
+import java.io.Serializable;
+import java.util.Set;
+import java.util.List;
+import java.math.BigDecimal;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotNull;
+
+@Entity
+public class {{ class.Name }} {% if generalizations is not empty %}extends {{ ((generalizations[0]).GeneralizationSets[0]).Name }} {% endif %}implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+{# ATTRIBUTES #}
+{% for attribute in attributes %}
+    {% if attribute.isID() == true %}
+    @Id
+    @GeneratedValue
+    {{ attribute.Visibility.Name }} {{ attribute.Type.Name }} {{ attribute.Name }};
+    {% else %}
+	{% if attribute.isIsNull() == false %}@NotNull{% endif %}
+	@Column(name = "{{ attribute.Name }}", unique = {% if attribute.isUnique() == true %}true{% else %}false{% endif %})
+	{{ attribute.Visibility.Name }} {{ attribute.Type.Name }} {{ attribute.Name }};
+    {% endif %}
+{% endfor %}
+
+{# ASSOCIATIONS #}
+{% for association in associations %}
+	{%- set sourceToTargetCardinality = association.SourceToTargetCardinality -%}
+	{%- set targetToSourceCardinality = association.TargetToSourceCardinality -%}
+	{%- set sourceTypeName = association.SourceMember.Type.Name -%}
+	{%- set targetTypeName = association.TargetMember.Type.Name -%}
+	{%- set sourceName = association.SourceMember.Name -%}
+	{%- set targetName = association.TargetMember.Name -%}
+	{%- set collection = association.Collection | title -%}
+	
+	{% if sourceTypeName == class.Name and targetTypeName == class.Name %}
+		{% if sourceToTargetCardinality == "OneToMany" or sourceToTargetCardinality == "ManyToOne" %}
+	    @ManyToOne
+	    @JoinColumn(name="{{ sourceName }}_id")
+	    public {{ sourceTypeName }} {{ sourceName }};
+	
+	    @OneToMany(mappedBy="{{ sourceName }}")
+	    public {{ collection }}<{{ targetTypeName }}> {{ targetName }};		
+		{% elseif sourceToTargetCardinality == "OneToOne" %}
+		@OneToOne
+		@JoinColumn(name = "{{ sourcetName }}_id")
+		private {{ sourceTypeName }} {{ sourceName }};
+		
+		@OneToOne(mappedBy="{{ sourceName }}")
+		private {{ targetTypeName }} {{ targetName }};
+		{% elseif sourceToTargetCardinality == "ManyToMany" %}
+		@ManyToMany
+		@JoinTable(
+			name = "{{ sourceName }}_{{ targetName }}",
+			joinColumns = @JoinColumn("{{ sourceName }}_id"),
+			inverseJoinColumns = @JoinColumn("{{ targetName }}_id")
+		)
+		private {{ collection }}<{{ sourceTypeName }}> {{ sourceName }};
+		
+		@ManyToMany(mappedBy = "{{ sourceName }}")
+		private {{ collection }}<{{ targetTypeName }}> {{ targetName }};
+		{% endif %}
+	{% elseif sourceTypeName == class.Name %}
+		{% if sourceToTargetCardinality == "OneToMany" %}
+		@OneToMany(mappedBy="{{ sourceName }}")
+		private {{ collection }}<{{ targetTypeName }}> {{ targetName }};
+		{% elseif sourceToTargetCardinality == "ManyToOne" %}
+		@ManyToOne
+		@JoinColumn(name = "{{ targetName }}_id")
+		private {{ targetTypeName }} {{ targetName }};
+		{% elseif sourceToTargetCardinality == "OneToOne" %}
+		@OneToOne
+		@JoinColumn(name = "{{ targetName }}_id")
+		private {{ targetTypeName }} {{ targetName }};
+		{% elseif sourceToTargetCardinality == "ManyToMany" %}
+		@ManyToMany
+		@JoinTable(
+			name = "{{ sourceName }}_{{ targetName }}",
+			joinColumns = @JoinColumn(name = "{{ sourceName }}_id"),
+			inverseJoinColumns = @JoinColumn(name = "{{ targetName }}_id")
+		)
+		private {{ collection }}<{{ targetTypeName }}> {{ targetName }};
+		{% endif %}
+	{% elseif targetTypeName == class.Name %}
+		{% if targetToSourceCardinality == "OneToMany" %}
+		@OneToMany(mappedBy="{{ targetName }}")
+		private {{ collection }}<{{ sourceTypeName }}> {{ sourceName }};
+		{% elseif targetToSourceCardinality == "ManyToOne" %}
+		@ManyToOne
+		@JoinColumn(name = "{{ sourceName }}_id")
+		private {{ sourceTypeName }} {{ sourceName }};
+		{% elseif sourceToTargetCardinality == "OneToOne" %}
+		@OneToOne(mappedBy="{{ targetName }}")
+		private {{ sourceTypeName }} {{ sourceName }};
+		{% elseif sourceToTargetCardinality == "ManyToMany" %}
+		@ManyToMany(mappedBy="{{ targetName }}")
+		private {{ collection }}<{{ sourceTypeName }}> {{ sourceName }};
+		{% endif %}
+	{% endif %}
+{% endfor %}
+
+	public {{ class.Name }}() {
+		super();
+	}
+
+{# ATTRIBUTES GETTERS AND SETTERS #}
+{% for attribute in attributes %}
+	public {{ attribute.Type.Name }} get{{ attribute.Name | title }}() {
+		return {{ attribute.Name }};
+	}
+	
+	public void set{{ attribute.Name | title }}({{ attribute.Type.Name }} {{ attribute.Name }}) {
+		this.{{ attribute.Name }} = {{ attribute.Name }};
+	}
+{% endfor %}
+
+{# ASSOCIATIONS GETTERS AND SETTERS #}
+{% for association in associations %}
+	{%- set sourceToTargetCardinality = association.SourceToTargetCardinality -%}
+	{%- set targetToSourceCardinality = association.TargetToSourceCardinality -%}
+	{%- set sourceTypeName = association.SourceMember.Type.Name -%}
+	{%- set targetTypeName = association.TargetMember.Type.Name -%}
+	{%- set sourceName = association.SourceMember.Name -%}
+	{%- set targetName = association.TargetMember.Name -%}
+	{%- set collection = association.Collection | title -%}
+	
+	{% if sourceTypeName == class.Name and targetTypeName == class.Name %}
+		{% if sourceToTargetCardinality == "OneToMany" or sourceToTargetCardinality == "ManyToOne" %}
+	    public {{ sourceTypeName }} get{{ sourceName | title }}() {
+			return {{ sourceName }};
+		}
+		
+		public void set{{ sourceName | title }}({{ sourceTypeName }} {{ sourceName }}) {
+			this.{{ sourceName }} = {{ sourceName }};
+		}
+		
+		public {{ collection }}<{{ targetTypeName }}> get{{ targetName | title }}() {
+			return {{ targetName }};
+		}
+		
+		public void set{{ targetName | title }}({{ collection }}<{{ targetTypeName }}> {{ targetName }}) {
+			this.{{ targetName }} = {{ targetName }};
+		}
+		{% elseif sourceToTargetCardinality == "OneToOne" %}
+		public {{ sourceTypeName }} get{{ sourceName | title }}() {
+			return {{ sourceName }};
+		}
+		
+		public void set{{ sourceName | title }}({{ sourceTypeName }} {{ sourceName }}) {
+			this.{{ sourceName }} = {{ sourceName }};
+		}
+		
+		public {{ targetTypeName }} get{{ targetName | title }}() {
+			return {{ targetName }};
+		}
+		
+		public void set{{ targetName | title }}({{ targetTypeName }} {{ targetName }}) {
+			this.{{ targetName }} = {{ targetName }};
+		}
+		{% elseif sourceToTargetCardinality == "ManyToMany" %}
+		public {{ collection }}<{{ sourceTypeName }}> get{{ sourceName | title }}() {
+			return {{ sourceName }};
+		}
+		
+		public void set{{ sourceName | title }}({{ collection }}<{{ sourceTypeName }}> {{ sourceName }}) {
+			this.{{ sourceName }} = {{ sourceName }};
+		}
+		
+		public {{ collection }}<{{ targetTypeName }}> get{{ targetName | title }}() {
+			return {{ targetName }};
+		}
+		
+		public void set{{ targetName | title }}({{ collection }}<{{ targetTypeName }}> {{ targetName }}) {
+			this.{{ targetName }} = {{ targetName }};
+		}
+		{% endif %}
+	{% elseif sourceTypeName == class.Name %}
+		{% if sourceToTargetCardinality == "OneToMany" or sourceToTargetCardinality == "ManyToMany" %}
+		public {{ collection }}<{{ targetTypeName }}> get{{ targetName | title }}() {
+			return {{ targetName }};
+		}
+		
+		public void set{{ targetName | title }}({{ collection }}<{{ targetTypeName }}> {{ targetName }}) {
+			this.{{ targetName }} = {{ targetName }};
+		}
+		{% elseif sourceToTargetCardinality == "ManyToOne" or sourceToTargetCardinality == "OneToOne" %}
+		public {{ targetTypeName }} get{{ targetName | title }}() {
+			return {{ targetName }};
+		}
+		
+		public void set{{ targetName | title }}({{ targetTypeName }} {{ targetName }}) {
+			this.{{ targetName }} = {{ targetName }};
+		}
+		{% endif %}
+	{% elseif targetTypeName == class.Name %}
+		{% if targetToSourceCardinality == "OneToMany" or sourceToTargetCardinality == "ManyToMany" %}
+		public {{ collection }}<{{ sourceTypeName }}> get{{ sourceName | title }}() {
+			return {{ sourceName }};
+		}
+		
+		public void set{{ sourceName | title }}({{ collection }}<{{ sourceTypeName }}> {{ sourceName }}) {
+			this.{{ sourceName }} = {{ sourceName }};
+		}
+		{% elseif targetToSourceCardinality == "ManyToOne" or sourceToTargetCardinality == "OneToOne" %}
+		public {{ sourceTypeName }} get{{ sourceName | title }}() {
+			return {{ sourceName }};
+		}
+		
+		public void set{{ sourceName | title }}({{ sourceTypeName }} {{ sourceName }}) {
+			this.{{ sourceName }} = {{ sourceName }};
+		}
+		{% endif %}
+	{% endif %}
+{% endfor %}
+
+{# METHODS #}
+{% for method in methods %}
+	{% if method.isAbstract() %}
+	{{ method.Visibility.Name }} abstract {% if method.MethodType is null %}void{% else %}{{ method.MethodType.Name }}{% endif %} {{ method.Name }}({% for parameter in method.OwnedParameters %}{{ parameter.Type.Name }} {{ parameter.Name }}{% if loop.last == false %}, {% endif %}{% endfor %});
+	{% else %}
+	{{ method.Visibility.Name }} {% if method.MethodType is null %}void{% else %}{{ method.MethodType.Name }}{% endif %} {{ method.Name }}({% for parameter in method.OwnedParameters %}{{ parameter.Type.Name }} {{ parameter.Name }}{% if loop.last == false %}, {% endif %}{% endfor %}) {
+		// TODO Auto-generated method stub
+		return{% if method.MethodType is not null %} null{% endif %};
+	}
+	{% endif %}
+{% endfor %}
+
+}

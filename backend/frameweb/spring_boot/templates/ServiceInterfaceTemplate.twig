@@ -1,0 +1,19 @@
+package {{ package.Name }};
+
+import java.util.List;
+import java.util.Optional;
+
+public interface {{ interface.Name }} {
+
+	{% for method in methods %}
+	public {% if method.MethodType is null %}void{% else %}{{ method.MethodType.Name }}{% endif %} {{ method.Name }}({% for parameter in method.OwnedParameters %}{{ parameter.Type.Name }} {{ parameter.Name }}{% if loop.last == false %}, {% endif %}{% endfor %});
+	{% endfor %}
+	
+	{% set domainClassName = interface.Name | replace({'Service' : ''}) %}
+	{% set domainClassNameCamelCase = domainClassName | lower_first %}
+	public Optional<{{ domainClassName }}> find{{ domainClassName }}ById(Long id);
+	public List<{{ domainClassName }}> findAll{{ domainClassName }}s();
+	public {{ domainClassName }} save{{ domainClassName }}({{ domainClassName }} {{ domainClassNameCamelCase }});
+	public void delete{{ domainClassName }}({{ domainClassName }} {{ domainClassNameCamelCase }});
+
+}

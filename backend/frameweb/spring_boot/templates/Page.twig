@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      
+    <h:head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Title</title>
+    </h:head>
+	
+	<h:body>
+	{% for form in forms %}
+	    {% set dependency = form.ClientDependencies[0] %}
+		{% set controllerName = dependency.Targets[0].Name | lower_first %}
+		{% set left = "#{" %}
+		{% set right = "}" %}
+		<h:form id="{{ form.Name }}">
+			<p:panel>
+			{% for attribute in form.Attributes %}
+				{% if attribute.Type.Name == "inputText" %}
+				<p:inputText id="{{ attribute.Name }}" value="{{ left }}{{ controllerName }}.{{ attribute.Name }}{{ right }}" />
+				{% elseif attribute.Type.Name == "inputNumber" %}
+				<p:inputNumber id="{{ attribute.Name }}" value="{{ left }}{{ controllerName}}.{{ attribute.Name }}{{ right }}" />
+				{% elseif attribute.Type.Name == "outputLabel" %}
+				<p:outputLabel for="{{ attribute.Name }}" value="{ value of {{ attribute.Name }} }" />
+				{% elseif attribute.Type.Name == "commandButton" %}
+					{% set methodName = dependency.Method.Name %}
+				<h:commandButton value="{{ attribute.Name }}" action="{{ left }}{{ controllerName }}.{{ methodName }}{{ right }}" />
+				{% endif %}
+		    {% endfor %}
+		    </p:panel>
+		</h:form>
+    {% endfor %}
+    </h:body>
+</html>
