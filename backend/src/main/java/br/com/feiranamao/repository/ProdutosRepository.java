@@ -1,10 +1,12 @@
 package br.com.feiranamao.repository;
 
 import java.util.List;
-import org.springframework.data.jpa.repository.JpaRepository;
-import online.feiranamao.core.domain.Produto;
 
-public interface ProdutoRepository
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import br.com.feiranamao.model.Produto;
+
+public interface ProdutosRepository
 		extends JpaRepository<Produto, String> {
 	
 	List<Produto> findByName(String name);

@@ -20,7 +20,7 @@ public class SwaggerConfig {
 	    public Docket api() { 
 	        return new Docket(DocumentationType.SWAGGER_2)  
 	          .select()                                  
-	          .apis(RequestHandlerSelectors.basePackage("br.com.xyinc"))            
+	          .apis(RequestHandlerSelectors.basePackage("br.com.feiranamao"))            
 	          .paths(PathSelectors.any())                          
 	          .build()
 	          .apiInfo(metaData());                                           
@@ -28,13 +28,13 @@ public class SwaggerConfig {
 	 
 	  private ApiInfo metaData() {
 		    return new ApiInfoBuilder()
-		        .title("API XY INC")
-		        .description("\"Spring Boot REST API for Zup Innovation \"")
+		        .title("API FEIRA NA MAO")
+		        .description("\"Spring Boot REST API for UFES \"")
 		        .version("1.0.0")
 		        .license("licence")
-		        .contact( new Contact("Leonardo Patrick", 
-		        		"https://www.linkedin.com/in/leonardopatrickppinto/",
-		        		"leonardop@itout.com.br"))
+		        .contact( new Contact("Alunos", 
+		        		"https://www.linkedin.com/in/alunos/",
+		        		"a@edu.ufes.com.br"))
 		        .licenseUrl("https://www.xy.inc/licenses/LICENSE-2.0\"")
 		        .build();
 		  }
