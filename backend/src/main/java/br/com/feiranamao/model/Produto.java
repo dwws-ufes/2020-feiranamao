@@ -14,10 +14,11 @@ public class Produto implements Serializable {
 	
 		@Id 
 		@NotNull
+	    @Size(max = 40)
 		private long id;
 
 		private String name;
-		private String descricao;
+		private long descricao;
 		private Double preco;
 		private Double custo;
 		private Double estoque;
@@ -41,11 +42,11 @@ public class Produto implements Serializable {
 			this.name = name;
 		}
 
-		public String getDescricao() {
+		public long getDescricao() {
 			return descricao;
 		}
 
-		public void setDescricao(String descricao) {
+		public void setDescricao(long descricao) {
 			this.descricao = descricao;
 		}
 

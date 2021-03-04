@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import br.com.feiranamao.model.Produto;
 import br.com.feiranamao.repository.ProdutosRepository;
+import br.com.feiranamao.repository.ReferencesRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -30,7 +31,7 @@ public class ProdutosResource  {
 	ProdutosRepository produtosRepository;
 	
 	@ApiOperation(value=" Return List Points")
-	@GetMapping("/produtos")
+	@GetMapping("/points")
 	public List<Produto> listPoints(){
 		
 		return produtosRepository.findAll();
@@ -42,21 +43,21 @@ public class ProdutosResource  {
 		return produtosRepository.findByName(name);
 	}
 	
-    @ApiOperation(value=" Post Produto")
-	@PostMapping("/produto")
+    @ApiOperation(value=" Post Produtos")
+	@PostMapping("/produtos")
 	public Produto savePoint(@RequestBody Produto produto) throws Exception {
 		return produtosRepository.save(produto);
 	}
 	
-    @ApiOperation(value="Delete Produto")
-	@DeleteMapping("/produto")
+    @ApiOperation(value="Delete Produtos")
+	@DeleteMapping("/points")
 	public void deletePoints(@RequestBody Produto produto) {
     	produtosRepository.delete(produto);
 		
 	}
 	
     @ApiOperation(value="Update Produtos")
-	@PutMapping("/produto")
+	@PutMapping("/produtos")
 	public Produto updatePoints(@RequestBody Produto produto) {
 		return produtosRepository.save(produto);
 	}
