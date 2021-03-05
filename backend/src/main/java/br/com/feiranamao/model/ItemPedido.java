@@ -1,11 +1,14 @@
 package br.com.feiranamao.model;
 import java.io.Serializable;
+
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -16,26 +19,32 @@ public class ItemPedido implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
+	/*	@EmbeddedId
+	    private ItemPedidoID itemPedidoID;
+
+		public ItemPedidoID getItemPedidoID() {
+			return itemPedidoID;
+		}
+		public void setItemPedidoID(ItemPedidoID itemPedidoID) {
+			this.itemPedidoID = itemPedidoID;
+		}*/
+	   
 		@Id 
 		@NotNull
-		@GeneratedValue(strategy = GenerationType.AUTO)
+		@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_item")
+		@SequenceGenerator(name="seq_item", sequenceName = "seq_item", initialValue = 1)
 		private long id;
 		
-		/*@ManyToOne
-	    @JoinColumn(name="pedido_id")
-	    private Pedido pedido;
-		*/
-
-		private Double valorUnitario;
-		private Double quantidade;
-		private Double valorTotal;
-
 		public long getId() {
 			return id;
 		}
 		public void setId(long id) {
 			this.id = id;
 		}
+		private Double valorUnitario;
+		private Double quantidade;
+		private Double valorTotal;
+
 		public Double getValorUnitario() {
 			return valorUnitario;
 		}
@@ -54,11 +63,5 @@ public class ItemPedido implements Serializable {
 		public void setValorTotal(Double valorTotal) {
 			this.valorTotal = valorTotal;
 		}
-		/*public Pedido getPedido() {
-			return pedido;
-		}
-		public void setPedido(Pedido pedido) {
-			this.pedido = pedido;
-		}*/
 	
 }

@@ -6,11 +6,14 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -22,17 +25,27 @@ public class Pedido implements Serializable {
 	
 		@Id 
 		@NotNull
-		@GeneratedValue(strategy = GenerationType.AUTO)
+		@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_pedido")
+		@SequenceGenerator(name="seq_pedido", sequenceName = "seq_pedido", initialValue = 1)
 		private long pedido_id;
 		
-	
 		@OneToMany(targetEntity =  ItemPedido.class, cascade =CascadeType.ALL)
-		@JoinColumn(name="id_fk", referencedColumnName = "pedido_id")
+		@JoinColumn(name="id_pedido", referencedColumnName = "pedido_id")
 	    private Set<ItemPedido> itemPedido;
 
 		public Set<ItemPedido> getItemPedido() {
 			return itemPedido;
 		}
+		
+		public long getId_loja() {
+			return id_loja;
+		}
+
+		public void setId_loja(long id_loja) {
+			this.id_loja = id_loja;
+		}
+
+		private long id_loja;
 
 		public void setItemPedido(Set<ItemPedido> itemPedido) {
 			this.itemPedido = itemPedido;

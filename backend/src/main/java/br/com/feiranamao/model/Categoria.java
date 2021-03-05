@@ -1,14 +1,13 @@
 package br.com.feiranamao.model;
 import java.io.Serializable;
-import java.sql.Timestamp;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+
 
 @Entity
 @Table(name="CATEGORIA")
@@ -18,7 +17,8 @@ public class Categoria implements Serializable {
 	
 		@Id 
 		@NotNull
-		@GeneratedValue(strategy = GenerationType.AUTO)
+		@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_categoria")
+		@SequenceGenerator(name="seq_categoria", sequenceName = "seq_categoria", initialValue = 1)
 		private long id;
 		
 		public long getId() {
