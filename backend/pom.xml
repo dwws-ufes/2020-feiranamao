@@ -130,6 +130,7 @@
 	    <version>1.5.2</version>
 	</dependency>
 
+
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
@@ -155,6 +156,12 @@
 	    <groupId>org.springframework.boot</groupId>
 	    <artifactId>spring-boot-starter-validation</artifactId>
 	</dependency>
+	
+	<dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-security</artifactId>
+      <version>1.5.5</version>
+   </dependency>
 
 	
 	</dependencies>
