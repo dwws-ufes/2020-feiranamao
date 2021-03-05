@@ -15,13 +15,14 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 
-@EnableSwagger2WebMvc
+@EnableSwagger2
 @Import(SpringDataRestConfiguration.class)
 public class SpringFoxConfig {
 
 	 @Bean
 	    public Docket api() { 
 	        return new Docket(DocumentationType.SWAGGER_2)  
+	           .groupName("UM TESTE")
 	          .select()                                  
 	          .apis(RequestHandlerSelectors.basePackage("br.com.feiranamao"))            
 	          .paths(PathSelectors.any())                          
