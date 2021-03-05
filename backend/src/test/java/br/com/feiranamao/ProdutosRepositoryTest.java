@@ -1,4 +1,4 @@
-package br.com.xyinc;
+package br.com.feiranamao;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import java.util.ArrayList;
@@ -11,9 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
 import br.com.feiranamao.model.Produto;
-import br.com.feiranamao.repository.ReferencesRepository;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
