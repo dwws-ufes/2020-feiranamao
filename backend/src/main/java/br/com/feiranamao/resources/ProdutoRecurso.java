@@ -12,10 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import br.com.feiranamao.model.Pedido;
 import br.com.feiranamao.model.Produto;
-import br.com.feiranamao.repository.ItemPedidoRepository;
-import br.com.feiranamao.repository.PedidosRepository;
 import br.com.feiranamao.repository.ProdutosRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -23,7 +20,6 @@ import io.swagger.annotations.ApiOperation;
 @Api(value="Feira Na Mão")
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-//@RequestMapping(value = "/api")
 public class ProdutoRecurso  {
 
 	@Autowired

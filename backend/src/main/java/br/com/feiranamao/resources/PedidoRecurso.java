@@ -5,22 +5,13 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import br.com.feiranamao.model.ItemPedido;
 import br.com.feiranamao.model.Pedido;
-import br.com.feiranamao.model.Produto;
-import br.com.feiranamao.repository.ItemPedidoRepository;
 import br.com.feiranamao.repository.PedidosRepository;
-import br.com.feiranamao.repository.ProdutosRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -46,7 +37,7 @@ public class PedidoRecurso  {
     	Set<ItemPedido> itens = pedido.getItemPedido();
     	
     	for(ItemPedido item : itens) {
-    		item.setValorTotal(item.getValorUnitario()*item.getQuantidade());
+    	item.setValorTotal(item.getValorUnitario()*item.getQuantidade());
     		
     	}
     	

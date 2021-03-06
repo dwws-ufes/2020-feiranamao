@@ -57,37 +57,29 @@ public class SwaggerConfiguration implements WebFluxConfigurer {
 	@Bean
 	public OpenAPI customOpenAPI() {
 		return new OpenAPI()
-				/* .components(new Components()
-	                        .addSecuritySchemes("spring_oauth", new SecurityScheme()
-	                                .type(SecurityScheme.Type.OAUTH2)
-	                                .description("Oauth2 flow")
-	                            .flows(new OAuthFlows()
-	                                        .authorizationCode(new OAuthFlow()
-	                                                .authorizationUrl("localhost" + "/auth")
-	                                                .refreshUrl("localhost" + "/token")
-	                                                .tokenUrl("localhost" + "/token")
-	                                                .scopes(new Scopes())
-	                                        )))
-	                        .addSecuritySchemes("api_key", new SecurityScheme()
-	                                .type(SecurityScheme.Type.APIKEY)
-	                                .description("Api Key access")
-	                                .in(SecurityScheme.In.HEADER)
-	                                .name("API-KEY")
-	                        )
+				 .components(new Components()
+						 
+	                        .addSecuritySchemes("Basic", new SecurityScheme()
+	    							.type(SecurityScheme.Type.HTTP)
+	    							.scheme("basic")
+	    					)
+	                        
+	                        .addSecuritySchemes("Bearer",
+	       		                 new SecurityScheme().type(SecurityScheme.Type.HTTP)
+	       		                 .scheme("bearer").bearerFormat("JWT")
+	       		                .in(SecurityScheme.In.HEADER).name("Authorization"))
+	                        
 	                        .addParameters("Version", new Parameter()
 	                                .in("header")
 	                                .name("Version")
 	                                .schema(new StringSchema())
-	                                .required(false)))*/
-				.components(new Components().addSecuritySchemes("bearer-jwt",
-		                 new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("bearer").bearerFormat("JWT")
-		                .in(SecurityScheme.In.HEADER).name("Authorization")))
-				.addSecurityItem(
-	                    new SecurityRequirement().addList("bearer-jwt", Arrays.asList("read", "write")))
-	                /*.security(Arrays.asList(
-	                        new SecurityRequirement().addList("spring_oauth"),
-	                        new SecurityRequirement().addList("api_key")))*/
-				.info(new Info()
+	                                .required(false)))
+				 
+				 			.security(Arrays.asList(
+	                        new SecurityRequirement().addList("Basic"),
+	                        new SecurityRequirement().addList("Bearer")))
+				 			
+	               .info(new Info()
 				.title("Feira na mão")
 				 .version("2.1a")
 				 .description("Api desenvolvida pelos alunos de graduação e metrado da ufes")

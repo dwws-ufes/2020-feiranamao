@@ -1,33 +1,18 @@
 package br.com.feiranamao.model;
 import java.io.Serializable;
-
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="ITEMPEDIDO")
 public class ItemPedido implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-	
-	/*	@EmbeddedId
-	    private ItemPedidoID itemPedidoID;
-
-		public ItemPedidoID getItemPedidoID() {
-			return itemPedidoID;
-		}
-		public void setItemPedidoID(ItemPedidoID itemPedidoID) {
-			this.itemPedidoID = itemPedidoID;
-		}*/
 	   
 		@Id 
 		@NotNull
@@ -63,5 +48,12 @@ public class ItemPedido implements Serializable {
 		public void setValorTotal(Double valorTotal) {
 			this.valorTotal = valorTotal;
 		}
+		public Double getId_produto() {
+			return id_produto;
+		}
+		public void setId_produto(Double id_produto) {
+			this.id_produto = id_produto;
+		}
+		private Double id_produto;
 	
 }
