@@ -6,7 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="PRODUTO")
@@ -24,6 +23,7 @@ public class Produto implements Serializable {
 		private Double preco;
 		private Double custo;
 		private Double estoque;
+		private long id_categoria;
 		
 		public Produto(){
 		}
@@ -75,4 +75,13 @@ public class Produto implements Serializable {
 		public void setEstoque(Double estoque) {
 			this.estoque = estoque;
 		}
+		
+		public long getId_categoria() {
+			return id_categoria;
+		}
+
+		public void setId_categoria(long id_categoria) {
+			this.id_categoria = id_categoria;
+		}
+
 }

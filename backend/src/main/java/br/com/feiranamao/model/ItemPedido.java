@@ -4,38 +4,32 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="ITEMPEDIDO")
 public class ItemPedido implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-	
+	   
 		@Id 
 		@NotNull
-		@GeneratedValue(strategy = GenerationType.AUTO)
+		@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_item")
+		@SequenceGenerator(name="seq_item", sequenceName = "seq_item", initialValue = 1)
 		private long id;
 		
-		/*@ManyToOne
-	    @JoinColumn(name="pedido_id")
-	    private Pedido pedido;
-		*/
-
-		private Double valorUnitario;
-		private Double quantidade;
-		private Double valorTotal;
-
 		public long getId() {
 			return id;
 		}
 		public void setId(long id) {
 			this.id = id;
 		}
+		private Double valorUnitario;
+		private Double quantidade;
+		private Double valorTotal;
+
 		public Double getValorUnitario() {
 			return valorUnitario;
 		}
@@ -54,11 +48,12 @@ public class ItemPedido implements Serializable {
 		public void setValorTotal(Double valorTotal) {
 			this.valorTotal = valorTotal;
 		}
-		/*public Pedido getPedido() {
-			return pedido;
+		public Double getId_produto() {
+			return id_produto;
 		}
-		public void setPedido(Pedido pedido) {
-			this.pedido = pedido;
-		}*/
+		public void setId_produto(Double id_produto) {
+			this.id_produto = id_produto;
+		}
+		private Double id_produto;
 	
 }
