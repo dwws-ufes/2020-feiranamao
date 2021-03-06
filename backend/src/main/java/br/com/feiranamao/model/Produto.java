@@ -23,7 +23,7 @@ public class Produto implements Serializable {
 		private Double preco;
 		private Double custo;
 		private Double estoque;
-		private Double id_categoria;
+		private long id_categoria;
 		
 		public Produto(){
 		}
@@ -76,11 +76,11 @@ public class Produto implements Serializable {
 			this.estoque = estoque;
 		}
 		
-		public Double getId_categoria() {
+		public long getId_categoria() {
 			return id_categoria;
 		}
 
-		public void setId_categoria(Double id_categoria) {
+		public void setId_categoria(long id_categoria) {
 			this.id_categoria = id_categoria;
 		}
 

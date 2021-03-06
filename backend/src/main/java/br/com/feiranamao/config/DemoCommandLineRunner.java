@@ -1,5 +1,7 @@
 package br.com.feiranamao.config;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,12 +22,15 @@ class DemoCommandLineRunner implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 
+		Optional<Usuario> old= userRepository.findByUsername("application-user");
+		
+		if(old.isEmpty()) {
 		Usuario user = new Usuario();
 		user.setUsername("application-user");
 		user.setPassword(passwordEncoder.encode("password"));
 		user.setId_loja(1);
-	//	user.grantAuthority("ADMIN");
+		//user.grantAuthority("ADMIN");
 		userRepository.save(user);
-		
+		}
 	}
 }
