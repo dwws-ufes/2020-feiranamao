@@ -44,12 +44,11 @@ public class Usuario implements UserDetails {
 		    
 		    private long id_loja;
 
-
-
-			/*    @Enumerated(EnumType.STRING)
+			/*  
+			 @Enumerated(EnumType.STRING)
 		    @ElementCollection(fetch = FetchType.EAGER)
 		    private List<Role> roles;
-*/
+			 */
 		    public Usuario() {
 		        this.accountNonExpired = true;
 		        this.accountNonLocked = true;

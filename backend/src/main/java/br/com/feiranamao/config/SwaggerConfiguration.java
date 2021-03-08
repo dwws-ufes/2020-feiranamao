@@ -82,7 +82,7 @@ public class SwaggerConfiguration implements WebFluxConfigurer {
 	               .info(new Info()
 				.title("Feira na mão")
 				 .version("2.1a")
-				 .description("\nAPI desenvolvida pelos alunos de graduação e metrado da UFES."
+				 .description("\nAPI desenvolvida pelos alunos de graduação e mestrado da UFES."
 				 		+ "\n<br><br>Sendo parte aplicação construida para a como trabalho avaliativo da disciplina de Desenvolvimeto Web e Web Semantica."
 				 		+ "\n<br><br>O códido está aberto e hospedado no GitHub da disciplina em DWWS 2020 UFES [dwws-ufes](https://github.com/dwws-ufes/2020-feiranamao)."
 				 		+ "\n<br><br>Utilizamos no projeto OAUTH2 acesso aos recursos. "
