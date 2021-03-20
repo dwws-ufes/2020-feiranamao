@@ -7,10 +7,10 @@
           <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
           <defaultValue xsi:type="uml:LiteralString" value=""/>
         </ownedAttribute>
-        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="nome" visibility="private">
+        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="nome" visibility="private" size="255">
           <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
         </ownedAttribute>
-        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="descricao" visibility="private">
+        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="descricao" visibility="private" size="5000">
           <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
         </ownedAttribute>
         <ownedAttribute xsi:type="frameweb:DomainAttribute" name="preco" visibility="private">
@@ -24,13 +24,13 @@
         </ownedAttribute>
       </packagedElement>
       <packagedElement xsi:type="frameweb:DomainClass" name="Usuario" visibility="private">
-        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="nome" visibility="private">
+        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="nome" visibility="private" size="255">
           <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
         </ownedAttribute>
-        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="login" visibility="private">
+        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="login" visibility="private" size="255">
           <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
         </ownedAttribute>
-        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="senha" visibility="private">
+        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="senha" visibility="private" size="16">
           <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
         </ownedAttribute>
         <ownedAttribute xsi:type="frameweb:IdAttribute" name="_id" visibility="private">
@@ -86,7 +86,7 @@
         <ownedEnd xsi:type="frameweb:DomainProperty" name="Target" type="//@compose.0/online.feiranamao.core.domain/Produto" association="//@compose.0/online.feiranamao.core.domain/@packagedElement.6"/>
       </packagedElement>
       <packagedElement xsi:type="frameweb:DomainClass" name="Loja">
-        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="nome" visibility="private"/>
+        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="nome" visibility="private" size="255"/>
         <ownedAttribute xsi:type="frameweb:IdAttribute" name="id">
           <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
         </ownedAttribute>
@@ -124,7 +124,7 @@
         <ownedAttribute xsi:type="frameweb:IdAttribute" name="id">
           <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
         </ownedAttribute>
-        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="nome" visibility="private">
+        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="nome" visibility="private" size="255">
           <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
         </ownedAttribute>
       </packagedElement>
@@ -145,33 +145,27 @@
   </compose>
   <compose xsi:type="frameweb:PersistenceModel" name="Persistence Model">
     <packagedElement xsi:type="frameweb:PersistencePackage" name="online.feiranamao.core.repository">
-      <packagedElement xsi:type="frameweb:DAOClass" name="PedidosRepository">
-        <ownedAttribute xsi:type="frameweb:DomainAttribute" name="nome" visibility="private">
-          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
-        </ownedAttribute>
-      </packagedElement>
-      <packagedElement xsi:type="frameweb:DAOClass" name="UsuariosRepository"/>
-      <packagedElement xsi:type="frameweb:DAOClass" name="ItemPedidosRepository"/>
-      <packagedElement xsi:type="frameweb:DAOClass" name="ProdutosRepository"/>
-      <packagedElement xsi:type="frameweb:DAOInterface" name="JpaRepository"/>
-      <packagedElement xsi:type="frameweb:DAOClass" name="CategoriasRepository"/>
-      <packagedElement xsi:type="frameweb:DAORealization" client="//@compose.1/online.feiranamao.core.repository/CategoriasRepository" supplier="//@compose.1/online.feiranamao.core.repository/JpaRepository"/>
-      <packagedElement xsi:type="frameweb:DAORealization" client="//@compose.1/online.feiranamao.core.repository/ProdutosRepository" supplier="//@compose.1/online.feiranamao.core.repository/JpaRepository"/>
-      <packagedElement xsi:type="frameweb:DAORealization" client="//@compose.1/online.feiranamao.core.repository/ItemPedidosRepository" supplier="//@compose.1/online.feiranamao.core.repository/JpaRepository"/>
-      <packagedElement xsi:type="frameweb:DAORealization" client="//@compose.1/online.feiranamao.core.repository/UsuariosRepository" supplier="//@compose.1/online.feiranamao.core.repository/JpaRepository"/>
-      <packagedElement xsi:type="frameweb:DAORealization" client="//@compose.1/online.feiranamao.core.repository/PedidosRepository" supplier="//@compose.1/online.feiranamao.core.repository/JpaRepository"/>
-      <packagedElement xsi:type="frameweb:DAOClass" name="LojasRepository"/>
-      <packagedElement xsi:type="frameweb:DAORealization" client="//@compose.1/online.feiranamao.core.repository/LojasRepository" supplier="//@compose.1/online.feiranamao.core.repository/JpaRepository"/>
+      <packagedElement xsi:type="frameweb:DAORealization"/>
+      <packagedElement xsi:type="frameweb:DAORealization"/>
+      <packagedElement xsi:type="frameweb:DAORealization"/>
+      <packagedElement xsi:type="frameweb:DAORealization"/>
+      <packagedElement xsi:type="frameweb:DAORealization"/>
+      <packagedElement xsi:type="frameweb:DAOInterface" name="PedidosRepository"/>
+      <packagedElement xsi:type="frameweb:DAOInterface" name="UsuariosRepository"/>
+      <packagedElement xsi:type="frameweb:DAOInterface" name="ItemPedidosRepository"/>
+      <packagedElement xsi:type="frameweb:DAOInterface" name="LojasRepository"/>
+      <packagedElement xsi:type="frameweb:DAOInterface" name="ProdutosRepository"/>
+      <packagedElement xsi:type="frameweb:DAOInterface" name="CategoriasRepository"/>
     </packagedElement>
   </compose>
   <compose xsi:type="frameweb:NavigationModel" name="Navigation Model">
     <packagedElement xsi:type="frameweb:ViewPackage" name="/frontend/login">
       <packagedElement xsi:type="frameweb:UIComponent" name="loginForm">
         <ownedAttribute xsi:type="frameweb:UIComponentField" name="usuario">
-          <type xsi:type="frameweb:Tag" href="frameweb/spring_boot/Jsf.frameweb#//@configures.0/JSFhtml/inputText"/>
+          <type xsi:type="uml:PrimitiveType" href="frameweb/TypeScript.frameweb#//@compose.0/string"/>
         </ownedAttribute>
-        <ownedAttribute xsi:type="frameweb:UIComponentField" name="senha" visibility="private">
-          <type xsi:type="frameweb:Tag" href="frameweb/spring_boot/Jsf.frameweb#//@configures.0/JSFhtml/inputText"/>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="senha" visibility="public">
+          <type xsi:type="uml:PrimitiveType" href="frameweb/TypeScript.frameweb#//@compose.0/string"/>
         </ownedAttribute>
         <ownedAttribute xsi:type="frameweb:NavigationCompositionWhole"/>
         <ownedAttribute xsi:type="frameweb:NavigationCompositionWhole"/>
@@ -181,6 +175,10 @@
         <ownedAttribute xsi:type="frameweb:NavigationCompositionWhole"/>
         <ownedAttribute xsi:type="frameweb:NavigationCompositionWhole"/>
         <ownedAttribute xsi:type="frameweb:NavigationCompositionWhole"/>
+        <ownedAttribute xsi:type="frameweb:NavigationCompositionWhole" type="//@compose.2/%2Ffrontend%2Flogin/loginForm" association="//@compose.2/%2Ffrontend%2Flogin/@packagedElement.7"/>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="mensagem">
+          <type xsi:type="uml:PrimitiveType" href="frameweb/TypeScript.frameweb#//@compose.0/string"/>
+        </ownedAttribute>
       </packagedElement>
       <packagedElement xsi:type="frameweb:NavigationAssociation">
         <ownedEnd xsi:type="frameweb:NavigationCompositionPart"/>
@@ -196,6 +194,12 @@
       </packagedElement>
       <packagedElement xsi:type="frameweb:NavigationAssociation">
         <ownedEnd xsi:type="frameweb:NavigationCompositionPart"/>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:NavigationAssociation" memberEnd="//@compose.2/%2Ffrontend%2Flogin/@packagedElement.7/@ownedEnd.0 //@compose.2/%2Ffrontend%2Flogin/Login/@ownedAttribute.4">
+        <ownedEnd xsi:type="frameweb:NavigationCompositionPart" type="//@compose.2/%2Ffrontend%2Flogin/Login" association="//@compose.2/%2Ffrontend%2Flogin/@packagedElement.7"/>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:Page" name="Home">
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="usuario" type="//@compose.0/online.feiranamao.core.domain/Usuario"/>
       </packagedElement>
     </packagedElement>
     <packagedElement xsi:type="frameweb:ControllerPackage" name="/frontend/controllers">
@@ -228,57 +232,70 @@
         <ownedEnd name="Source"/>
         <ownedEnd name="Target" type="//@compose.3/online.feiranamao.core.application/LoginService"/>
       </packagedElement>
-      <packagedElement xsi:type="frameweb:FrontControllerClass" name="pedidoController">
+      <packagedElement xsi:type="frameweb:FrontControllerClass" name="PedidoController">
         <ownedAttribute xsi:type="frameweb:IOParameter" name="itemsPedido">
           <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/List"/>
         </ownedAttribute>
+        <ownedAttribute xsi:type="frameweb:IOParameter" name="pedido" type="//@compose.0/online.feiranamao.core.domain/Pedido"/>
         <ownedOperation xsi:type="frameweb:FrontControllerMethod" name="fazerPedido" methodType="//@compose.0/online.feiranamao.core.domain/Pedido" requestMethod="">
           <ownedParameter name="ItemsPedido">
             <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/List"/>
           </ownedParameter>
-          <ownedParameter name="usuarioId">
-            <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
-          </ownedParameter>
-          <ownedParameter name="lojaId">
-            <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
-          </ownedParameter>
+          <ownedParameter name="usuario" type="//@compose.0/online.feiranamao.core.domain/Usuario"/>
+          <ownedParameter name="loja" type="//@compose.0/online.feiranamao.core.domain/Loja"/>
         </ownedOperation>
       </packagedElement>
       <packagedElement xsi:type="frameweb:FrontControllerClass" name="ProdutoController">
-        <ownedAttribute xsi:type="frameweb:IOParameter" name="Produto" type="//@compose.0/online.feiranamao.core.domain/Produto"/>
+        <ownedAttribute xsi:type="frameweb:IOParameter" name="produto" type="//@compose.0/online.feiranamao.core.domain/Produto"/>
         <ownedOperation xsi:type="frameweb:FrontControllerMethod" name="salvarProduto" methodType="//@compose.0/online.feiranamao.core.domain/Produto" requestMethod="">
-          <ownedParameter name="Produto" type="//@compose.0/online.feiranamao.core.domain/Produto"/>
+          <ownedParameter name="produto" type="//@compose.0/online.feiranamao.core.domain/Produto"/>
         </ownedOperation>
         <ownedOperation xsi:type="frameweb:FrontControllerMethod" name="deletaProduto" requestMethod="">
-          <ownedParameter name="produtoId">
-            <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
-          </ownedParameter>
-          <methodType xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+          <ownedParameter name="produto" type="//@compose.0/online.feiranamao.core.domain/Produto"/>
+          <methodType xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/Boolean"/>
         </ownedOperation>
         <ownedOperation xsi:type="frameweb:FrontControllerMethod" name="atualizaProduto" methodType="//@compose.0/online.feiranamao.core.domain/Produto" requestMethod="">
-          <ownedParameter name="Produto" type="//@compose.0/online.feiranamao.core.domain/Produto"/>
+          <ownedParameter name="produto" type="//@compose.0/online.feiranamao.core.domain/Produto"/>
         </ownedOperation>
         <ownedOperation xsi:type="frameweb:FrontControllerMethod" name="getProdutos">
           <methodType xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/List"/>
         </ownedOperation>
       </packagedElement>
-      <packagedElement xsi:type="frameweb:ServiceControllerAssociation" memberEnd="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.5/Source //@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.5/Target">
-        <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint" constrainedElement="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.5/Source"/>
-        <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint" constrainedElement="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.5/Target"/>
-        <ownedEnd name="Source" type="//@compose.2/%2Ffrontend%2Fcontrollers/AuthenticationController" association="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.5"/>
-        <ownedEnd name="Target" type="//@compose.3/online.feiranamao.core.application/LoginService" association="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.5"/>
+      <packagedElement xsi:type="frameweb:ServiceControllerAssociation">
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint"/>
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint"/>
+        <ownedEnd name="Source"/>
+        <ownedEnd name="Target" type="//@compose.3/online.feiranamao.core.application/LoginService"/>
       </packagedElement>
-      <packagedElement xsi:type="frameweb:ServiceControllerAssociation" memberEnd="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.6/Source //@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.6/Target">
-        <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint" constrainedElement="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.6/Source"/>
-        <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint" constrainedElement="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.6/Target"/>
-        <ownedEnd name="Source" type="//@compose.2/%2Ffrontend%2Fcontrollers/pedidoController" association="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.6"/>
-        <ownedEnd name="Target" type="//@compose.3/online.feiranamao.core.application/PedidoService" association="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.6"/>
+      <packagedElement xsi:type="frameweb:ServiceControllerAssociation">
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint"/>
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint"/>
+        <ownedEnd name="Source"/>
+        <ownedEnd name="Target" type="//@compose.3/online.feiranamao.core.application/PedidoService"/>
       </packagedElement>
-      <packagedElement xsi:type="frameweb:ServiceControllerAssociation" memberEnd="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.7/Source //@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.7/Target">
-        <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint" constrainedElement="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.7/Source"/>
-        <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint" constrainedElement="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.7/Target"/>
-        <ownedEnd name="Source" type="//@compose.2/%2Ffrontend%2Fcontrollers/ProdutoController" association="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.7"/>
-        <ownedEnd name="Target" type="//@compose.3/online.feiranamao.core.application/ProdutoService" association="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.7"/>
+      <packagedElement xsi:type="frameweb:ServiceControllerAssociation">
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint"/>
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint"/>
+        <ownedEnd name="Source"/>
+        <ownedEnd name="Target" type="//@compose.3/online.feiranamao.core.application/ProdutoService"/>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:ServiceControllerAssociation" memberEnd="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.8/Source //@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.8/Target">
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint" constrainedElement="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.8/Source"/>
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint" constrainedElement="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.8/Target"/>
+        <ownedEnd name="Source" type="//@compose.2/%2Ffrontend%2Fcontrollers/ProdutoController" association="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.8"/>
+        <ownedEnd name="Target" type="//@compose.3/online.feiranamao.core.application/ProdutoService" association="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.8"/>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:ServiceControllerAssociation" memberEnd="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.9/Source //@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.9/Target">
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint" constrainedElement="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.9/Source"/>
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint" constrainedElement="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.9/Target"/>
+        <ownedEnd name="Source" type="//@compose.2/%2Ffrontend%2Fcontrollers/AuthenticationController" association="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.9"/>
+        <ownedEnd name="Target" type="//@compose.3/online.feiranamao.core.application/LoginService" association="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.9"/>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:ServiceControllerAssociation" memberEnd="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.10/Source //@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.10/Target">
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint" constrainedElement="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.10/Source"/>
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint" constrainedElement="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.10/Target"/>
+        <ownedEnd name="Source" type="//@compose.2/%2Ffrontend%2Fcontrollers/PedidoController" association="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.10"/>
+        <ownedEnd name="Target" type="//@compose.3/online.feiranamao.core.application/PedidoService" association="//@compose.2/%2Ffrontend%2Fcontrollers/@packagedElement.10"/>
       </packagedElement>
     </packagedElement>
     <packagedElement xsi:type="frameweb:FrontControllerDependency"/>
@@ -289,6 +306,10 @@
       <packagedElement xsi:type="frameweb:Page" name="fazerPedido">
         <ownedAttribute xsi:type="frameweb:NavigationCompositionWhole"/>
         <ownedAttribute xsi:type="frameweb:NavigationCompositionWhole"/>
+        <ownedAttribute xsi:type="frameweb:NavigationCompositionWhole" type="//@compose.2/%2Ffrontend%2Fpedido/pedidoForm" association="//@compose.2/%2Ffrontend%2Fpedido/@packagedElement.5"/>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="mensagem">
+          <type xsi:type="uml:PrimitiveType" href="frameweb/TypeScript.frameweb#//@compose.0/string"/>
+        </ownedAttribute>
       </packagedElement>
       <packagedElement xsi:type="frameweb:UIComponent" name="pedidoForm">
         <ownedAttribute xsi:type="frameweb:UIComponentField" name="itemsPedido" aggregation="shared">
@@ -301,28 +322,37 @@
       <packagedElement xsi:type="frameweb:NavigationAssociation">
         <ownedEnd xsi:type="frameweb:NavigationCompositionPart"/>
       </packagedElement>
-      <packagedElement xsi:type="frameweb:Page" name="pedidoConfirmado"/>
+      <packagedElement xsi:type="frameweb:Page" name="pedidoConfirmado">
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="pedido" type="//@compose.0/online.feiranamao.core.domain/Pedido"/>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:NavigationAssociation" memberEnd="//@compose.2/%2Ffrontend%2Fpedido/@packagedElement.5/@ownedEnd.0 //@compose.2/%2Ffrontend%2Fpedido/fazerPedido/@ownedAttribute.2">
+        <ownedEnd xsi:type="frameweb:NavigationCompositionPart" type="//@compose.2/%2Ffrontend%2Fpedido/fazerPedido" association="//@compose.2/%2Ffrontend%2Fpedido/@packagedElement.5"/>
+      </packagedElement>
     </packagedElement>
     <packagedElement xsi:type="frameweb:ViewPackage" name="/frontend/produto">
       <packagedElement xsi:type="frameweb:Page" name="criaProduto">
         <ownedAttribute xsi:type="frameweb:NavigationCompositionWhole"/>
         <ownedAttribute xsi:type="frameweb:NavigationCompositionWhole"/>
+        <ownedAttribute xsi:type="frameweb:NavigationCompositionWhole" type="//@compose.2/%2Ffrontend%2Fproduto/produtoForm" association="//@compose.2/%2Ffrontend%2Fproduto/@packagedElement.6"/>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="mensagem">
+          <type xsi:type="uml:PrimitiveType" href="frameweb/TypeScript.frameweb#//@compose.0/string"/>
+        </ownedAttribute>
       </packagedElement>
       <packagedElement xsi:type="frameweb:UIComponent" name="produtoForm">
-        <ownedAttribute xsi:type="frameweb:UIComponentField" name="nome">
-          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="produto.nome">
+          <type xsi:type="uml:PrimitiveType" href="frameweb/TypeScript.frameweb#//@compose.0/string"/>
         </ownedAttribute>
-        <ownedAttribute xsi:type="frameweb:UIComponentField" name="descricao">
-          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="produto.descricao">
+          <type xsi:type="uml:PrimitiveType" href="frameweb/TypeScript.frameweb#//@compose.0/string"/>
         </ownedAttribute>
-        <ownedAttribute xsi:type="frameweb:UIComponentField" name="preco">
-          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/Float"/>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="produto.preco">
+          <type xsi:type="uml:PrimitiveType" href="frameweb/TypeScript.frameweb#//@compose.0/number"/>
         </ownedAttribute>
-        <ownedAttribute xsi:type="frameweb:UIComponentField" name="custo">
-          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/Float"/>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="produto.custo">
+          <type xsi:type="uml:PrimitiveType" href="frameweb/TypeScript.frameweb#//@compose.0/number"/>
         </ownedAttribute>
-        <ownedAttribute xsi:type="frameweb:UIComponentField" name="estoque">
-          <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/Integer"/>
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="produto.estoque">
+          <type xsi:type="uml:PrimitiveType" href="frameweb/TypeScript.frameweb#//@compose.0/number"/>
         </ownedAttribute>
       </packagedElement>
       <packagedElement xsi:type="frameweb:NavigationAssociation">
@@ -331,8 +361,17 @@
       <packagedElement xsi:type="frameweb:NavigationAssociation">
         <ownedEnd xsi:type="frameweb:NavigationCompositionPart"/>
       </packagedElement>
-      <packagedElement xsi:type="frameweb:Page" name="produtoCadastrado"/>
-      <packagedElement xsi:type="frameweb:Page" name="falhaCadastrarProduto"/>
+      <packagedElement xsi:type="frameweb:Page" name="produtoCadastrado">
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="produto" type="//@compose.0/online.feiranamao.core.domain/Produto"/>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:Page" name="falhaCadastrarProduto">
+        <ownedAttribute xsi:type="frameweb:UIComponentField" name="mensagem">
+          <type xsi:type="uml:PrimitiveType" href="frameweb/TypeScript.frameweb#//@compose.0/string"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:NavigationAssociation" memberEnd="//@compose.2/%2Ffrontend%2Fproduto/@packagedElement.6/@ownedEnd.0 //@compose.2/%2Ffrontend%2Fproduto/criaProduto/@ownedAttribute.2">
+        <ownedEnd xsi:type="frameweb:NavigationCompositionPart" type="//@compose.2/%2Ffrontend%2Fproduto/criaProduto" association="//@compose.2/%2Ffrontend%2Fproduto/@packagedElement.6"/>
+      </packagedElement>
     </packagedElement>
     <packagedElement xsi:type="frameweb:FrontControllerDependency" name="Login"/>
     <packagedElement xsi:type="frameweb:FrontControllerDependency"/>
@@ -366,6 +405,29 @@
     <packagedElement xsi:type="frameweb:ResultDependency">
       <resultDependencyConstraint result="failObject"/>
     </packagedElement>
+    <packagedElement xsi:type="frameweb:FrontControllerDependency" name="" client="//@compose.2/%2Ffrontend%2Fproduto/produtoForm" supplier="//@compose.2/%2Ffrontend%2Fcontrollers/ProdutoController" method="//@compose.2/%2Ffrontend%2Fcontrollers/ProdutoController/salvarProduto"/>
+    <packagedElement xsi:type="frameweb:FrontControllerDependency" client="//@compose.2/%2Ffrontend%2Fproduto/produtoForm" supplier="//@compose.2/%2Ffrontend%2Fcontrollers/ProdutoController" method="//@compose.2/%2Ffrontend%2Fcontrollers/ProdutoController/deletaProduto"/>
+    <packagedElement xsi:type="frameweb:FrontControllerDependency" name="" client="//@compose.2/%2Ffrontend%2Fproduto/produtoForm" supplier="//@compose.2/%2Ffrontend%2Fcontrollers/ProdutoController" method="//@compose.2/%2Ffrontend%2Fcontrollers/ProdutoController/atualizaProduto"/>
+    <packagedElement xsi:type="frameweb:ResultDependency" client="//@compose.2/%2Ffrontend%2Fcontrollers/ProdutoController" supplier="//@compose.2/%2Ffrontend%2Fproduto/falhaCadastrarProduto" resultMethod="//@compose.2/%2Ffrontend%2Fcontrollers/ProdutoController/salvarProduto">
+      <resultDependencyConstraint result="success"/>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:ResultDependency" client="//@compose.2/%2Ffrontend%2Fcontrollers/ProdutoController" supplier="//@compose.2/%2Ffrontend%2Fproduto/produtoCadastrado">
+      <resultDependencyConstraint result="null"/>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:FrontControllerDependency" client="//@compose.2/%2Ffrontend%2Fpedido/pedidoForm" supplier="//@compose.2/%2Ffrontend%2Fcontrollers/PedidoController" method="//@compose.2/%2Ffrontend%2Fcontrollers/PedidoController/fazerPedido"/>
+    <packagedElement xsi:type="frameweb:ResultDependency" client="//@compose.2/%2Ffrontend%2Fcontrollers/PedidoController" supplier="//@compose.2/%2Ffrontend%2Fpedido/pedidoConfirmado" resultMethod="//@compose.2/%2Ffrontend%2Fcontrollers/PedidoController/fazerPedido">
+      <resultDependencyConstraint result="success"/>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:ResultDependency" client="//@compose.2/%2Ffrontend%2Fcontrollers/PedidoController" supplier="//@compose.2/%2Ffrontend%2Fpedido/fazerPedido" resultMethod="//@compose.2/%2Ffrontend%2Fcontrollers/PedidoController/fazerPedido">
+      <resultDependencyConstraint result="failObject"/>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:ResultDependency" client="//@compose.2/%2Ffrontend%2Fcontrollers/AuthenticationController" supplier="//@compose.2/%2Ffrontend%2Flogin/Login" resultMethod="//@compose.2/%2Ffrontend%2Fcontrollers/AuthenticationController/autenticaUsuario">
+      <resultDependencyConstraint result="failObject"/>
+    </packagedElement>
+    <packagedElement xsi:type="frameweb:FrontControllerDependency" client="//@compose.2/%2Ffrontend%2Flogin/loginForm" supplier="//@compose.2/%2Ffrontend%2Fcontrollers/AuthenticationController" method="//@compose.2/%2Ffrontend%2Fcontrollers/AuthenticationController/autenticaUsuario"/>
+    <packagedElement xsi:type="frameweb:ResultDependency" client="//@compose.2/%2Ffrontend%2Fcontrollers/AuthenticationController" supplier="//@compose.2/%2Ffrontend%2Flogin/Home" resultMethod="//@compose.2/%2Ffrontend%2Fcontrollers/PedidoController/fazerPedido">
+      <resultDependencyConstraint result="success"/>
+    </packagedElement>
   </compose>
   <compose xsi:type="frameweb:ApplicationModel" name="Application Model">
     <packagedElement xsi:type="frameweb:ApplicationPackage" name="online.feiranamao.core.application">
@@ -385,7 +447,7 @@
         <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint" constrainedElement="//@compose.3/online.feiranamao.core.application/@packagedElement.3/Source"/>
         <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint" constrainedElement="//@compose.3/online.feiranamao.core.application/@packagedElement.3/Target"/>
         <ownedEnd name="Source" type="//@compose.3/online.feiranamao.core.application/LoginServiceBean" association="//@compose.3/online.feiranamao.core.application/@packagedElement.3"/>
-        <ownedEnd name="Target" type="//@compose.1/online.feiranamao.core.repository/JpaRepository" association="//@compose.3/online.feiranamao.core.application/@packagedElement.3"/>
+        <ownedEnd name="Target" association="//@compose.3/online.feiranamao.core.application/@packagedElement.3"/>
       </packagedElement>
       <packagedElement xsi:type="frameweb:ServiceInterface" name="PedidoService"/>
       <packagedElement xsi:type="frameweb:ServiceInterface" name="ProdutoService"/>
@@ -394,29 +456,54 @@
           <ownedParameter name="itensPedido">
             <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/List"/>
           </ownedParameter>
-          <ownedParameter name="usuarioId">
-            <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
-          </ownedParameter>
-          <ownedParameter name="lojaId">
-            <type xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/String"/>
-          </ownedParameter>
+          <ownedParameter name="usuario" type="//@compose.0/online.feiranamao.core.domain/Usuario"/>
+          <ownedParameter name="loja" type="//@compose.0/online.feiranamao.core.domain/Loja"/>
         </ownedOperation>
       </packagedElement>
-      <packagedElement xsi:type="frameweb:ServiceClass" name="ProdutoServiceBean"/>
+      <packagedElement xsi:type="frameweb:ServiceClass" name="ProdutoServiceBean">
+        <ownedOperation xsi:type="frameweb:ServiceMethod" name="getProdutos">
+          <methodType xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/List"/>
+        </ownedOperation>
+        <ownedOperation xsi:type="frameweb:ServiceMethod" name="salvarProduto" methodType="//@compose.0/online.feiranamao.core.domain/Produto">
+          <ownedParameter name="produto" type="//@compose.0/online.feiranamao.core.domain/Produto"/>
+        </ownedOperation>
+        <ownedOperation xsi:type="frameweb:ServiceMethod" name="deletarProduto">
+          <ownedParameter name="produto" type="//@compose.0/online.feiranamao.core.domain/Produto"/>
+          <methodType xsi:type="uml:Class" href="frameweb/Java.frameweb#//@compose.0/Boolean"/>
+        </ownedOperation>
+      </packagedElement>
       <packagedElement xsi:type="frameweb:DAOServiceAssociation" memberEnd="//@compose.3/online.feiranamao.core.application/@packagedElement.8/Source //@compose.3/online.feiranamao.core.application/@packagedElement.8/Target">
         <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint" constrainedElement="//@compose.3/online.feiranamao.core.application/@packagedElement.8/Source"/>
         <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint" constrainedElement="//@compose.3/online.feiranamao.core.application/@packagedElement.8/Target"/>
         <ownedEnd name="Source" type="//@compose.3/online.feiranamao.core.application/PedidoServiceBean" association="//@compose.3/online.feiranamao.core.application/@packagedElement.8"/>
-        <ownedEnd name="Target" type="//@compose.1/online.feiranamao.core.repository/JpaRepository" association="//@compose.3/online.feiranamao.core.application/@packagedElement.8"/>
+        <ownedEnd name="Target" association="//@compose.3/online.feiranamao.core.application/@packagedElement.8"/>
       </packagedElement>
       <packagedElement xsi:type="frameweb:DAOServiceAssociation" memberEnd="//@compose.3/online.feiranamao.core.application/@packagedElement.9/Source //@compose.3/online.feiranamao.core.application/@packagedElement.9/Target">
         <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint" constrainedElement="//@compose.3/online.feiranamao.core.application/@packagedElement.9/Source"/>
         <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint" constrainedElement="//@compose.3/online.feiranamao.core.application/@packagedElement.9/Target"/>
         <ownedEnd name="Source" type="//@compose.3/online.feiranamao.core.application/ProdutoServiceBean" association="//@compose.3/online.feiranamao.core.application/@packagedElement.9"/>
-        <ownedEnd name="Target" type="//@compose.1/online.feiranamao.core.repository/JpaRepository" association="//@compose.3/online.feiranamao.core.application/@packagedElement.9"/>
+        <ownedEnd name="Target" association="//@compose.3/online.feiranamao.core.application/@packagedElement.9"/>
       </packagedElement>
       <packagedElement xsi:type="frameweb:ServiceRealization" client="//@compose.3/online.feiranamao.core.application/PedidoServiceBean" supplier="//@compose.3/online.feiranamao.core.application/PedidoService"/>
       <packagedElement xsi:type="frameweb:ServiceRealization" client="//@compose.3/online.feiranamao.core.application/ProdutoServiceBean" supplier="//@compose.3/online.feiranamao.core.application/ProdutoService"/>
+      <packagedElement xsi:type="frameweb:DAOServiceAssociation" memberEnd="//@compose.3/online.feiranamao.core.application/@packagedElement.12/Source //@compose.3/online.feiranamao.core.application/@packagedElement.12/Target">
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint" constrainedElement="//@compose.3/online.feiranamao.core.application/@packagedElement.12/Source"/>
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint" constrainedElement="//@compose.3/online.feiranamao.core.application/@packagedElement.12/Target"/>
+        <ownedEnd name="Source" type="//@compose.3/online.feiranamao.core.application/ProdutoServiceBean" association="//@compose.3/online.feiranamao.core.application/@packagedElement.12"/>
+        <ownedEnd name="Target" type="//@compose.1/online.feiranamao.core.repository/ProdutosRepository" association="//@compose.3/online.feiranamao.core.application/@packagedElement.12"/>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:DAOServiceAssociation" memberEnd="//@compose.3/online.feiranamao.core.application/@packagedElement.13/Source //@compose.3/online.feiranamao.core.application/@packagedElement.13/Target">
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint" constrainedElement="//@compose.3/online.feiranamao.core.application/@packagedElement.13/Source"/>
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint" constrainedElement="//@compose.3/online.feiranamao.core.application/@packagedElement.13/Target"/>
+        <ownedEnd name="Source" type="//@compose.3/online.feiranamao.core.application/PedidoServiceBean" association="//@compose.3/online.feiranamao.core.application/@packagedElement.13"/>
+        <ownedEnd name="Target" type="//@compose.1/online.feiranamao.core.repository/PedidosRepository" association="//@compose.3/online.feiranamao.core.application/@packagedElement.13"/>
+      </packagedElement>
+      <packagedElement xsi:type="frameweb:DAOServiceAssociation" memberEnd="//@compose.3/online.feiranamao.core.application/@packagedElement.14/Source //@compose.3/online.feiranamao.core.application/@packagedElement.14/Target">
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Source Constraint" constrainedElement="//@compose.3/online.feiranamao.core.application/@packagedElement.14/Source"/>
+        <ownedRule xsi:type="frameweb:DomainConstraints" name="Target Constraint" constrainedElement="//@compose.3/online.feiranamao.core.application/@packagedElement.14/Target"/>
+        <ownedEnd name="Source" type="//@compose.3/online.feiranamao.core.application/LoginServiceBean" association="//@compose.3/online.feiranamao.core.application/@packagedElement.14"/>
+        <ownedEnd name="Target" type="//@compose.1/online.feiranamao.core.repository/UsuariosRepository" association="//@compose.3/online.feiranamao.core.application/@packagedElement.14"/>
+      </packagedElement>
     </packagedElement>
   </compose>
 </frameweb:FramewebProject>

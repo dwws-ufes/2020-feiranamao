@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frameweb:FramewebProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:frameweb="http://nemo.inf.ufes.br/projects/frameweb/FW-2015" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
+  <compose xsi:type="frameweb:EntityModel" name="TypeScript">
+    <packagedElement xsi:type="uml:PrimitiveType" name="string"/>
+    <packagedElement xsi:type="uml:PrimitiveType" name="number"/>
+    <packagedElement xsi:type="uml:PrimitiveType" name="boolean"/>
+    <packagedElement xsi:type="uml:PrimitiveType" name="array"/>
+	<packagedElement xsi:type="uml:PrimitiveType" name="enum"/>
+    <packagedElement xsi:type="uml:PrimitiveType" name="any"/>
+    <packagedElement xsi:type="uml:PrimitiveType" name="void"/>
+  </compose>
+</frameweb:FramewebProject>
