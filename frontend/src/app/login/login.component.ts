@@ -47,11 +47,7 @@ export class LoginComponent implements OnInit {
   // }
 
   validLogin() {
-   // this.router.navigate(['https://www.google.com/']);
     const user: UserAccountViewModel = new UserAccountViewModel(this.formLogin.value);
-    //console.log(this.formLogin.value);
-    //console.log(user.email);
-    //console.log(user.senha);
 
     this.accountService.authenticationService(user.email,user.senha)
     .subscribe((response: any) => {
@@ -69,9 +65,6 @@ export class LoginComponent implements OnInit {
          localStorage.setItem('tokenData', JSON.stringify(tokenData));
 
    }*/
-
-
-
       //this.showError = true;
     });
   }

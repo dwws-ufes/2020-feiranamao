@@ -12,6 +12,7 @@ import { map } from 'rxjs/operators';
 export class AccountService {
   request: ServiceRequestViewModel = new ServiceRequestViewModel({});
   USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser'
+  JWT_SESSION_ATTRIBUTE_NAME = 'authenticatedJwt'
 
   public username: string | undefined;
   public password: string| undefined;
@@ -40,7 +41,7 @@ export class AccountService {
 
         this.username = username;
         this.password = password;
-        this.registerSuccessfulLogin(username, password);
+        this.registerSuccessfulLogin(username, password, tokenData.access_token);
       })
       );
   }
@@ -49,8 +50,9 @@ export class AccountService {
     return 'Basic ' + window.btoa(username + ":" + password)
   }
 
-  registerSuccessfulLogin(username: string, password: string) {
+  registerSuccessfulLogin(username: string, password: string, acess_token: string) {
     sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username);
+    sessionStorage.setItem(this.JWT_SESSION_ATTRIBUTE_NAME, acess_token);
   }
 
 
@@ -65,4 +67,15 @@ export class AccountService {
     if (user === null) return false
     return true
   }
+
+  getUserLoggedIn() {
+    let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME)
+    return user
+  }
+
+  getToken() {
+    let user = sessionStorage.getItem(this.JWT_SESSION_ATTRIBUTE_NAME)
+    return user
+  }
+
 }
