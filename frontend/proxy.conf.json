@@ -1,0 +1,12 @@
+{
+  "/oauth/*": {
+    "target": "http://localhost:8380",
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/produtos/*": {
+     "target": "http://localhost:8380",
+     "secure": false,
+     "logLevel": "debug"
+  }
+}

@@ -1,1 +1,40 @@
-<p>login works!</p>
+<div class="d-flex justify-content-center align-items-center min-height-100 h-100">
+  <div class="auth-container">
+    <div class="loginPanel m-5 p-7">
+      <h3 class="gwt-Label title3 loginTitle"><p>login é necessário!</p></h3>
+      <form [formGroup]="formLogin">
+        <fieldset class="form-group">
+          <label class="ajust-text">Usuario</label>
+          <input type="text" class="gwt-TextBox loginTextBox" formControlName="name" />
+          <small *ngIf="formLogin.controls['name'].hasError('required') && formLogin.controls['name'].touched" class="text-danger">
+            <br>Nome é obrigatório
+          </small>
+        </fieldset>
+        <fieldset class="form-group">
+          <label class="ajust-text">Senha</label>
+          <input type="password" class="gwt-TextBox loginTextBox" formControlName="password" />
+          <small *ngIf="formLogin.controls['password'].hasError('required') && formLogin.controls['password'].touched" class="text-danger">
+            <br>Senha é obrigatório
+          </small>
+        </fieldset>
+        <div class="alert alert-danger alert-dismissible" *ngIf="loginIsOk">
+          <p>{{'account.USERNAMEINCORRET' }}</p>
+        </div>
+
+        <fieldset class="form-group" *ngIf="showError">
+          <div class="text-danger ajust-danger">
+            ERRO
+               </div>
+        </fieldset>
+        <div class="d-flex justify-content-rigth">
+          <button class="gwt-Button loginEnterBtn" (click)="validLogin()" color="primary">Entrar</button>
+          <!-- <button class="btn ajust-buttom-login" type="button" (click)="validLogin()">Entrar</button> -->
+        </div>
+      </form>
+      <div style="vertical-align: middle; border: 0px;">
+        <br>
+      </div>
+    </div>
+  </div>
+  <div class="bg-cover"></div>
+</div>
