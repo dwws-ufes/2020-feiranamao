@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { LojasComponent } from './lojas/lojas.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     HomeComponent,
     PerfilComponent,
-    LojasComponent
+    LojasComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
