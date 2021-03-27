@@ -10,6 +10,7 @@ import { LojasComponent } from './lojas/lojas.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DefaultComponent } from './default/default.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     HomeComponent,
     ProdutoComponent,
-    LoginComponent
+    LoginComponent,
+    LojasComponent,
+    DefaultComponent
   ],
   imports: [
     BrowserModule,

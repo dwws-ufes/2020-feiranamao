@@ -19,10 +19,7 @@ export class ProdutoComponent implements OnInit {
 
   constructor(
     private accountService: AccountService,
-    private httpClient: HttpClient,
     private produtoService: ProdutoService,
-
-
   ) { }
 
   ngOnInit(): void {
@@ -30,12 +27,11 @@ export class ProdutoComponent implements OnInit {
     this.username = this.accountService.getUserLoggedIn();
     this.token = this.accountService.getToken();
 
-    this.produtoService.getProdutos().subscribe((res: ProdutoModel[]) => {
+    this.produtoService.getProdutos().subscribe(res => {
       this.produtos = res;
 
-      console.log(this.produtos );
-
-    });;
+      console.log(res);
+    });
   }
   editProduto(produto: ProdutoModel) {
     //return null;

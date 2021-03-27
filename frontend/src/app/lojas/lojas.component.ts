@@ -10,15 +10,8 @@ export class LojasComponent implements OnInit {
 
   item: any;
 
-  constructor(private pedidosService: PedidosService) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.pedidosService.getPedidos().subscribe(
-      (res) => {
-        this.item = res;
-        console.log(res);
-      }
-    )
-  }
+  ngOnInit(): void {}
 
 }

@@ -1,18 +1,28 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { CrudService } from './crud.service';
 
+interface ItemPedidoModel {
+  id: number,
+  valorUnitario: number,
+  quantidade: number,
+  valorTotal: number,
+  id_produto: number
+}
+interface PedidoModel {
+  id: number,
+  itemPedido: ItemPedidoModel[],
+  id_loja: number,
+  obs: string
+}
 @Injectable({
   providedIn: 'root'
-})
+  })
 export class PedidosService {
 
-  urlBase = 'localhost:8380';
-
-  constructor(private http: HttpClient) { }
+  constructor(private crudService: CrudService) { }
 
   getPedidos() {
-    return this.http.get(`${this.urlBase}/pedidos`);
+    return this.crudService.getGenerico('pedidos');
   }
-
-
 }
