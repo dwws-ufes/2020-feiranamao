@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../login/account.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { ProdutosModelViewModel } from '../viewModel/produtos.view-model';
+import { ProdutoModel } from '../viewModel/produtos.view-model';
+import { ProdutoService } from '../services/produto.service';
 
 @Component({
   selector: 'f-produto',
@@ -14,11 +15,13 @@ export class ProdutoComponent implements OnInit {
   isUserLoggedIn: any;
   username: any;
   token: any;
-  produtos: ProdutosModelViewModel[] | undefined;
+  produtos: ProdutoModel[] | undefined;
 
   constructor(
     private accountService: AccountService,
     private httpClient: HttpClient,
+    private produtoService: ProdutoService,
+
 
   ) { }
 
@@ -27,24 +30,17 @@ export class ProdutoComponent implements OnInit {
     this.username = this.accountService.getUserLoggedIn();
     this.token = this.accountService.getToken();
 
-    this.getProdutos().subscribe((res: ProdutosModelViewModel[]) => {
+    this.produtoService.getProdutos().subscribe((res: ProdutoModel[]) => {
       this.produtos = res;
 
       console.log(this.produtos );
 
     });;
   }
-
-  getProdutos() {
-    return this.httpClient.get<ProdutosModelViewModel[]>(
-      'http://localhost:4200/produtos'
-    ,{ headers: { authorization: 'Bearer '+ this.token } })
-  }
-
-  editProduto(produto: ProdutosModelViewModel) {
+  editProduto(produto: ProdutoModel) {
     //return null;
   }
-  deleteProduto(produto: ProdutosModelViewModel) {
+  deleteProduto(produto: ProdutoModel) {
     //return null;
 }
 }

@@ -1,4 +1,4 @@
-export class ProdutosModelViewModel {
+export class ProdutoModel {
   id: string | undefined;
   name: string| undefined;
   descricao: string | undefined;

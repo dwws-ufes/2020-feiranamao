@@ -9,7 +9,4 @@ public class FeiraNaMaoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FeiraNaMaoApplication.class, args);
 		}
-	
-    
-
 }
