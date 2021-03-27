@@ -3,12 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserGuardGuard } from './guards/user-guard.guard';
 import { HomeComponent } from './home/home.component';
 import { LojasComponent } from './lojas/lojas.component';
-import { PerfilComponent } from './perfil/perfil.component';
+import { ProdutoComponent } from './produto/produto.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [UserGuardGuard] },
-  { path: 'perfil', component: PerfilComponent },
+  { path: 'produto', component: ProdutoComponent },
   { path: 'lojas', component: LojasComponent },
   { path: 'login', component: LoginComponent },
   { path: '**', component: HomeComponent }

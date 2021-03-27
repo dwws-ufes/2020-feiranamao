@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
-import { PerfilComponent } from './perfil/perfil.component';
+import { ProdutoComponent } from './produto/produto.component';
 import { LojasComponent } from './lojas/lojas.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
@@ -16,8 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    PerfilComponent,
-    LojasComponent,
+    HomeComponent,
+    ProdutoComponent,
     LoginComponent
   ],
   imports: [
