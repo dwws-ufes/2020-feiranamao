@@ -17,7 +17,7 @@ export class CrudService {
 
     let url = `${environment.URL_API}/${endpoint}`;
 
-    if(param) url +=  "/"+param;
+    if(param) url = `${url}/${param}`;
 
     return this.http.get<T>(
       url
