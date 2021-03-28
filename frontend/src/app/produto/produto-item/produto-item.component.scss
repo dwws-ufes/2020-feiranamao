@@ -15,28 +15,19 @@
   bottom: 0;
   background-color: #83A603;
   border-radius: 10px 0;
-  width: 51,92px;
+  width: 51.92px;
   height: 54px;
 }
 
-.item__action{
-  color: #FFF;
-  font-size: 30px;
-  
-  
-}
-
 .image{
-  top: 0%;
-  width: 206px;
-  height: 206px;
   background: radial-gradient(50% 50% at 50% 50%, rgba(131, 166, 3, 0.5) 0%, rgba(249, 250, 251, 0.1) 100%);
   background-blend-mode: multiply;
-  left: 15.67%;
-}
-
-.mid{
-   height: 50px;
+  width: 100%;
+  height: 206px;
+  img {
+    height: 150px;
+    width: 150px;
+  }
 }
 
 .name{
@@ -53,7 +44,7 @@
   position: absolute;
   right: 0%;
   background-color: #83A603;
-  width: 121px;
+  // width: 121px;
   height: 40px;
   border-radius: 10px 0 0 10px;
   display: flex;
@@ -68,7 +59,7 @@
 
 .item__price{
   font-family: 'Mulish';
-  font-size: 15x;
+  font-size: 18px;
   color: #F9FAFB;
   flex: none;
   order: 0;

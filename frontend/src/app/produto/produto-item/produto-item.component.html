@@ -8,7 +8,7 @@
         <p class= "name"><strong>{{produto?.name}}</strong></p>
       </div>
       <div class = "price">
-        <p class = "item__price">R$ 3,00 / KG</p>
+        <p class = "item__price">{{produto?.preco|currency}}</p>
       </div>
     </div>
     <div class="bottom">
@@ -16,5 +16,7 @@
 
     </div>
   </div>
-  <button class="item__action">+</button>
+  <button class="item__action">
+    <img src="/assets/images/plus-icon.svg" width="24" height="24" alt="">
+  </button>
 </div>

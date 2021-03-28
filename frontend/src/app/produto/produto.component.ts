@@ -14,16 +14,8 @@ export class ProdutoComponent implements OnInit {
   username: any;
   token: any;
   produtos: ProdutoModel[] | undefined = [
-    { id: '1', name: 'banana', descricao: 'top d+'},
-    { id: '1', name: 'banana', descricao: 'top d+'},
-    { id: '1', name: 'banana', descricao: 'top d+'},
-    { id: '1', name: 'banana', descricao: 'top d+'},
-    { id: '1', name: 'banana', descricao: 'top d+'},
-    { id: '1', name: 'banana', descricao: 'top d+'},
-    { id: '1', name: 'banana', descricao: 'top d+'},
-    { id: '1', name: 'banana', descricao: 'top d+'},
-    { id: '1', name: 'banana', descricao: 'top d+'},
-    { id: '1', name: 'banana', descricao: 'top d+'},
+    { id: '1', name: 'banana', descricao: 'top d+',preco: 3},
+
   ];
 
   constructor(

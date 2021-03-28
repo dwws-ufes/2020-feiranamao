@@ -18,25 +18,25 @@ services:
 #docker run -p 8090:80 -e 'PGADMIN_DEFAULT_EMAIL=user@domain.com' -e 'PGADMIN_DEFAULT_PASSWORD=SuperSecret' --name pgAdmin4 --network 2020-feiranamao_net_feiranamao -d dpage/pgadmin4
   #server: container_name do postgres 
 
-  backend:
-    build: ./backend
-    container_name: backend
-    ports:
-      - 8080:8080
-    depends_on:
-      - postgres
-    networks:
-      - net_feiranamao
+  # backend:
+  #   build: ./backend
+  #   container_name: backend
+  #   ports:
+  #     - 8080:8080
+  #   depends_on:
+  #     - postgres
+  #   networks:
+  #     - net_feiranamao
 
-  frontend:
-    build: ./frontend
-    container_name: frontend
-    ports:
-      - 80:80
-    depends_on:
-      - backend
-    networks:
-      - net_feiranamao
+  # frontend:
+  #   build: ./frontend
+  #   container_name: frontend
+  #   ports:
+  #     - 80:80
+  #   depends_on:
+  #     - backend
+  #   networks:
+  #     - net_feiranamao
 
 #CRIA O VOLUME QUE É USADO PARA O BANCO
 volumes:
