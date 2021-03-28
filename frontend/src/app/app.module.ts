@@ -9,8 +9,9 @@ import { ProdutoComponent } from './produto/produto.component';
 import { LojasComponent } from './lojas/lojas.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DefaultComponent } from './default/default.component';
+import { UsuarioComponent } from './usuario/usuario.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +22,15 @@ import { DefaultComponent } from './default/default.component';
     ProdutoComponent,
     LoginComponent,
     LojasComponent,
-    DefaultComponent
+    DefaultComponent,
+    UsuarioComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

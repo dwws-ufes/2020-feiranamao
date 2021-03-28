@@ -8,5 +8,50 @@
      "target": "http://localhost:8380",
      "secure": false,
      "logLevel": "debug"
+  },
+  "/produto/*": {
+     "target": "http://localhost:8380",
+     "secure": false,
+     "logLevel": "debug"
+  },
+  "/usuario/*": {
+     "target": "http://localhost:8380",
+     "secure": false,
+     "logLevel": "debug"
+  },
+  "/usuarios/*": {
+     "target": "http://localhost:8380",
+     "secure": false,
+     "logLevel": "debug"
+  },
+  "/loja/*": {
+     "target": "http://localhost:8380",
+     "secure": false,
+     "logLevel": "debug"
+  },
+  "/lojas/*": {
+     "target": "http://localhost:8380",
+     "secure": false,
+     "logLevel": "debug"
+  },
+  "/categoria/*": {
+     "target": "http://localhost:8380",
+     "secure": false,
+     "logLevel": "debug"
+  },
+  "/categorias/*": {
+     "target": "http://localhost:8380",
+     "secure": false,
+     "logLevel": "debug"
+  },
+  "/pedido/*": {
+     "target": "http://localhost:8380",
+     "secure": false,
+     "logLevel": "debug"
+  },
+  "/pedidos/*": {
+     "target": "http://localhost:8380",
+     "secure": false,
+     "logLevel": "debug"
   }
 }

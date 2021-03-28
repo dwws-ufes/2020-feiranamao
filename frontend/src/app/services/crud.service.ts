@@ -24,4 +24,15 @@ export class CrudService {
     ,{ headers: { Authorization: 'Bearer '+ this.accountService.getToken() } })
   }
 
+  postGenerico<T>(endpoint:string, body: Object) {
+
+    let url = `${environment.URL_API}/${endpoint}`;
+
+    return this.http.post<T>(
+      url
+    ,{ headers: { Authorization: 'Bearer '+ this.accountService.getToken() } }
+    ,body
+    )
+  }
+
 }
