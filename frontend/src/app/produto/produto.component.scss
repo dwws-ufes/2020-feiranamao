@@ -13,3 +13,10 @@
 .btn-add-produto {
   margin-right: 10px;
 }
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  justify-items: center;
+  gap: 10px 20px;
+}

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../login/account.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import { ProdutoModel } from '../viewModel/produtos.view-model';
 import { ProdutoService } from '../services/produto.service';
 
@@ -15,7 +13,18 @@ export class ProdutoComponent implements OnInit {
   isUserLoggedIn: any;
   username: any;
   token: any;
-  produtos: ProdutoModel[] | undefined;
+  produtos: ProdutoModel[] | undefined = [
+    { id: '1', name: 'banana', descricao: 'top d+'},
+    { id: '1', name: 'banana', descricao: 'top d+'},
+    { id: '1', name: 'banana', descricao: 'top d+'},
+    { id: '1', name: 'banana', descricao: 'top d+'},
+    { id: '1', name: 'banana', descricao: 'top d+'},
+    { id: '1', name: 'banana', descricao: 'top d+'},
+    { id: '1', name: 'banana', descricao: 'top d+'},
+    { id: '1', name: 'banana', descricao: 'top d+'},
+    { id: '1', name: 'banana', descricao: 'top d+'},
+    { id: '1', name: 'banana', descricao: 'top d+'},
+  ];
 
   constructor(
     private accountService: AccountService,
@@ -27,11 +36,11 @@ export class ProdutoComponent implements OnInit {
     this.username = this.accountService.getUserLoggedIn();
     this.token = this.accountService.getToken();
 
-    this.produtoService.getProdutos().subscribe(res => {
-      this.produtos = res;
+    // this.produtoService.getProdutos().subscribe(res => {
+    //   this.produtos = res;
 
-      console.log(res);
-    });
+    //   console.log(res);
+    // });
   }
   editProduto(produto: ProdutoModel) {
     //return null;

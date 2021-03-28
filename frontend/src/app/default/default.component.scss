@@ -1,0 +1,11 @@
+.app {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  grid-template-columns: 30vw minmax(70vw, 150px);
+}
+
+aside {
+  padding: 2rem;
+  background-color: var(--grey-100);
+}

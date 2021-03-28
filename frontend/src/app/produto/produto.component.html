@@ -3,36 +3,13 @@
 <p>{{token}}</p>
 
 <div class="container">
-  <div class="card list-produto">
-    <h5 class="card-header">Lista de produtos</h5>
-    <div class="card-body">
-      <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Id</th>
-              <th scope="col">Nome</th>
-              <th scope="col">Descrição</th>
-              <th scope="col">Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let produto of produtos">
-              <td>{{produto.id}}</td>
-              <td>{{produto.name}}</td>
-              <td>{{produto.descricao}}</td>
-              <td>
-
-               <button type="button" class="btn btn-warning btn-sm" (click)="editProduto(produto)">Editar</button>
-                <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteProduto(produto)">Deletar</button>
-
-            </td>
-          </tr>
-        </tbody>
-      </table>
+  <div class="list">
+    <ng-container *ngFor="let produto of produtos">
+      <f-produto-item [produto]="produto"></f-produto-item>
+    </ng-container>
   </div>
 </div>
-</div>
-    <!--
+<!--
   <div class="card add-produto">
     <h5 class="card-header">Adicionar/Atualizar carro</h5>
     <div class="produto-body">
