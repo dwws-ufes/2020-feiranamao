@@ -6,10 +6,77 @@
   border-radius: 10px;
   box-shadow: 0 4px 6px -1px rgba($color: #000, $alpha: 0.1),
     0 1px 2px 0 rgba($color: #000, $alpha: 0.06);
+  padding: 30px;
 }
 
 .item__action {
   position: absolute;
   right: 0;
   bottom: 0;
+  background-color: #83A603;
+  border-radius: 10px 0;
+  width: 51,92px;
+  height: 54px;
+}
+
+.item__action{
+  color: #FFF;
+  font-size: 30px;
+  
+  
+}
+
+.image{
+  top: 0%;
+  width: 206px;
+  height: 206px;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(131, 166, 3, 0.5) 0%, rgba(249, 250, 251, 0.1) 100%);
+  background-blend-mode: multiply;
+  left: 15.67%;
+}
+
+.mid{
+   height: 50px;
+}
+
+.name{
+  font-family: "Mulish";
+  font-size: 24px;
+}
+
+.description{
+  font-family: "Mulish";
+  font-size: 14px;
+}
+
+.price{
+  position: absolute;
+  right: 0%;
+  background-color: #83A603;
+  width: 121px;
+  height: 40px;
+  border-radius: 10px 0 0 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px;
+}
+
+.item__name{
+  float: left;
+}
+
+.item__price{
+  font-family: 'Mulish';
+  font-size: 15x;
+  color: #F9FAFB;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 10px;
+  line-height: 20px;
+}
+
+.bottom{
+  float: left;
 }
