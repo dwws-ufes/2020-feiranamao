@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DefaultComponent } from './default/default.component';
 import { UsuarioComponent } from './usuario/usuario.component';
+import { ProdutoItemComponent } from './produto/produto-item/produto-item.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { UsuarioComponent } from './usuario/usuario.component';
     LoginComponent,
     LojasComponent,
     DefaultComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    ProdutoItemComponent
   ],
   imports: [
     BrowserModule,

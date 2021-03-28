@@ -1,9 +1,8 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { FormGroup, Validators,FormControl, FormBuilder, ReactiveFormsModule, FormsModule  } from '@angular/forms';
+import { FormGroup, Validators,FormControl, FormBuilder  } from '@angular/forms';
 import { UserAccountViewModel } from 'src/app/viewModel/user-account.view-model';
 import { Router } from '@angular/router';
 import { AccountService } from './account.service';
-import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +13,7 @@ export class LoginComponent implements OnInit {
   public formLogin =  new FormGroup ({
     name: new FormControl(),
     password: new FormControl()
-  });;
+  });
   showError: boolean | undefined;
   loginIsOk: boolean | undefined;
   constructor(
