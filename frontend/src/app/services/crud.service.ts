@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { AccountService } from '../login/account.service';
@@ -12,6 +12,14 @@ export class CrudService {
     private http: HttpClient,
     private accountService: AccountService
   ) { }
+
+   auth = 'Bearer '+ this.accountService.getToken();
+
+  httpOptions = {
+    headers: new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('Authorization', this.auth)
+  }
 
   getGenerico<T>(endpoint: string, param?:string) {
 
@@ -30,8 +38,19 @@ export class CrudService {
 
     return this.http.post<T>(
       url
-    ,{ headers: { Authorization: 'Bearer '+ this.accountService.getToken() } }
-    ,body
+    ,JSON.stringify(body)
+    ,this.httpOptions
+    )
+  }
+
+  deleteGenerico<T>(endpoint:string, param?:string){
+    let url = `${environment.URL_API}/${endpoint}`;
+
+    if(param) url = `${url}/${param}`;
+
+    return this.http.delete<T>(
+      url
+    ,this.httpOptions
     )
   }
 

@@ -23,6 +23,9 @@ export class UsuarioComponent implements OnInit {
     this.getUsuarios();
   }
    saveUsuario(form: NgForm) {
+    console.log( 'saveUsuario.componenteusuario')
+
+     console.log( this.usuario)
     if (this.usuario.id !== undefined) {
       this.usuarioService.updateUsuario(this.usuario).subscribe(() => {
         this.cleanForm(form);
@@ -41,7 +44,7 @@ export class UsuarioComponent implements OnInit {
     });
   }
   deleteUsuario(usuario: UsuarioModel) {
-    this.usuarioService.deleteUsuario(usuario).subscribe(() => {
+    this.usuarioService.deleteUsuario(String(usuario.id)).subscribe(() => {
       this.getUsuarios();
     });
   }

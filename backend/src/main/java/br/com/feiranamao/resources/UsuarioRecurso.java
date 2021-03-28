@@ -54,9 +54,9 @@ public class UsuarioRecurso  {
 	}
 	
     @ApiOperation(value="Apagar Usuario")
-	@DeleteMapping("/usuario")
-	public void deletePoints(@RequestBody Usuario usuario) {
-    	usuarioRepository.delete(usuario);
+	@DeleteMapping("/usuario/{id}")
+	public void deletePoints(@PathVariable(value = "id") Long id) {
+    	usuarioRepository.deleteById(id);
 	}
 	
     @ApiOperation(value="Atualizar Usuario")
