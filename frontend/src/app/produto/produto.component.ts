@@ -15,7 +15,7 @@ export class ProdutoComponent implements OnInit {
   token: any;
   produtos: ProdutoModel[] | undefined = [
     { id: '1', name: 'banana', descricao: 'top d+',preco: 3},
-
+    { id: '2', name: 'alface', descricao: 'top d+',preco: 3},
   ];
 
   constructor(
