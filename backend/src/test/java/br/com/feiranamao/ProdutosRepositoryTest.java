@@ -1,4 +1,4 @@
-package br.com.feiranamao;
+/*package br.com.feiranamao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,7 +92,7 @@ public class ProdutosRepositoryTest {
 			assertThat(foundPoints.size()).isEqualTo(4);
 		}
 		
-*/
+
 		
 		
-}
+}*/

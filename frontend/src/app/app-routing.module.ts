@@ -11,10 +11,10 @@ import { UsuarioComponent } from './usuario/usuario.component';
 const routes: Routes = [
   { path: '', component: DefaultComponent, canActivate: [UserGuard],
     children: [
-      { path: 'home', component: HomeComponent },
-      { path: 'produto', component: ProdutoComponent },
-      { path: 'lojas', component: LojasComponent },
-      { path: 'usuario', component: UsuarioComponent },
+      { path: 'page-home', component: HomeComponent },
+      { path: 'page-produto', component: ProdutoComponent },
+      { path: 'page-lojas', component: LojasComponent },
+      { path: 'page-usuario', component: UsuarioComponent },
     ]
   },
   { path: 'login', component: LoginComponent },

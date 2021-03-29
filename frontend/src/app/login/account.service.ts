@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { ServiceRequestViewModel } from '../viewModel/service-request.view-model';
 import { OauthAccountViewModel } from '../viewModel/oauth.response.view-model';
 import { map } from 'rxjs/operators';
@@ -31,7 +31,10 @@ export class AccountService {
     formData.append("username", username);
     formData.append("password", password);
 
-    return this.httpClient.post('http://localhost:4200/oauth/token'
+    let urlToken = 'oauth/token';
+    let url = `${environment.URL_API}/${urlToken}`;
+
+    return this.httpClient.post(url
     ,formData
     ,{ headers: { authorization: this.createBasicAuthToken('feiranamao', 'fer123@@') } })
     .pipe(map((res) => {
@@ -58,6 +61,7 @@ export class AccountService {
 
   logout() {
     sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
+    sessionStorage.removeItem(this.JWT_SESSION_ATTRIBUTE_NAME);
     this.username = undefined;
     this.password = undefined;
   }
