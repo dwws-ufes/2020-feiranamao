@@ -41,14 +41,13 @@ public class UsuarioRecurso  {
 	@ApiOperation(value="Procurar usuarios por nome")
     @RequestMapping(value = "usuarios/{nome}", method = RequestMethod.GET)
 	public Optional<Usuario> findByUsername(@PathVariable(value = "nome") String nome) {
-		return usuarioRepository.findByUsername(nome);
+		return usuarioRepository.findByLogin(nome);
 	}
 	
     @ApiOperation(value=" Salvar Usuario")
 	@PostMapping("/usuario")
 	public Usuario salvarUsuario(@RequestBody Usuario usuario) throws Exception {
-		usuario.setPassword(
-				passwordEncoder.encode(usuario.getPassword()));
+		usuario.setSenha(passwordEncoder.encode(usuario.getPassword()));
 		
     	return usuarioRepository.save(usuario);
 	}

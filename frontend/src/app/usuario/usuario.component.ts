@@ -47,7 +47,9 @@ export class UsuarioComponent implements OnInit {
   }
 
   editUsuario(usuario: UsuarioModel) {
+    console.log(usuario);
     this.usuario = { ...usuario };
+    this.usuario.senha = '';
   }
 
   // limpa o formulario

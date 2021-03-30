@@ -6,15 +6,17 @@
           <thead>
             <tr>
               <th scope="col">Id</th>
-              <th scope="col">Username</th>
-              <th scope="col">Password</th>
+              <th scope="col">Login</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Senha</th>
               <th scope="col">Ações</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let usuario of usuarios">
               <td>{{usuario.id}}</td>
-              <td>{{usuario.username}}</td>
+              <td>{{usuario.login}}</td>
+              <td>{{usuario.nome}}</td>
               <td>***</td>
               <td>
                <button type="button" class="btn btn-warning btn-sm" (click)="editUsuario(usuario)">Editar</button>
@@ -32,17 +34,24 @@
   <div class="card-body">
       <form id="add-form" (ngSubmit)="f.form.valid && saveUsuario(f)" #f="ngForm" novalidate>
         <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" [(ngModel)]="usuario.username" id="username" name="username" #username="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && username.invalid }" placeholder="Digite o username">
-            <div *ngIf="f.submitted && username.invalid" class="invalid-feedback">
-               <!-- <div *ngIf="username.errors.required">username é obrigatório</div>-->
+            <label for="login">Login</label>
+            <input type="text" [(ngModel)]="usuario.login" id="login" name="login" #login="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && login.invalid }" placeholder="Digite o login">
+            <div *ngIf="f.submitted && login.invalid" class="invalid-feedback">
+               <!-- <div *ngIf="login.errors.required">username é obrigatório</div>-->
             </div>
         </div>
         <div class="form-group">
-            <label for="password">Passowrd</label>
-            <input type="text" [(ngModel)]="usuario.password" id="password" name="password" #password="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" placeholder="Digite a passowrd">
-            <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
-                <!-- <div *ngIf="password.errors.required">Password é obrigatória</div>-->
+          <label for="nome">Nome</label>
+          <input type="text" [(ngModel)]="usuario.nome" id="nome" name="nome" #nome="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && nome.invalid }" placeholder="Digite o nome">
+          <div *ngIf="f.submitted && nome.invalid" class="invalid-feedback">
+             <!-- <div *ngIf="nome.errors.required">username é obrigatório</div>-->
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="senha">Senha</label>
+            <input type="text" [(ngModel)]="usuario.senha" id="senha" name="senha" #senha="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && senha.invalid }" placeholder="Digite a senha">
+            <div *ngIf="f.submitted && senha.invalid" class="invalid-feedback">
+                <!-- <div *ngIf="senha.errors.required">Password é obrigatória</div>-->
             </div>
         </div>
         <button type="submit" class="btn btn-primary btn-add-car">Salvar</button>

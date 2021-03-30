@@ -1,6 +1,6 @@
 export interface UsuarioModel {
   id: string | undefined;
-  username: string| undefined;
-  password: string | undefined;
-  id_loja: string | undefined;
+  nome: string| undefined;
+  login: string | undefined;
+  senha: string | undefined;
 }

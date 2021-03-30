@@ -19,8 +19,6 @@ export class CrudService {
     headers: new HttpHeaders()
       .set('Content-Type', 'application/json')
       .set('Authorization', this.auth)
-
-
   }
 
   getGenerico<T>(endpoint: string, param?:string) {

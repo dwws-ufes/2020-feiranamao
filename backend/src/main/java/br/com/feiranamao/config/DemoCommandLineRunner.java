@@ -22,13 +22,13 @@ class DemoCommandLineRunner implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 
-		Optional<Usuario> old= userRepository.findByUsername("application-user");
+		Optional<Usuario> old= userRepository.findByLogin("application-user");
 		
 		if(old.isEmpty()) {
 		Usuario user = new Usuario();
-		user.setUsername("application-user");
-		user.setPassword(passwordEncoder.encode("password"));
-		user.setId_loja(1);
+		user.setLogin("application-user");
+		user.setNome("SuperAdmin");
+		user.setSenha(passwordEncoder.encode("password"));
 		//user.grantAuthority("ADMIN");
 		userRepository.save(user);
 		}

@@ -1,6 +1,5 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { FormGroup, Validators,FormControl, FormBuilder  } from '@angular/forms';
-import { UserAccountViewModel } from 'src/app/viewModel/user-account.view-model';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AccountService } from './account.service';
 
@@ -35,8 +34,8 @@ export class LoginComponent implements OnInit {
 
   buildForm() {
   this.formLogin = this.fb.group({
-      'name': [null, Validators.compose([Validators.required])],
-      'password': [null, Validators.compose([Validators.required, Validators.min(4)])],
+      'login': [null, Validators.compose([Validators.required])],
+      'senha': [null, Validators.compose([Validators.required, Validators.min(4)])],
     });
   }
 
@@ -46,9 +45,8 @@ export class LoginComponent implements OnInit {
   // }
 
   validLogin() {
-    const user: UserAccountViewModel = new UserAccountViewModel(this.formLogin.value);
 
-    this.accountService.authenticationService(user.email,user.senha)
+    this.accountService.authenticationService(this.formLogin.value.login, this.formLogin.value.senha)
     .subscribe((response: any) => {
 
       console.log(response);

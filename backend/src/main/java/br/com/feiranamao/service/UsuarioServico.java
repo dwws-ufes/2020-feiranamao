@@ -19,7 +19,7 @@ public class UsuarioServico implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        Optional<Usuario> usuario = usuarioRepository.findByUsername(s);
+        Optional<Usuario> usuario = usuarioRepository.findByLogin(s);
 
         if (usuario.isPresent()){
             return usuario.get();

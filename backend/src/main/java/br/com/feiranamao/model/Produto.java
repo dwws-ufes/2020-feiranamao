@@ -20,10 +20,11 @@ public class Produto implements Serializable {
 
 		private String name;
 		private String descricao;
-		private Double preco;
-		private Double custo;
-		private Double estoque;
-		private long id_categoria;
+		private float preco;
+		private float custo;
+		private int estoque;
+		private long id_categoria;		
+//		private Categoria categoria;
 		
 		public Produto(){
 		}
@@ -52,27 +53,27 @@ public class Produto implements Serializable {
 			this.descricao = descricao;
 		}
 
-		public Double getPreco() {
+		public float getPreco() {
 			return preco;
 		}
 
-		public void setPreco(Double preco) {
+		public void setPreco(float preco) {
 			this.preco = preco;
 		}
 
-		public Double getCusto() {
+		public float getCusto() {
 			return custo;
 		}
 
-		public void setCusto(Double custo) {
+		public void setCusto(float custo) {
 			this.custo = custo;
 		}
 
-		public Double getEstoque() {
+		public float getEstoque() {
 			return estoque;
 		}
 
-		public void setEstoque(Double estoque) {
+		public void setEstoque(int estoque) {
 			this.estoque = estoque;
 		}
 		

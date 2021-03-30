@@ -5,15 +5,15 @@
       <form [formGroup]="formLogin">
         <fieldset class="form-group">
           <label class="ajust-text">Usuario</label>
-          <input type="text" class="gwt-TextBox loginTextBox" formControlName="name" />
-          <small *ngIf="formLogin.controls['name'].hasError('required') && formLogin.controls['name'].touched" class="text-danger">
+          <input type="text" class="gwt-TextBox loginTextBox" formControlName="login" />
+          <small *ngIf="formLogin.controls['login'].hasError('required') && formLogin.controls['login'].touched" class="text-danger">
             <br>Nome é obrigatório
           </small>
         </fieldset>
         <fieldset class="form-group">
           <label class="ajust-text">Senha</label>
-          <input type="password" class="gwt-TextBox loginTextBox" formControlName="password" />
-          <small *ngIf="formLogin.controls['password'].hasError('required') && formLogin.controls['password'].touched" class="text-danger">
+          <input type="password" class="gwt-TextBox loginTextBox" formControlName="senha" />
+          <small *ngIf="formLogin.controls['senha'].hasError('required') && formLogin.controls['senha'].touched" class="text-danger">
             <br>Senha é obrigatório
           </small>
         </fieldset>

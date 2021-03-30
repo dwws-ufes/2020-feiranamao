@@ -30,20 +30,20 @@ public class Usuario implements UserDetails {
 		    @GeneratedValue(strategy = GenerationType.AUTO)
 		    private Long id;
 
-		    private String username;
+		    private String login;
+		    
+		    private String nome;
 
-		    private String password;
+		    private String senha;
 
 		    private boolean accountNonExpired;
 
 		    private boolean accountNonLocked;
 
 		    private boolean credentialsNonExpired;
-
+		    
 		    private boolean enabled;
 		    
-		    private long id_loja;
-
 			/*  
 			 @Enumerated(EnumType.STRING)
 		    @ElementCollection(fetch = FetchType.EAGER)
@@ -56,32 +56,16 @@ public class Usuario implements UserDetails {
 		        this.enabled = true;
 		    }
 
-		    public Long getId() {
-		        return id;
-		    }
-
-		    public void setId(Long id) {
-		        this.id = id;
-		    }
-
 		    @Override
 		    public String getUsername() {
-		        return username;
+		        return login;
 		    }
-
-		    public void setUsername(String username) {
-		        this.username = username;
-		    }
-
+		    
 		    @Override
 		    public String getPassword() {
-		        return password;
+		        return senha;
 		    }
-
-		    public void setPassword(String password) {
-		        this.password = password;
-		    }
-
+		    
 		    @Override
 		    public boolean isAccountNonExpired() {
 		        return accountNonExpired;
@@ -107,14 +91,33 @@ public class Usuario implements UserDetails {
 				// TODO Auto-generated method stub
 				return null;
 			}
+
+			public Long getId() {
+				return id;
+			}
 			
-			public long isId_loja() {
-				return id_loja;
+			public String getLogin() {
+				return login;
 			}
 
-			public void setId_loja(long id_loja) {
-				this.id_loja = id_loja;
+			public void setLogin(String login) {
+				this.login = login;
 			}
 
+			public String getNome() {
+				return nome;
+			}
+
+			public void setNome(String nome) {
+				this.nome = nome;
+			}
+
+			public String getSenha() {
+				return senha;
+			}
+
+			public void setSenha(String senha) {
+				this.senha = senha;
+			}			
 		
 }

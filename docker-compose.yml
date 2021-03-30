@@ -18,6 +18,9 @@ services:
 #docker run -p 8090:80 -e 'PGADMIN_DEFAULT_EMAIL=user@domain.com' -e 'PGADMIN_DEFAULT_PASSWORD=SuperSecret' --name pgAdmin4 --network 2020-feiranamao_net_feiranamao -d dpage/pgadmin4
   #server: container_name do postgres 
 
+#apagando dados do banco modelo antigo:
+#docker volume rm 2020-feiranamao_feiranamao-data
+
   # backend:
   #   build: ./backend
   #   container_name: backend
