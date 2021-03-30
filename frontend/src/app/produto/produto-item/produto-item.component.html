@@ -1,22 +1,19 @@
 <div class="item">
-  <div class = "image">
+  <div class="image">
     <img src="#" [attr.alt]="produto?.name">
   </div>
   <div class="item__text">
-    <div class ="mid">
-      <div class="item__name">
-        <p class= "name"><strong>{{produto?.name}}</strong></p>
-      </div>
-      <div class = "price">
-        <p class = "item__price">{{produto?.preco|currency}}</p>
-      </div>
+    <div class="item__name">
+      <p class="name" style="margin-bottom: 0;"><strong>{{produto?.name}}</strong></p>
     </div>
-    <div class="bottom">
-      <p class = description>{{produto?.descricao}}</p>
-
+    <div class="price">
+      <p class="item__price">{{produto?.preco|currency:'BRL'}}</p>
     </div>
   </div>
+  <div class="bottom">
+    <p class="description">{{produto?.descricao}}</p>
+  </div>
   <button class="item__action">
-    <img src="/assets/images/plus-icon.svg" width="24" height="24" alt="">
+    <img src="/assets/images/plus-icon.svg" width="24" height="24" alt="adiciona o produto">
   </button>
 </div>

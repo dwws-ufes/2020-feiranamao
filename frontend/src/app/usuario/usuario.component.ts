@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountService } from '../login/account.service';
+import { AccountService } from '../services/account.service';
 import { UsuarioService } from '../services/usuario.service'
 import { UsuarioModel } from '../viewModel/usuario.view-model';
 import { NgForm, FormsModule, ReactiveFormsModule  } from '@angular/forms';

@@ -3,8 +3,8 @@
 </div>
 <ul class="pages">
   <li><a [routerLink]="['page-home']">Home</a></li>
-  <li [routerLink]="['page-produto']">Produto</li>
-  <li [routerLink]="['page-lojas']">Lojas</li>
-  <li [routerLink]="['page-usuario']">Usuario</li>
-  <li (click)="logout()">Sair</li>
+  <li><a [routerLink]="['page-produto']">Produto</a></li>
+  <li><a [routerLink]="['page-lojas']">Lojas</a></li>
+  <li><a [routerLink]="['page-usuario']">Usuario</a></li>
 </ul>
+<button class="danger" (click)="logout()">Sair</button>

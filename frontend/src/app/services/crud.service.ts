@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { AccountService } from '../login/account.service';
+import { AccountService } from './account.service';
 
 @Injectable({
   providedIn: 'root'
