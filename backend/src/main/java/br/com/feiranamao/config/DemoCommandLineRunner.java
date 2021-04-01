@@ -23,14 +23,14 @@ class DemoCommandLineRunner implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 
 		Optional<Usuario> old= userRepository.findByLogin("application-user");
-		
+
 		if(old.isEmpty()) {
-		Usuario user = new Usuario();
-		user.setLogin("application-user");
-		user.setNome("SuperAdmin");
-		user.setSenha(passwordEncoder.encode("password"));
-		//user.grantAuthority("ADMIN");
-		userRepository.save(user);
+			Usuario user = new Usuario();
+			user.setLogin("application-user");
+			user.setNome("SuperAdmin");
+			user.setSenha(passwordEncoder.encode("password"));
+			//user.grantAuthority("ADMIN");
+			userRepository.save(user);
 		}
 	}
 }

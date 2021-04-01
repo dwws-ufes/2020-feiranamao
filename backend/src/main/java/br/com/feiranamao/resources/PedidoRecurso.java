@@ -26,8 +26,7 @@ public class PedidoRecurso  {
 	@ApiOperation(value=" Retorna Lista de Pedidos")
 	@GetMapping("/pedidos")
 	public List<Pedido> listaPedidos(){
-		List<Pedido> pedidos= pedidosRepository.findAll();
-		return  pedidos;
+		return pedidosRepository.findAll();
 	}
 	
     @ApiOperation(value=" Salvar Pedido")
@@ -37,7 +36,7 @@ public class PedidoRecurso  {
     	Set<ItemPedido> itens = pedido.getItemPedido();
     	
     	for(ItemPedido item : itens) {
-    	item.setValorTotal(item.getValorUnitario()*item.getQuantidade());
+    		item.setValorTotal(item.getValorUnitario()*item.getQuantidade());
     		
     	}
     	

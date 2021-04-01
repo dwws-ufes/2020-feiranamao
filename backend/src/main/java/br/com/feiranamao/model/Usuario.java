@@ -3,16 +3,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.mapping.List;
@@ -30,10 +21,12 @@ public class Usuario implements UserDetails {
 		    @GeneratedValue(strategy = GenerationType.AUTO)
 		    private Long id;
 
+			@Column(name = "username")
 		    private String login;
 		    
 		    private String nome;
 
+		    @Column(name = "password")
 		    private String senha;
 
 		    private boolean accountNonExpired;
