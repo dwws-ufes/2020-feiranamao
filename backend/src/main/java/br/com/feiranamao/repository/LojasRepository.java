@@ -5,5 +5,5 @@ import br.com.feiranamao.model.Loja;
 
 public interface LojasRepository
 		extends JpaRepository<Loja, String> {
-	
+		public Loja findById(Long id);
 }

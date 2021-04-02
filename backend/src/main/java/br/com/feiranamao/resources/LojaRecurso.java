@@ -50,7 +50,7 @@ public class LojaRecurso  {
 	@ApiOperation(value="Listar produtos da loja")
 	@GetMapping("/loja/{id}/produtos")
 	public List<Produto> listaItemLoja(@PathVariable(value = "id") Long id) {
-		return produtosRepository.findByIdLoja(id);
+		return produtosRepository.findByLoja(lojasRepository.findById(id));
 	}
 	
 }

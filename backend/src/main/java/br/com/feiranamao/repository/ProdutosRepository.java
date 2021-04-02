@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import br.com.feiranamao.model.Loja;
 import br.com.feiranamao.model.Produto;
 
 public interface ProdutosRepository
@@ -11,5 +12,5 @@ public interface ProdutosRepository
 	
 	List<Produto> findByName(String name);
 
-	public List<Produto> findByIdLoja(Long id);
+	public List<Produto> findByLoja(Loja loja);
 }
