@@ -1,6 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-  --primary-color: red;
+  --primary-color: #467302;
+  --primary-color-light: #83A603;
+  --secondary-color: #A61103;
+  --secondary-color-light: #D95204;
+
   --grey-100: #F3F4F6;
   --grey-900: #111827;
+}
+
+
+button {
+  border: none;
 }

@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -23,9 +25,10 @@ public class Produto implements Serializable {
 		private float preco;
 		private float custo;
 		private int estoque;
-		private long id_categoria;		
+		private long id_categoria;
 //		private Categoria categoria;
-		
+		@ManyToOne
+		private Loja loja;
 		public Produto(){
 		}
 
@@ -75,6 +78,14 @@ public class Produto implements Serializable {
 
 		public void setEstoque(int estoque) {
 			this.estoque = estoque;
+		}
+
+		public Loja getIdLoja() {
+			return loja;
+		}
+
+		public void setIdLoja(Loja loja) {
+			this.loja = loja;
 		}
 		
 		public long getId_categoria() {

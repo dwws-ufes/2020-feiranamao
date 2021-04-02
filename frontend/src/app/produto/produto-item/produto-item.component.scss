@@ -15,7 +15,7 @@
   position: absolute;
   right: 0;
   bottom: 0;
-  background-color: #83A603;
+  background-color: var(--primary-color-light);
   border-radius: 10px 0;
   width: 51.92px;
   height: 54px;
@@ -50,7 +50,7 @@
 .price{
   position: absolute;
   right: 0%;
-  background-color: #83A603;
+  background-color: var(--primary-color-light);
   // width: 121px;
   height: 40px;
   border-radius: 10px 0 0 10px;

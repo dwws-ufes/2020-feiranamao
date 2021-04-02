@@ -10,4 +10,6 @@ public interface ProdutosRepository
 		extends JpaRepository<Produto, String> {
 	
 	List<Produto> findByName(String name);
+
+	public List<Produto> findByIdLoja(Long id);
 }

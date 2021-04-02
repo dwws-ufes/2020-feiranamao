@@ -15,9 +15,7 @@ interface PedidoModel {
   id_loja: number,
   obs: string
 }
-@Injectable({
-  providedIn: 'root'
-  })
+@Injectable({providedIn: 'root'})
 export class PedidosService {
 
   constructor(private crudService: CrudService) { }
