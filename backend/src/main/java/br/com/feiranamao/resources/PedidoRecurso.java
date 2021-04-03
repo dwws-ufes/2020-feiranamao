@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import br.com.feiranamao.model.ItemPedido;
 import br.com.feiranamao.model.Pedido;
+import br.com.feiranamao.model.Produto;
 import br.com.feiranamao.repository.PedidosRepository;
+import br.com.feiranamao.repository.ProdutosRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -22,6 +24,9 @@ public class PedidoRecurso  {
 
 	@Autowired
 	PedidosRepository pedidosRepository;
+
+	@Autowired
+	ProdutosRepository produtosRepository;
 	
 	@ApiOperation(value=" Retorna Lista de Pedidos")
 	@GetMapping("/pedidos")
@@ -37,7 +42,11 @@ public class PedidoRecurso  {
     	
     	for(ItemPedido item : itens) {
     		item.setValorTotal(item.getValorUnitario()*item.getQuantidade());
-    		
+				try {
+					produtosRepository.setFixedEstoqueFor(item.getId_produto(), item.getQuantidade());
+				} catch( Exception exception) {
+					System.out.println(exception);
+				}
     	}
     	
      	return pedidosRepository.save(pedido);

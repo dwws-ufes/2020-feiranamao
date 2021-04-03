@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -17,18 +17,21 @@ public class Produto implements Serializable {
 	
 		@Id 
 		@NotNull
-		@GeneratedValue(strategy = GenerationType.AUTO)
+		@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_produto")
+		@SequenceGenerator(name="seq_produto", sequenceName = "seq_produto", initialValue = 1)
 		private long id;
 
 		private String name;
 		private String descricao;
-		private float preco;
-		private float custo;
+		private double preco;
+		private double custo;
 		private int estoque;
-		private long id_categoria;
-//		private Categoria categoria;
+		@ManyToOne
+		private Categoria categoria;
 		@ManyToOne
 		private Loja loja;
+		private String urlImagem;
+		private String unidadeVenda;
 		public Produto(){
 		}
 
@@ -56,7 +59,7 @@ public class Produto implements Serializable {
 			this.descricao = descricao;
 		}
 
-		public float getPreco() {
+		public double getPreco() {
 			return preco;
 		}
 
@@ -64,7 +67,7 @@ public class Produto implements Serializable {
 			this.preco = preco;
 		}
 
-		public float getCusto() {
+		public double getCusto() {
 			return custo;
 		}
 
@@ -72,7 +75,7 @@ public class Produto implements Serializable {
 			this.custo = custo;
 		}
 
-		public float getEstoque() {
+		public int getEstoque() {
 			return estoque;
 		}
 
@@ -94,6 +97,22 @@ public class Produto implements Serializable {
 
 		public void setId_categoria(long id_categoria) {
 			this.id_categoria = id_categoria;
+		}
+
+		public String getUrl() {
+			return urlImagem;
+		}
+
+		public void setUrl(String urlImagem) {
+			this.urlImagem = urlImagem;
+		}
+
+		public String getUnidadeVenda() {
+			return unidadeVenda;
+		}
+
+		public void setUnidadeVenda(String unidadeVenda) {
+			this.unidadeVenda = unidadeVenda;
 		}
 
 }

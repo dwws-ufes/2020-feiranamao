@@ -27,7 +27,7 @@ public class Categoria implements Serializable {
 		private long id;
 		
 		@OneToMany(targetEntity =  Produto.class, cascade =CascadeType.ALL)
-		@JoinColumn(name="id_categoria", referencedColumnName = "id")
+		@JoinColumn(name="categoria", referencedColumnName = "id")
 	    private Set<Produto> Produto;
 		
 		public Set<Produto> getProduto() {

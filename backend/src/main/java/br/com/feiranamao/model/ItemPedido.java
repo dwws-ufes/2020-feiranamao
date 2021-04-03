@@ -27,7 +27,7 @@ public class ItemPedido implements Serializable {
 			this.id = id;
 		}
 		private Double valorUnitario;
-		private Double quantidade;
+		private int quantidade;
 		private Double valorTotal;
 
 		public Double getValorUnitario() {
@@ -36,10 +36,10 @@ public class ItemPedido implements Serializable {
 		public void setValorUnitario(Double valorUnitario) {
 			this.valorUnitario = valorUnitario;
 		}
-		public Double getQuantidade() {
+		public int getQuantidade() {
 			return quantidade;
 		}
-		public void setQuantidade(Double quantidade) {
+		public void setQuantidade(int quantidade) {
 			this.quantidade = quantidade;
 		}
 		public Double getValorTotal() {
@@ -48,12 +48,12 @@ public class ItemPedido implements Serializable {
 		public void setValorTotal(Double valorTotal) {
 			this.valorTotal = valorTotal;
 		}
-		public Double getId_produto() {
+		public int getId_produto() {
 			return id_produto;
 		}
-		public void setId_produto(Double id_produto) {
+		public void setId_produto(int id_produto) {
 			this.id_produto = id_produto;
 		}
-		private Double id_produto;
+		private int id_produto;
 	
 }

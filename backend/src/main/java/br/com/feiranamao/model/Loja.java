@@ -27,6 +27,8 @@ public class Loja implements Serializable {
 
 		@OneToMany(mappedBy = "loja")
 		private Set<Produto> produtos;
+
+		private String urlImagem;
 		
 		public long getId_loja() {
 			return id;
@@ -43,6 +45,16 @@ public class Loja implements Serializable {
 		public void setNome(String nome) {
 			this.nome = nome;
 		}
+
+		public String getUrl() {
+			return urlImagem;
+		}
+
+		public void setUrl(String urlImagem) {
+			this.urlImagem = urlImagem;
+		}
+
+		
 
 		private String nome;
 	
