@@ -14,16 +14,11 @@ export class LojasComponent implements OnInit {
   lojas = new Array<LojaModel>();
 
   constructor(private lojaService: LojaService) {}
-
   ngOnInit(): void {
-    // this.lojaService.getLojas().subscribe(lojas => {
-    //   this.lojas = lojas
-    // })
 
-    this.lojas = [
-      { id_loja: 1, nome: 'Loja do Seu Zé' },
-      { id_loja: 2, nome: 'Mercadinho Lindo' }
-    ]
+
+    this.lojaService.getLojas().subscribe(lojas => {
+      this.lojas = lojas
+    })
   }
-
 }

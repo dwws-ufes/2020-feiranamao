@@ -48,7 +48,7 @@ public class LojaRecurso  {
 	}
 
 	@ApiOperation(value="Listar produtos da loja")
-	@GetMapping("/loja/{id}/produtos")
+	@GetMapping("/loja/{id}/produtos")//TODO Tratamento de erro not found
 	public List<Produto> listaItemLoja(@PathVariable(value = "id") Long id) {
 		return produtosRepository.findByLoja(lojasRepository.findById(id));
 	}

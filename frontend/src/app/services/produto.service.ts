@@ -16,6 +16,9 @@ export class ProdutoService {
   getProdutos() {
     return this.crudService.getGenerico<ProdutoModel[]>('produtos');
   }
+  getProdutosLoja(lojaId: number) {
+    return this.crudService.getGenerico<ProdutoModel[]>(`loja/${lojaId}/produtos`);
+  }
 
   editProduto(produto: ProdutoModel) {
     //return null;

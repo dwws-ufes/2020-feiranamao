@@ -1,3 +1,5 @@
+import { LojaModel } from "./loja.view-model";
+
 export interface ProdutoModel {
   id: string | undefined;
   name: string| undefined;
@@ -6,4 +8,5 @@ export interface ProdutoModel {
   custo? : number;
 	estoque? : number;
   idCategoria? : string
+  idLoja: LojaModel
 }
