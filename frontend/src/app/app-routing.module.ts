@@ -12,7 +12,6 @@ const routes: Routes = [
   { path: '', component: DefaultComponent, canActivate: [UserGuard],
     children: [
       { path: 'page-home', component: HomeComponent },
-      { path: 'page-produto', component: ProdutoComponent },
       { path: 'page-lojas', component: LojasComponent },
       { path: 'page-loja/:id', component: ProdutoComponent },
       { path: 'page-usuario', component: UsuarioComponent },
