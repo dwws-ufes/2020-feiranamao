@@ -13,6 +13,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DefaultComponent } from './default/default.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { ProdutoItemComponent } from './produto/produto-item/produto-item.component';
+import { MatIconModule } from '@angular/material/icon';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -25,14 +28,17 @@ import { ProdutoItemComponent } from './produto/produto-item/produto-item.compon
     LojasComponent,
     DefaultComponent,
     UsuarioComponent,
-    ProdutoItemComponent
+    ProdutoItemComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatIconModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

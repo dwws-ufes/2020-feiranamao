@@ -1,12 +1,15 @@
-<h1>lojas works!</h1>
-<div class="cards">
-  <ng-container *ngFor="let loja of lojas">
-    <div class="card store-card">
+<h1 class="title">Selecione uma das nossas lojas abaixo!</h1>
+<h2 *ngIf="!lojas.length">Num tem loja</h2>
+
+<ng-container *ngIf="lojas.length">
+  <div class="cards">
+    <div class="card store-card" *ngFor="let loja of lojas">
       <figure class="store-card__figure">
         <img src="https://www.pinclipart.com/picdir/big/188-1882584_hortifruti-png-logo-tipo-de-horti-fruti-clipart.png" alt="Uma loja"/>
       </figure>
       <h3 class="store-name">{{loja.nome}}</h3>
       <a [routerLink]="['/page-loja', loja.id_loja]" class="store-button">Acessar esta loja</a>
     </div>
-  </ng-container>
-<div>
+  </div>
+</ng-container>
+

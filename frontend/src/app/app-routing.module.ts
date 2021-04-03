@@ -7,6 +7,7 @@ import { ProdutoComponent } from './produto/produto.component';
 import { LoginComponent } from './login/login.component';
 import { DefaultComponent } from './default/default.component';
 import { UsuarioComponent } from './usuario/usuario.component';
+import { CartComponent } from './cart/cart.component'
 
 const routes: Routes = [
   { path: '', component: DefaultComponent, canActivate: [UserGuard],
@@ -15,6 +16,7 @@ const routes: Routes = [
       { path: 'page-lojas', component: LojasComponent },
       { path: 'page-loja/:id', component: ProdutoComponent },
       { path: 'page-usuario', component: UsuarioComponent },
+      { path: 'page-cart', component: CartComponent },
     ]
   },
   { path: 'login', component: LoginComponent },
