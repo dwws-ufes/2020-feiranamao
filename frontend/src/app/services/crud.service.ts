@@ -7,21 +7,26 @@ import { AccountService } from './account.service';
   providedIn: 'root'
 })
 export class CrudService {
+  auth: string |undefined;
+  httpOptions: object | undefined;
 
   constructor(
     private http: HttpClient,
     private accountService: AccountService
   ) { }
 
-   auth = 'Bearer '+ this.accountService.getToken();
+  loadheadrs(){
+    this.auth = 'Bearer '+ this.accountService.getToken();
 
-  httpOptions = {
-    headers: new HttpHeaders()
-      .set('Content-Type', 'application/json')
-      .set('Authorization', this.auth)
+    this.httpOptions = {
+       headers: new HttpHeaders()
+         .set('Content-Type', 'application/json')
+         .set('Authorization', this.auth)
+     }
   }
 
   getGenerico<T>(endpoint: string, param?:string) {
+    this.loadheadrs();
 
     let url = `${environment.URL_API}/${endpoint}`;
 
@@ -33,6 +38,7 @@ export class CrudService {
   }
 
   postGenerico<T>(endpoint:string, body: Object) {
+    this.loadheadrs();
 
     let url = `${environment.URL_API}/${endpoint}`;
 
@@ -44,6 +50,8 @@ export class CrudService {
   }
 
   deleteGenerico<T>(endpoint:string, param?:string){
+    this.loadheadrs();
+
     let url = `${environment.URL_API}/${endpoint}`;
 
     if(param) url = `${url}/${param}`;
