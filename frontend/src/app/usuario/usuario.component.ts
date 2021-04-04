@@ -14,7 +14,6 @@ export class UsuarioComponent implements OnInit {
   usuario = {} as UsuarioModel;
 
   constructor(
-    private accountService: AccountService,
     private usuarioService: UsuarioService,
   ) { }
 
@@ -22,7 +21,8 @@ export class UsuarioComponent implements OnInit {
 
     this.getUsuarios();
   }
-   saveUsuario(form: NgForm) {
+
+  saveUsuario(form: NgForm) {
 
     if (this.usuario.id !== undefined) {
       this.usuarioService.updateUsuario(this.usuario).subscribe(() => {
