@@ -5,10 +5,10 @@
   <div class="cards">
     <div class="card store-card" *ngFor="let loja of lojas">
       <figure class="store-card__figure">
-        <img src="https://www.pinclipart.com/picdir/big/188-1882584_hortifruti-png-logo-tipo-de-horti-fruti-clipart.png" alt="Uma loja"/>
+        <img src="{{loja.logo}}" alt="Uma loja"/>
       </figure>
       <h3 class="store-name">{{loja.nome}}</h3>
-      <a [routerLink]="['/page-loja', loja.id_loja]" class="store-button">Acessar esta loja</a>
+      <a [routerLink]="['/page-loja', loja.id]" class="store-button">Acessar esta loja</a>
     </div>
   </div>
 </ng-container>

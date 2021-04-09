@@ -7,6 +7,7 @@ export interface ProdutoModel {
   preco : number;
   custo : number;
 	estoque : number;
+  url? : string;
   idCategoria? : string
   idLoja: LojaModel
 }
