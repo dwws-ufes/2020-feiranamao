@@ -32,12 +32,11 @@ public class LojaRecurso  {
 	@Autowired
 	ProdutosRepository produtosRepository;
 
-    @ApiOperation(value=" Salvar Pedido")
-	@PostMapping("/loja")
-	public Loja salvarPedido(@RequestBody Loja loja) throws Exception {
-
-   	return lojasRepository.save(loja);
- 
+//    @ApiOperation(value=" Salvar Pedido")
+//	@PostMapping("/loja")
+//	public Loja salvarPedido(@RequestBody Loja loja) throws Exception {
+//      return lojasRepository.save(loja);
+//  }
 	@ApiOperation(value=" Retorna dados da loja do usuario logado")
 	@GetMapping("/loja") 
 	public Loja retornaLoja(@AuthenticationPrincipal final Usuario user){

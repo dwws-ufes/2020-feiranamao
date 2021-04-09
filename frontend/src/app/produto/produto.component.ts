@@ -26,8 +26,10 @@ export class ProdutoComponent implements OnInit {
       mergeMap( ({ id }, _) => {
         return this.produtoService.getProdutosLoja(id).pipe(
           map(produtos => {
-            this.produtos = produtos
-            this.loja = produtos[0].idLoja;
+            if (produtos.length !== 0) {
+              this.produtos = produtos
+              this.loja = produtos[0].idLoja;
+            }
           })
         );
       })

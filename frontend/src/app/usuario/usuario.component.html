@@ -51,7 +51,7 @@
         </div>
         <div class="form-group">
             <label for="senha">Senha</label>
-            <input type="text" [(ngModel)]="usuario.senha" id="senha" name="senha" #senha="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && senha.invalid }" placeholder="Digite a senha">
+            <input type="password" [(ngModel)]="usuario.senha" id="senha" name="senha" #senha="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && senha.invalid }" placeholder="Digite a senha">
             <div *ngIf="f.submitted && senha.invalid" class="invalid-feedback">
                 <!-- <div *ngIf="senha.errors.required">Password é obrigatória</div>-->
             </div>

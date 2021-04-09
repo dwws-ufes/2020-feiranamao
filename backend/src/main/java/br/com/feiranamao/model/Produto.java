@@ -91,12 +91,12 @@ public class Produto implements Serializable {
 			this.loja = loja;
 		}
 		
-		public long getId_categoria() {
-			return id_categoria;
+		public Categoria getCategoria() {
+			return categoria;
 		}
 
-		public void setId_categoria(long id_categoria) {
-			this.id_categoria = id_categoria;
+		public void setCategoria(Categoria categoria) {
+			this.categoria = categoria;
 		}
 
 		public String getUrl() {
