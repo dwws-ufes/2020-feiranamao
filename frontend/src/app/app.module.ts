@@ -16,6 +16,7 @@ import { ProdutoItemComponent } from './produto/produto-item/produto-item.compon
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CartComponent } from './cart/cart.component';
+import { AdminLojaComponent } from './admin-loja/admin-loja.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { CartComponent } from './cart/cart.component';
     UsuarioComponent,
     ProdutoItemComponent,
     CartComponent,
+    AdminLojaComponent
   ],
   imports: [
     BrowserModule,

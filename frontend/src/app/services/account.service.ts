@@ -54,6 +54,7 @@ export class AccountService {
   }
 
   registerSuccessfulLogin(username: string, password: string, acess_token: string) {
+    this.logout();
     sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username);
     sessionStorage.setItem(this.JWT_SESSION_ATTRIBUTE_NAME, acess_token);
   }

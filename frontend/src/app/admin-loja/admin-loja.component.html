@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="card">
+    <h5 class="card-header">Configurações da loja</h5>
+    <div class="card-body">
+        <form id="add-form" (ngSubmit)="f.form.valid && save(f)" #f="ngForm" novalidate>
+          <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" [(ngModel)]="loja.nome" id="nome" name="nome" #nome="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && nome.invalid }" placeholder="Digite o nome">
+            <div *ngIf="f.submitted && nome.invalid" class="invalid-feedback">
+              <!-- <div *ngIf="nome.errors.required">username é obrigatório</div>-->
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="logo">Logo</label>
+            <input type="text" [(ngModel)]="loja.logo" id="logo" name="logo" #logo="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && logo.invalid }" placeholder="Informe a URL da logo">
+            <div *ngIf="f.submitted && logo.invalid" class="invalid-feedback">
+            </div>
+          </div>
+          <div style="min-height: 100px;">
+            <img [src]="loja.logo" width="60" />
+          </div>
+
+
+          <button type="submit" class="btn btn-primary btn-add-car">Salvar</button>
+        </form>
+    </div>
+  </div>
+</div>

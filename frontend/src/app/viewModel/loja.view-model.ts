@@ -1,4 +1,8 @@
+import { UsuarioModel } from "./usuario.view-model";
+
 export interface LojaModel {
-  id_loja: number;
-  nome?: string;
+  id: string;
+  nome: string;
+  logo?: string;
+  dono: UsuarioModel;
 }

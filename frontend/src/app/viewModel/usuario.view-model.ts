@@ -3,4 +3,5 @@ export interface UsuarioModel {
   nome: string| undefined;
   login: string | undefined;
   senha: string | undefined;
+  dono: boolean | false;
 }

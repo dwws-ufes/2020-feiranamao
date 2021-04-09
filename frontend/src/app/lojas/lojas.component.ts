@@ -17,7 +17,7 @@ export class LojasComponent implements OnInit {
   ngOnInit(): void {
 
 
-    this.lojaService.getLojas().subscribe(lojas => {
+    this.lojaService.getAll().subscribe(lojas => {
       this.lojas = lojas
     })
   }

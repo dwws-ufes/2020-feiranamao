@@ -3,14 +3,21 @@ import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name="LOJA")
@@ -20,21 +27,27 @@ public class Loja implements Serializable {
 
 		@Id
 		@NotNull
-//		@GeneratedValue(strategy = GenerationType.AUTO)
-		@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_loja")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_loja")
 		@SequenceGenerator(name="seq_loja", sequenceName = "seq_loja", initialValue = 1)
 		private long id;
 
 		@OneToMany(mappedBy = "loja")
 		private Set<Produto> produtos;
-
-		private String urlImagem;
 		
-		public long getId_loja() {
+		@NotNull
+		private String nome;
+		
+		private String logo;
+		
+		@OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(nullable = false, name="usuario_id", referencedColumnName="id")
+		private Usuario usuario;
+		
+		public long getId() {
 			return id;
 		}
 
-		public void setId_loja(long id) {
+		public void setId(long id) {
 			this.id = id;
 		}
 
@@ -46,16 +59,16 @@ public class Loja implements Serializable {
 			this.nome = nome;
 		}
 
-		public String getUrl() {
-			return urlImagem;
+		public void setUsuario(Usuario usuario) {
+			this.usuario = usuario;
 		}
 
-		public void setUrl(String urlImagem) {
-			this.urlImagem = urlImagem;
+		public String getLogo() {
+			return logo;
 		}
 
-		
-
-		private String nome;
+		public void setLogo(String logo) {
+			this.logo = logo;
+		}
 	
 }

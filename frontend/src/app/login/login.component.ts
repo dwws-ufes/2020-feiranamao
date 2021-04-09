@@ -49,20 +49,7 @@ export class LoginComponent implements OnInit {
     this.accountService.authenticationService(this.formLogin.value.login, this.formLogin.value.senha)
     .subscribe((response: any) => {
 
-      console.log(response);
-
       this.router.navigate(['/perfil']);
-
-   /* this.accountService.authLogin(user).subscribe((response: any) => {
-      if (response.status === '1') {
-       localStorage.setItem('jsessionid', response.responseBody.jsessionid.$);
-        localStorage.setItem('isAuthenticado', 'S');
-        localStorage.setItem('user', user.email);
-        const tokenData = new TokenViewModel(response.responseBody.loginresponse);
-         localStorage.setItem('tokenData', JSON.stringify(tokenData));
-
-   }*/
-      //this.showError = true;
     });
   }
 }

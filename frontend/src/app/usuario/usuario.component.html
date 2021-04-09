@@ -9,6 +9,7 @@
               <th scope="col">Login</th>
               <th scope="col">Nome</th>
               <th scope="col">Senha</th>
+              <th scope="col">Dono de loja</th>
               <th scope="col">Ações</th>
             </tr>
           </thead>
@@ -18,6 +19,7 @@
               <td>{{usuario.login}}</td>
               <td>{{usuario.nome}}</td>
               <td>***</td>
+              <td><span *ngIf="usuario.dono">Sim</span></td>
               <td>
                <button type="button" class="btn btn-warning btn-sm" (click)="editUsuario(usuario)">Editar</button>
                 <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteUsuario(usuario)">Deletar</button>
@@ -54,6 +56,12 @@
                 <!-- <div *ngIf="senha.errors.required">Password é obrigatória</div>-->
             </div>
         </div>
+
+        <div class="form-group form-check">
+          <input type="checkbox" [(ngModel)]="usuario.dono" id="dono" name="dono" #dono="ngModel" class="form-check-input">
+          <label class="form-check-label" for="dono">Dono de loja</label>
+        </div>
+
         <button type="submit" class="btn btn-primary btn-add-car">Salvar</button>
         <button type="reset" class="btn btn-secondary btn-add-car" (click)="cleanForm(f)">Cancelar</button>
       </form>

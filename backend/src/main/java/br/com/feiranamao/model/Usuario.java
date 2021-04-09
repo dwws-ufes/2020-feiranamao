@@ -11,6 +11,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
 @Table(name="USUARIO")
 public class Usuario implements UserDetails {
@@ -22,13 +26,18 @@ public class Usuario implements UserDetails {
 			@SequenceGenerator(name="seq_usuario", sequenceName = "seq_usuario", initialValue = 1)
 		    private Long id;
 
-			@Column(name = "username")
+//			@Column(name = "username")
+			@NotNull
 		    private String login;
 		    
+		    @NotNull
 		    private String nome;
 
-		    @Column(name = "password")
+//		    @Column(name = "password")
+		    @NotNull
 		    private String senha;
+		    
+		    private boolean dono;
 
 		    private boolean accountNonExpired;
 
@@ -36,7 +45,11 @@ public class Usuario implements UserDetails {
 
 		    private boolean credentialsNonExpired;
 		    
-		    private boolean enabled;
+		    private boolean enabled; 
+		    
+//		    @JsonManagedReference
+ 		    @OneToOne(optional=true, fetch = FetchType.LAZY, mappedBy = "usuario")
+		    private Loja loja;
 		    
 			/*  
 			 @Enumerated(EnumType.STRING)
@@ -112,6 +125,22 @@ public class Usuario implements UserDetails {
 
 			public void setSenha(String senha) {
 				this.senha = senha;
-			}			
+			}
+
+			public boolean isDono() {
+				return dono;
+			}
+
+			public void setDono(boolean dono) {
+				this.dono = dono;
+			}
+
+			public Loja getLoja() {
+				return loja;
+			}
+
+//			public void setLoja(Loja loja) {
+//				this.loja = loja;
+//			}			
 		
 }
