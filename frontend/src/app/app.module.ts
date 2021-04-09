@@ -13,6 +13,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DefaultComponent } from './default/default.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { ProdutoItemComponent } from './produto/produto-item/produto-item.component';
+import { MatIconModule } from '@angular/material/icon';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CartComponent } from './cart/cart.component';
 import { AdminLojaComponent } from './admin-loja/admin-loja.component';
 
 @NgModule({
@@ -27,6 +30,7 @@ import { AdminLojaComponent } from './admin-loja/admin-loja.component';
     DefaultComponent,
     UsuarioComponent,
     ProdutoItemComponent,
+    CartComponent,
     AdminLojaComponent
   ],
   imports: [
@@ -34,7 +38,9 @@ import { AdminLojaComponent } from './admin-loja/admin-loja.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatIconModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,15 +7,17 @@ import { ProdutoComponent } from './produto/produto.component';
 import { LoginComponent } from './login/login.component';
 import { DefaultComponent } from './default/default.component';
 import { UsuarioComponent } from './usuario/usuario.component';
+import { CartComponent } from './cart/cart.component'
 import { AdminLojaComponent } from './admin-loja/admin-loja.component';
 
 const routes: Routes = [
   { path: '', component: DefaultComponent, canActivate: [UserGuard],
     children: [
       { path: 'page-home', component: HomeComponent },
-      { path: 'page-produto', component: ProdutoComponent },
       { path: 'page-lojas', component: LojasComponent },
+      { path: 'page-loja/:id', component: ProdutoComponent },
       { path: 'page-usuario', component: UsuarioComponent },
+      { path: 'page-cart', component: CartComponent },
       { path: 'admin-loja', component: AdminLojaComponent },
     ]
   },

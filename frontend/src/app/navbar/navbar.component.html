@@ -1,11 +1,24 @@
-<div class="logo">
-  <img src="/assets/images/logo.svg" alt="logo da Feira na Mão">
+<div class="container">
+  <div>
+    <div class="logo">
+      <img src="/assets/images/logo.svg" alt="logo da Feira na Mão">
+    </div>
+    <ul class="pages">
+      <li><a [routerLink]="['page-home']">Home</a></li>
+      <li><a [routerLink]="['page-lojas']">Lojas</a></li>
+      <li><a [routerLink]="['page-usuario']">Usuario</a></li>
+      <li><a [routerLink]="['admin-loja']">Admin loja</a></li>
+    </ul>
+    <a  [routerLink]="['page-cart']" type="button" class="cart-button">
+      <span class="material-icons">shopping_cart</span>
+      <span>Acessar meu carrinho</span>
+    </a>
+  </div>
+  <div class="logout">
+    <button class="danger" (click)="logout()">
+      <mat-icon aria-label >sentiment_very_dissatisfied</mat-icon>
+      <span>Sair</span>
+    </button>
+    <p>Desenvolvido para a disciplina de Desenvolvimento Web da UFES - 2021</p>
+  </div>
 </div>
-<ul class="pages">
-  <li><a [routerLink]="['page-home']">Home</a></li>
-  <li><a [routerLink]="['page-produto']">Produto</a></li>
-  <li><a [routerLink]="['page-lojas']">Lojas</a></li>
-  <li><a [routerLink]="['page-usuario']">Usuario</a></li>
-  <li><a [routerLink]="['admin-loja']">Admin loja</a></li>
-</ul>
-<button class="danger" (click)="logout()">Sair</button>

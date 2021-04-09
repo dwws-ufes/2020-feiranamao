@@ -11,9 +11,9 @@ import br.com.feiranamao.model.Usuario;
 
 public interface LojasRepository
 		extends JpaRepository<Loja, String> {
+  
+  public Loja findById(Long id);
 	
-	Loja findByUsuario(Usuario usuario);	
+	Loja findByUsuario(Usuario usuario);
 	
-	@Query(value = "SELECT * FROM LOJA WHERE usuario_id = ?1", nativeQuery = true)
-	Loja custom(Long user_id);
 }

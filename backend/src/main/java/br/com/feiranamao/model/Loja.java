@@ -1,10 +1,13 @@
 package br.com.feiranamao.model;
 import java.io.Serializable;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -21,21 +24,23 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 public class Loja implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-	
-		@Id 
+
+		@Id
 		@NotNull
-		@GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_loja")
+		@SequenceGenerator(name="seq_loja", sequenceName = "seq_loja", initialValue = 1)
 		private long id;
+
+		@OneToMany(mappedBy = "loja")
+		private Set<Produto> produtos;
 		
 		@NotNull
 		private String nome;
 		
 		private String logo;
 		
-//		@JsonIgnore
-//		@JsonBackReference
 		@OneToOne(fetch = FetchType.LAZY, optional = false)
-	    @JoinColumn(nullable = false, name="usuario_id", referencedColumnName="id")
+    @JoinColumn(nullable = false, name="usuario_id", referencedColumnName="id")
 		private Usuario usuario;
 		
 		public long getId() {
@@ -53,10 +58,6 @@ public class Loja implements Serializable {
 		public void setNome(String nome) {
 			this.nome = nome;
 		}
- 
-//		public Usuario getUsuario() {
-//			return usuario;
-//		}
 
 		public void setUsuario(Usuario usuario) {
 			this.usuario = usuario;
