@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { ServiceRequestViewModel } from '../viewModel/service-request.view-model';
 import { OauthAccountViewModel } from '../viewModel/oauth.response.view-model';
 import { map } from 'rxjs/operators';
+import { UsuarioService } from './usuario.service';
 
 
 @Injectable({
@@ -18,9 +19,11 @@ export class AccountService {
   public password: string| undefined;
   public grant_type: string | undefined;
 
-  constructor(
+  public dono: boolean = false;
 
+  constructor(
     private httpClient: HttpClient,
+    // private usuarioService: UsuarioService
   ) { }
 
 
@@ -45,6 +48,8 @@ export class AccountService {
         this.username = username;
         this.password = password;
         this.registerSuccessfulLogin(username, password, tokenData.access_token);
+
+        this.getDetalhesUsuarioLogado();
       })
       );
   }
@@ -57,6 +62,10 @@ export class AccountService {
     this.logout();
     sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username);
     sessionStorage.setItem(this.JWT_SESSION_ATTRIBUTE_NAME, acess_token);
+  }
+
+  getDetalhesUsuarioLogado() {
+    // this.usuarioService.getUsuario().subscribe(user => this.dono = user.dono);
   }
 
 
