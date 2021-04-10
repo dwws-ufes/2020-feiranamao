@@ -3,7 +3,9 @@ package br.com.feiranamao.resources;
 import java.util.List;
 import java.util.Optional;
 
+import br.com.feiranamao.model.Loja;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -37,8 +39,15 @@ public class UsuarioRecurso  {
 	public List<Usuario> listaUsuario(){
 		return usuarioRepository.findAll();
 	}
-	
-	@ApiOperation(value="Procurar usuarios por nome")
+
+	@ApiOperation(value=" Retorna Usuario logado")
+	@GetMapping("/usuario")
+  public Usuario getUsuarioAtual(@AuthenticationPrincipal final Usuario user) throws Exception {
+	  return user;
+  }
+
+
+    @ApiOperation(value="Procurar usuarios por nome")
     @RequestMapping(value = "usuarios/{nome}", method = RequestMethod.GET)
 	public Optional<Usuario> findByUsername(@PathVariable(value = "nome") String nome) {
 		return usuarioRepository.findByLogin(nome);

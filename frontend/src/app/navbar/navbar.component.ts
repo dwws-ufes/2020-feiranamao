@@ -9,12 +9,15 @@ import { AccountService } from '../services/account.service';
 })
 export class NavbarComponent implements OnInit {
 
+  ehDono: boolean = false;
+
   constructor(
     private router: Router,
     private accountService: AccountService
   ) { }
 
   ngOnInit(): void {
+    // this.ehDono = this.accountService.dono;
   }
 
   logout() {
