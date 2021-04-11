@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="card">
+    <h5 class="card-header">Lista de produtos</h5>
+    <div class="card-body">
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Categoria</th>
+              <th scope="col">Estoque</th>
+              <th scope="col">Preço</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let produto of produtos">
+              <td>{{produto.id}}</td>
+              <td>{{produto.name}}</td>
+              <td>{{produto.categoria.name}}</td>
+              <td>{{produto.estoque}}</td>
+              <td>{{produto.preco}}</td>
+              <td>
+                <button type="button" class="btn btn-warning btn-sm" (click)="edit(produto)">Editar</button>
+                <button type="button" class="btn btn-danger btn-sm ml-1" (click)="delete(produto)">Deletar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+</div>
+
+<div class="card add">
+  <h5 class="card-header">Adicionar/Atualizar Produto</h5>
+  <div class="card-body">
+      <form id="add-form" (ngSubmit)="f.form.valid && save(f)" #f="ngForm" novalidate>
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input type="text" [(ngModel)]="produto.name" id="nome" name="nome" #nome="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && nome.invalid }" placeholder="Digite o nome">
+          <div *ngIf="f.submitted && nome.invalid" class="invalid-feedback">
+             <!-- <div *ngIf="nome.errors.required">username é obrigatório</div>-->
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="urlImagem">Foto</label>
+          <input type="text" [(ngModel)]="produto.url" id="urlImagem" name="urlImagem" #urlImagem="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && urlImagem.invalid }" placeholder="Informe a URL da urlImagem">
+          <div *ngIf="f.submitted && urlImagem.invalid" class="invalid-feedback">
+          </div>
+          <div style="min-height: 100px;">
+            <img [src]="produto.url" width="60" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="descricao">Descricao</label>
+          <textarea type="text" [(ngModel)]="produto.descricao" id="descricao" name="descricao" #descricao="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && descricao.invalid }" placeholder="Digite o descricao"></textarea>
+          <div *ngIf="f.submitted && descricao.invalid" class="invalid-feedback">
+             <!-- <div *ngIf="descricao.errors.required">username é obrigatório</div>-->
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="Categoria"></label>
+          <select class="form-control" name="idCategoria" [(ngModel)]="produto.categoria">
+            <option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.name }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="custo">Custo</label>
+          <input type="number" [(ngModel)]="produto.custo" id="custo" name="custo" #custo="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && custo.invalid }" placeholder="Digite o custo">
+          <div *ngIf="f.submitted && custo.invalid" class="invalid-feedback">
+             <!-- <div *ngIf="custo.errors.required">username é obrigatório</div>-->
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="preco">Preço</label>
+          <input type="number" [(ngModel)]="produto.preco" id="preco" name="preco" #preco="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && preco.invalid }" placeholder="Digite o preco">
+          <div *ngIf="f.submitted && preco.invalid" class="invalid-feedback">
+             <!-- <div *ngIf="preco.errors.required">username é obrigatório</div>-->
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-add-car">Salvar</button>
+        <button type="reset" class="btn btn-secondary btn-add-car" (click)="cleanForm(f)">Cancelar</button>
+      </form>
+  </div>
+</div>
+
+</div>

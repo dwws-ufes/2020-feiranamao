@@ -26,8 +26,8 @@ public class CategoriaRecurso  {
 	CategoriasRepository categoriasRepository;
 	
 	@ApiOperation(value=" Retorna Lista de categoria")
-	@GetMapping("/categoria")
-	public List<Categoria> listaProdutos(){
+	@GetMapping("/categorias")
+	public List<Categoria> listaCategorias(){
 		return categoriasRepository.findAll();
 	}
 	

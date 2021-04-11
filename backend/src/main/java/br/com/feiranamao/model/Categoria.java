@@ -29,14 +29,6 @@ public class Categoria implements Serializable {
 		@OneToMany(targetEntity =  Produto.class, cascade =CascadeType.ALL)
 		@JoinColumn(name="categoria", referencedColumnName = "id")
 	    private Set<Produto> Produto;
-		
-		public Set<Produto> getProduto() {
-			return Produto;
-		}
-
-		public void setProduto(Set<Produto> produto) {
-			Produto = produto;
-		}
 
 		public long getId() {
 			return id;

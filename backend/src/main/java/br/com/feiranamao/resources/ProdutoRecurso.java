@@ -27,8 +27,7 @@ public class ProdutoRecurso  {
 	
 	@ApiOperation(value=" Retorna Lista de Produtos")
 	@GetMapping("/produtos")
-	public List<Produto> listaProdutos(){
-		
+	public List<Produto> listaProdutos(){		
 		return produtosRepository.findAll();
 	}
 	

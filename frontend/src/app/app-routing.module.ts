@@ -9,6 +9,7 @@ import { DefaultComponent } from './default/default.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { CartComponent } from './cart/cart.component'
 import { AdminLojaComponent } from './admin-loja/admin-loja.component';
+import { AdminProdutoComponent } from './admin-produto/admin-produto.component';
 
 const routes: Routes = [
   { path: '', component: DefaultComponent, canActivate: [UserGuard],
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'page-usuario', component: UsuarioComponent },
       { path: 'page-cart', component: CartComponent },
       { path: 'admin-loja', component: AdminLojaComponent },
+      { path: 'admin-produto', component: AdminProdutoComponent },
     ]
   },
   { path: 'login', component: LoginComponent },

@@ -1,4 +1,5 @@
 import { LojaModel } from "./loja.view-model";
+import { CategoriaModel } from "./categoria.view-model";
 
 export interface ProdutoModel {
   id: string;
@@ -8,6 +9,6 @@ export interface ProdutoModel {
   custo : number;
 	estoque : number;
   url? : string;
-  idCategoria? : string
+  categoria : CategoriaModel
   idLoja: LojaModel
 }
