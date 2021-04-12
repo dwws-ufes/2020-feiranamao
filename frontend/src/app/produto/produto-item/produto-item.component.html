@@ -16,7 +16,7 @@
   <button class="item__action plus" (click)="adicionarAoCarrinho(produto)" >
     <span class="material-icons">add</span>
   </button>
-  <button class="item__action minus" (click)="removeDoCarrinho(produto)">
+  <button class="item__action minus" *ngIf="existeNoCarrinho(produto)" (click)="removeDoCarrinho(produto)">
     <span class="material-icons">remove</span>
   </button>
 </div>

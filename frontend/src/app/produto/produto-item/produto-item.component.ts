@@ -24,4 +24,8 @@ export class ProdutoItemComponent implements OnInit {
   removeDoCarrinho(produto: ProdutoModel) {
     this.carrinhoService.removeItemPedido(produto);
   }
+
+  existeNoCarrinho(produto: ProdutoModel){
+    return this.carrinhoService.existeItem(produto);
+  }
 }

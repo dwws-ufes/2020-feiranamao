@@ -66,6 +66,12 @@ export class CarrinhoService {
     console.log(this.produtos)
   }
 
+  existeItem(produto: ProdutoModel): number | undefined {
+    const { id } = produto;
+    const produtoExiste = this.produtos.find(produtoExistente => produtoExistente.id_produto === id);
+    return produtoExiste?.quantidade
+  }
+
   enviarPedido(obs: string): boolean {
     const pedido:PedidoModel = {
       id_loja: Number(this.produtos[0].idLoja),
