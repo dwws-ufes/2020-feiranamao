@@ -2,8 +2,13 @@
 
 <div class="container">
   <div class="list">
-    <ng-container *ngFor="let produto of produtos">
-      <f-produto-item [produto]="produto"></f-produto-item>
+    <ng-container *ngIf="produtos.length; else notFoundProdutos">
+      <ng-container *ngFor="let produto of produtos">
+        <f-produto-item [produto]="produto"></f-produto-item>
+      </ng-container>
     </ng-container>
+    <ng-template #notFoundProdutos>
+      <p>Não possui Produtos</p>
+    </ng-template>
   </div>
 </div>

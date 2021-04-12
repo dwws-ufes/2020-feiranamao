@@ -41,11 +41,11 @@ export class CrudService {
     this.loadHeaders();
 
     let url = `${environment.URL_API}/${endpoint}`;
-
+    console.log("Pedido feito em:", endpoint, body)
     return this.http.post<T>(
-      url
-    ,JSON.stringify(body)
-    ,this.httpOptions
+      url,
+      JSON.stringify(body),
+      this.httpOptions
     )
   }
 
@@ -57,8 +57,8 @@ export class CrudService {
     if(param) url = `${url}/${param}`;
 
     return this.http.delete<T>(
-      url
-    ,this.httpOptions
+      url,
+      this.httpOptions
     )
   }
 

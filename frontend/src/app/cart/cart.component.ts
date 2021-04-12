@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CarrinhoService } from '../services/carrinho.service';
+import { PedidoItemModel } from '../viewModel/pedido.view-model';
 
 @Component({
   selector: 'f-cart',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  constructor() { }
+  produtos = new Array<PedidoItemModel>();
+  descricao: string = '';
+
+  constructor(private carrinhoService: CarrinhoService) { }
 
   ngOnInit(): void {
+    this.produtos = this.carrinhoService.produtos;
+
+  }
+
+  enviarPedido(observacao: string) {
+    this.carrinhoService.enviarPedido(observacao);
   }
 
 }

@@ -1,1 +1,44 @@
-<p>cart works!</p>
+<h1 class="title">Meu carrinho</h1>
+
+<div class="container">
+  <div>
+    <ng-container *ngIf="produtos.length; else notFoundProdutos">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Quantidade</th>
+          <th scope="col">Valor unitário</th>
+          <th scope="col">Valor total</th>
+        </tr>
+      </thead>
+      <tbody>
+          <ng-container *ngFor="let produto of produtos; index as i">
+            <tr>
+              <td scope="row">{{i+1}}</td>
+              <td>{{produto.name}}</td>
+              <td>{{produto.quantidade}}</td>
+              <td>{{produto.valorUnitario|currency:'BRL':'symbol-narrow':'.2'}}</td>
+              <td>{{produto.valorTotal|currency:'BRL':'symbol-narrow':'.2'}}</td>
+            </tr>
+
+          </ng-container>
+        </tbody>
+      </table>
+      <form (ngSubmit)="enviarPedido(descricao)" class="cart-form">
+        <div class="form-group">
+          <label for="description">Observações</label>
+          <input name="description" id="description" type="text"
+            [(ngModel)]="descricao" class="form-control">
+        </div>
+
+        <button type="submit">Fazer pedido</button>
+      </form>
+    </ng-container>
+
+    <ng-template #notFoundProdutos>
+      <p>Você não possui Produtos em seu carrinho</p>
+    </ng-template>
+  </div>
+</div>

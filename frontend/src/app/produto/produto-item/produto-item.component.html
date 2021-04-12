@@ -13,7 +13,10 @@
   <div class="bottom">
     <p class="description">{{produto?.descricao}}</p>
   </div>
-  <button class="item__action">
-    <img src="/assets/images/plus-icon.svg" width="24" height="24" alt="adiciona o produto">
+  <button class="item__action plus" (click)="adicionarAoCarrinho(produto)" >
+    <span class="material-icons">add</span>
+  </button>
+  <button class="item__action minus" (click)="removeDoCarrinho(produto)">
+    <span class="material-icons">remove</span>
   </button>
 </div>

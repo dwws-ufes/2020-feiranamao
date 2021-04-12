@@ -3,6 +3,11 @@ export interface PedidoItemModel {
   quantidade: number;
   valorTotal: number;
   id_produto: string;
+  name: string;
+  descricao: string;
+	estoque : number;
+  url? : string;
+  idLoja: string;
 }
 
 export interface PedidoModel {

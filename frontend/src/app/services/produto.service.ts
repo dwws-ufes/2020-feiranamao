@@ -10,7 +10,6 @@ export class ProdutoService {
   isUserLoggedIn: any;
   username: any;
   token: any;
-  produtos: ProdutoModel[] | undefined;
 
   constructor(private crudService: CrudService) { }
 

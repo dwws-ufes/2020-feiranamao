@@ -13,16 +13,29 @@
 
 .item__action {
   position: absolute;
-  right: 0;
   bottom: 0;
   background-color: var(--primary-color-light);
-  border-radius: 10px 0;
+  color: #FFF;
   width: 51.92px;
   height: 54px;
   border: none;
   transition: background-color 150ms ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   &:hover, &:focus {
     background-color: adjust-color($color: #83A603, $lightness: -10%);
+  }
+  span {
+    font-size: 36px;
+  }
+  &.plus{
+    right: 0;
+    border-radius: 10px 0 10px 0;
+  }
+  &.minus{
+    left: 0;
+    border-radius: 0 10px 0 10px;
   }
 }
 
@@ -31,9 +44,11 @@
   background-blend-mode: multiply;
   width: 100%;
   height: 206px;
+  margin: 0 auto;
   img {
     height: 150px;
     width: 150px;
+    object-fit: contain;
   }
 }
 

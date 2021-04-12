@@ -76,6 +76,8 @@ button {
   padding: 10px;
   border-radius: 6px;
   text-align: center;
+  display: flex;
+  align-items: center;
   transition: background-color 0.3s;
   span {
     margin-left: 8px;

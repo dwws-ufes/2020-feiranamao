@@ -13,7 +13,7 @@ import { mergeMap, map } from 'rxjs/operators';
 })
 export class ProdutoComponent implements OnInit {
 
-  produtos: ProdutoModel[] | undefined = [];
+  produtos: ProdutoModel[] = new Array<ProdutoModel>();
   loja: LojaModel | undefined;
 
   constructor(

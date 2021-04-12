@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CarrinhoService } from 'src/app/services/carrinho.service';
 import { ProdutoModel } from 'src/app/viewModel/produtos.view-model';
 
 @Component({
@@ -8,11 +9,19 @@ import { ProdutoModel } from 'src/app/viewModel/produtos.view-model';
 })
 export class ProdutoItemComponent implements OnInit {
 
-  @Input() produto: ProdutoModel|undefined = undefined;
+  @Input() produto!: ProdutoModel;
 
-  constructor() { }
+  constructor(private carrinhoService: CarrinhoService) {
+  }
 
   ngOnInit(): void {
   }
 
+  adicionarAoCarrinho(produto: ProdutoModel) {
+    this.carrinhoService.adicionaItemPedido(produto);
+  }
+
+  removeDoCarrinho(produto: ProdutoModel) {
+    this.carrinhoService.removeItemPedido(produto);
+  }
 }

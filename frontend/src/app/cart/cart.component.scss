@@ -1,0 +1,31 @@
+.title {
+  margin: 5%;
+}
+
+.cart-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 6px 16px;
+
+  div {
+    label {
+      margin-left: 8px;
+    }
+  }
+
+  button {
+    margin: 16px 0;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    transition: background-color 0.3s;
+
+    &:hover {
+      text-decoration: none;
+      background-color: adjust-color($color: #467302, $lightness: -5%);
+    }
+  }
+}
