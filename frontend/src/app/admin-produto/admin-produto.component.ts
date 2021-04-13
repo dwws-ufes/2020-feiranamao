@@ -58,12 +58,10 @@ export class AdminProdutoComponent implements OnInit {
   edit(produto: ProdutoModel) {
     this.produto = { ...produto };
     console.log(this.produto);
-    //this.produto.senha = '';
     this.produto.categoria = produto.categoria
   }
 
   cleanForm(form: NgForm) {
-    //this.getUsuarios();
     form.resetForm();
     this.produto = {} as ProdutoModel;
   }

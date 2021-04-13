@@ -58,10 +58,17 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="Categoria"></label>
+          <label for="Categoria">Categoria</label>
           <select class="form-control" name="idCategoria" [(ngModel)]="produto.categoria">
             <option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.name }}</option>
           </select>
+        </div>
+        <div class="form-group">
+          <label for="custo">Estoque</label>
+          <input type="number" [(ngModel)]="produto.estoque" id="estoque" name="estoque" #estoque="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && estoque.invalid }" placeholder="Digite o estoque">
+          <div *ngIf="f.submitted && estoque.invalid" class="invalid-feedback">
+             <!-- <div *ngIf="estoque.errors.required">username é obrigatório</div>-->
+          </div>
         </div>
         <div class="form-group">
           <label for="custo">Custo</label>

@@ -1,5 +1,7 @@
 package br.com.feiranamao.model;
 import java.io.Serializable;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,7 +28,8 @@ public class Produto implements Serializable {
 		private double preco;
 		private double custo;
 		private int estoque;
-		@ManyToOne
+		
+		@ManyToOne //(cascade = CascadeType.PERSIST)
 		private Categoria categoria;
 		@ManyToOne
 		private Loja loja;

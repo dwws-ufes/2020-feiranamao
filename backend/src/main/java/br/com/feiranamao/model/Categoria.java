@@ -25,10 +25,13 @@ public class Categoria implements Serializable {
 		@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_categoria")
 		@SequenceGenerator(name="seq_categoria", sequenceName = "seq_categoria", initialValue = 1)
 		private long id;
+			
+		@NotNull
+		private String name;
 		
 		@OneToMany(targetEntity =  Produto.class, cascade =CascadeType.ALL)
 		@JoinColumn(name="categoria", referencedColumnName = "id")
-	    private Set<Produto> Produto;
+	    private Set<Produto>produto;
 
 		public long getId() {
 			return id;
@@ -46,6 +49,6 @@ public class Categoria implements Serializable {
 			this.name = name;
 		}
 
-		private String name;
+		
 	
 }

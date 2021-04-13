@@ -2,6 +2,7 @@ package br.com.feiranamao.resources;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import br.com.feiranamao.model.Produto;
+import br.com.feiranamao.model.Usuario;
 import br.com.feiranamao.repository.ProdutosRepository;
+import br.com.feiranamao.repository.LojasRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -24,6 +27,9 @@ public class ProdutoRecurso  {
 
 	@Autowired
 	ProdutosRepository produtosRepository;
+	
+	@Autowired
+	LojasRepository lojaRepository;
 	
 	@ApiOperation(value=" Retorna Lista de Produtos")
 	@GetMapping("/produtos")
@@ -39,7 +45,12 @@ public class ProdutoRecurso  {
 	
     @ApiOperation(value=" Salvar Produto")
 	@PostMapping("/produto")
-	public Produto salvarProduto(@RequestBody Produto produto) throws Exception {
+	public Produto salvarProduto(@RequestBody Produto produto, @AuthenticationPrincipal final Usuario user) throws Exception {
+    	
+//    	System.out.println(lojaRepository.findByUsuario(user).getNome());
+    	
+    	produto.setIdLoja(lojaRepository.findByUsuario(user));
+    	
 		return produtosRepository.save(produto);
 	}
 	
@@ -52,7 +63,12 @@ public class ProdutoRecurso  {
 	
     @ApiOperation(value="Atualizar Produto")
 	@PutMapping("/produto")
-	public Produto updatePoints(@RequestBody Produto produto) {
+	public Produto updatePoints(@RequestBody Produto produto, @AuthenticationPrincipal final Usuario user) throws Exception {
+    	
+//    	System.out.println(lojaRepository.findByUsuario(user).getNome());
+    	
+    	produto.setIdLoja(lojaRepository.findByUsuario(user));
+    	
 		return produtosRepository.save(produto);
 	}
     
