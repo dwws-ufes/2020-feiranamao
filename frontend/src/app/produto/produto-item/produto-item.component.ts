@@ -10,22 +10,26 @@ import { ProdutoModel } from 'src/app/viewModel/produtos.view-model';
 export class ProdutoItemComponent implements OnInit {
 
   @Input() produto!: ProdutoModel;
+  contador: number = 0;
 
   constructor(private carrinhoService: CarrinhoService) {
   }
 
   ngOnInit(): void {
+    this.contador = this.carrinhoService.quantidadeItem(this.produto.id);
   }
 
   adicionarAoCarrinho(produto: ProdutoModel) {
     this.carrinhoService.adicionaItemPedido(produto);
+    this.contador = this.carrinhoService.quantidadeItem(produto.id);
   }
 
   removeDoCarrinho(produto: ProdutoModel) {
     this.carrinhoService.removeItemPedido(produto);
+    this.contador = this.carrinhoService.quantidadeItem(produto.id);
   }
 
   existeNoCarrinho(produto: ProdutoModel){
-    return this.carrinhoService.existeItem(produto);
+    return this.carrinhoService.quantidadeItem(produto.id) > 0;
   }
 }

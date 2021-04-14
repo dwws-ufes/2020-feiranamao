@@ -5,6 +5,7 @@ import { ProdutoService } from '../services/produto.service';
 import { ActivatedRoute } from '@angular/router';
 import { LojaModel } from '../viewModel/loja.view-model';
 import { mergeMap, map } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'f-produto',
@@ -18,7 +19,8 @@ export class ProdutoComponent implements OnInit {
 
   constructor(
     private produtoService: ProdutoService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -41,5 +43,11 @@ export class ProdutoComponent implements OnInit {
   }
   deleteProduto(produto: ProdutoModel) {
     //return null;
-}
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
 }

@@ -23,7 +23,7 @@ export class AdminProdutoComponent implements OnInit {
   }
 
   save(form: NgForm) {
-
+    console.log(form);
     if (this.produto.id !== undefined) {
       this.produtoService.updateProduto(this.produto).subscribe(() => {
         this.cleanForm(form);

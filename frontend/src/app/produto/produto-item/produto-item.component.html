@@ -13,6 +13,7 @@
   <div class="bottom">
     <p class="description">{{produto?.descricao}}</p>
   </div>
+  <span class="count" *ngIf="existeNoCarrinho(produto)" >{{contador}}</span>
   <button class="item__action plus" (click)="adicionarAoCarrinho(produto)" >
     <span class="material-icons">add</span>
   </button>

@@ -59,8 +59,8 @@
         </div>
         <div class="form-group">
           <label for="Categoria">Categoria</label>
-          <select class="form-control" name="idCategoria" [(ngModel)]="produto.categoria">
-            <option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.name }}</option>
+          <select class="form-control" name="idCategoria" [(ngModel)]="produto.categoria" #categoria="ngModel" >
+            <option *ngFor="let categoria of categorias" [value]="categoria.id" [selected]='produto?.categoria?.id === categoria.id' >{{ categoria.name }}</option>
           </select>
         </div>
         <div class="form-group">

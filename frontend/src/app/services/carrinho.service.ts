@@ -4,13 +4,18 @@ import { HttpClient } from '@angular/common/http';
 import { ProdutoModel } from '../viewModel/produtos.view-model';
 import { PedidoItemModel, PedidoModel } from '../viewModel/pedido.view-model'
 import { CrudService } from './crud.service';
+import { Router } from '@angular/router';
 
 @Injectable({providedIn: 'root'})
 export class CarrinhoService {
 
   produtos = new Array<PedidoItemModel>();
 
-  constructor(private httpClient: HttpClient, private crudService: CrudService) { }
+  constructor(
+    private httpClient: HttpClient,
+    private crudService: CrudService,
+    private router: Router
+  ) { }
 
   resetCarrinho(): void {
     this.produtos = new Array();
@@ -66,10 +71,9 @@ export class CarrinhoService {
     console.log(this.produtos)
   }
 
-  existeItem(produto: ProdutoModel): number | undefined {
-    const { id } = produto;
-    const produtoExiste = this.produtos.find(produtoExistente => produtoExistente.id_produto === id);
-    return produtoExiste?.quantidade
+  quantidadeItem(produtoId: string): number {
+    const produtoExiste = this.produtos.find(produtoExistente => produtoExistente.id_produto === produtoId);
+    return produtoExiste ? produtoExiste.quantidade : 0
   }
 
   enviarPedido(obs: string): boolean {
@@ -80,6 +84,7 @@ export class CarrinhoService {
     }
     this.crudService.postGenerico<any>('pedido', pedido).subscribe((res) => console.log(res) );
     console.log("Enviou pedido!")
+    this.router.navigate(['page-success']);
     return true;
   }
 }
