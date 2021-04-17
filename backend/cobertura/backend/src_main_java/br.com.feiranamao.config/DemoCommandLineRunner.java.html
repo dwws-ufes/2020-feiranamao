@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>DemoCommandLineRunner.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">FeiraNaMaoTest (17/04/2021 16:37:53)</a> &gt; <a href="../../index.html" class="el_group">backend</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">br.com.feiranamao.config</a> &gt; <span class="el_source">DemoCommandLineRunner.java</span></div><h1>DemoCommandLineRunner.java</h1><pre class="source lang-java linenums">package br.com.feiranamao.config;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
+
+import br.com.feiranamao.model.Categoria;
+import br.com.feiranamao.model.Loja;
+import br.com.feiranamao.model.Produto;
+import br.com.feiranamao.model.Usuario;
+import br.com.feiranamao.repository.CategoriasRepository;
+import br.com.feiranamao.repository.LojasRepository;
+import br.com.feiranamao.repository.ProdutosRepository;
+import br.com.feiranamao.repository.UsuarioRepository;
+
+@Component
+<span class="nc" id="L20">class DemoCommandLineRunner implements CommandLineRunner{</span>
+
+	@Autowired
+	private UsuarioRepository userRepository;
+	
+	@Autowired
+	private CategoriasRepository catRepository;
+	
+	@Autowired
+	private LojasRepository lojaRepository;
+	
+	@Autowired
+	private ProdutosRepository produtoRepository;
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
+	@Override
+	public void run(String... args) throws Exception {
+
+<span class="nc" id="L40">		Optional&lt;Usuario&gt; old= userRepository.findByLogin(&quot;application-user&quot;);</span>
+
+<span class="nc bnc" id="L42" title="All 2 branches missed.">		if(old.isEmpty()) {</span>
+<span class="nc" id="L43">			Usuario user = new Usuario();</span>
+<span class="nc" id="L44">			user.setLogin(&quot;application-user&quot;);</span>
+<span class="nc" id="L45">			user.setNome(&quot;SuperAdmin&quot;);</span>
+<span class="nc" id="L46">			user.setSenha(passwordEncoder.encode(&quot;password&quot;));</span>
+<span class="nc" id="L47">			userRepository.save(user);</span>
+						
+<span class="nc" id="L49">			Categoria catFolha = new Categoria();</span>
+<span class="nc" id="L50">			catFolha.setName(&quot;Folha&quot;);</span>
+<span class="nc" id="L51">			catRepository.save(catFolha);</span>
+			
+<span class="nc" id="L53">			Categoria catLegume = new Categoria();</span>
+<span class="nc" id="L54">			catLegume.setName(&quot;Legume&quot;);</span>
+<span class="nc" id="L55">			catRepository.save(catLegume);</span>
+			
+<span class="nc" id="L57">			Categoria catFruta = new Categoria();</span>
+<span class="nc" id="L58">			catFruta.setName(&quot;Fruta&quot;);</span>
+<span class="nc" id="L59">			catRepository.save(catFruta);</span>
+			
+<span class="nc" id="L61">			Categoria catGrao = new Categoria();</span>
+<span class="nc" id="L62">			catGrao.setName(&quot;Grão&quot;);</span>
+<span class="nc" id="L63">			catRepository.save(catGrao);</span>
+			
+<span class="nc" id="L65">			Categoria catRaiz = new Categoria();</span>
+<span class="nc" id="L66">			catRaiz.setName(&quot;Raiz&quot;);</span>
+<span class="nc" id="L67">			catRepository.save(catRaiz);</span>
+			
+<span class="nc" id="L69">			Categoria catOutros = new Categoria();</span>
+<span class="nc" id="L70">			catOutros.setName(&quot;Outros&quot;);</span>
+<span class="nc" id="L71">			catRepository.save(catOutros);</span>
+			/*
+			
+			/////////////////////////
+			user = new Usuario();
+			user.setLogin(&quot;jose&quot;);
+			user.setNome(&quot;José da Silva&quot;);
+			user.setSenha(passwordEncoder.encode(&quot;jose&quot;));
+			user.setDono(true);
+			userRepository.save(user);			
+
+				Loja loja = new Loja();
+				loja.setNome(&quot;Barraca do José&quot;); 
+				loja.setLogo(&quot;https://i.mgfserv.com/360x270/aHR0cDovL2ltZy5vbHguY29tLmJyL2ltYWdlcy8wNy8wNzE2MjUwMjk1MzQwMTcuanBn.jpg&quot;);
+				loja.setUsuario(user);
+				lojaRepository.save(loja);
+				
+//				Produto produto = new Produto();
+//				produto.setName(&quot;Táioba&quot;);
+//				produto.setUrl(&quot;https://lh3.googleusercontent.com/proxy/4Dz-MTwXwQWwnfiChe4SnJPNr8yQWV20xlUcZC6yx8oZMamY5EGRpSs4HX_hn0jv3qsPIYfHXZ4Yt5JVfE1UqzhoEQiR8GqXszJyi2mjxxTFhWWmO4c_JA4ks7xPi71Uf_UNy-b3W1oWW74&quot;);
+//				produto.setDescricao(&quot;Plantação própria e derrete na doca.&quot;);
+//				produto.setCategoria(catFolha);
+//				produto.setEstoque(50);
+//				produto.setCusto((float)0.2);
+//				produto.setPreco(1);
+				
+			
+			user = new Usuario();
+			user.setLogin(&quot;ermina&quot;);
+			user.setNome(&quot;Ermina&quot;);
+			user.setSenha(passwordEncoder.encode(&quot;ermina&quot;));
+			user.setDono(true);
+			userRepository.save(user);
+
+				loja = new Loja();
+				loja.setNome(&quot;Banca da Melancia&quot;); 
+				loja.setLogo(&quot;https://midia.gruposinos.com.br/_midias/jpg/2020/01/03/whatsapp_image_2020_01_03_at_09_54_11-18755245.jpeg&quot;);
+				loja.setUsuario(user);
+				lojaRepository.save(loja);
+			
+			user = new Usuario();
+			user.setLogin(&quot;joao&quot;);
+			user.setNome(&quot;João Santos&quot;);
+			user.setSenha(passwordEncoder.encode(&quot;joao&quot;));
+			user.setDono(true);
+			userRepository.save(user);
+			
+			user = new Usuario();
+			user.setLogin(&quot;maria&quot;);
+			user.setNome(&quot;Maria da Penha&quot;);
+			user.setSenha(passwordEncoder.encode(&quot;maria&quot;));
+			user.setDono(true);
+			userRepository.save(user);
+			
+			user = new Usuario();
+			user.setLogin(&quot;frederico&quot;);
+			user.setNome(&quot;Frederico Cunha&quot;);
+			user.setSenha(passwordEncoder.encode(&quot;frederico&quot;));
+			user.setDono(false);
+			userRepository.save(user);
+			*/
+			
+			
+		}
+<span class="nc" id="L135">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span>FeiraNaMaoTest (17/04/2021 16:37:53)</div></body></html>

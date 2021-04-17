@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>SecurityConfig.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">FeiraNaMaoTest (17/04/2021 16:37:53)</a> &gt; <a href="../../index.html" class="el_group">backend</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">br.com.feiranamao.config</a> &gt; <span class="el_source">SecurityConfig.java</span></div><h1>SecurityConfig.java</h1><pre class="source lang-java linenums">package br.com.feiranamao.config;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
+
+@Configuration
+@EnableWebSecurity
+@EnableAuthorizationServer
+@EnableResourceServer
+<span class="nc" id="L23">public class SecurityConfig extends WebSecurityConfigurerAdapter {</span>
+	
+	 @Autowired
+	    private UserDetailsService userDetailsService;
+
+	    @Autowired
+	    private PasswordEncoder passwordEncoder;
+	    
+	@Bean
+	@Override
+	protected AuthenticationManager authenticationManager() throws Exception {
+		// TODO Auto-generated method stub
+<span class="nc" id="L35">		return super.authenticationManager();</span>
+	}
+	
+ /* @Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		// TODO Auto-generated method stub
+		auth.inMemoryAuthentication()
+		.withUser(&quot;feiraadmin&quot;)
+		.password(&quot;feiraadmin&quot;)
+		.roles(&quot;ADMIN&quot;);
+	}*/
+  
+  @Override
+  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+<span class="nc" id="L49">      auth.authenticationProvider(authenticationProvider());</span>
+<span class="nc" id="L50">  }</span>
+  
+  @Bean
+  public DaoAuthenticationProvider authenticationProvider(){
+<span class="nc" id="L54">      DaoAuthenticationProvider provider = new DaoAuthenticationProvider();</span>
+<span class="nc" id="L55">      provider.setPasswordEncoder(passwordEncoder);</span>
+<span class="nc" id="L56">      provider.setUserDetailsService(userDetailsService);</span>
+<span class="nc" id="L57">      return provider;</span>
+  }
+	
+	 @Override
+	public void configure(HttpSecurity http) throws Exception {
+ 
+<span class="nc" id="L63">		  http.authorizeRequests()</span>
+<span class="nc" id="L64">	        .antMatchers(</span>
+<span class="nc" id="L65">	        		 &quot;swagger.json&quot;</span>
+<span class="nc" id="L66">            		,&quot;/login&quot;</span>
+<span class="nc" id="L67">	         		,&quot;/ide/**&quot;</span>
+<span class="nc" id="L68">  	        		,&quot;/v2/&quot;</span>
+<span class="nc" id="L69">  	        		,&quot;/v2/**&quot;</span>
+<span class="nc" id="L70">            		, &quot;/resources/**&quot;</span>
+<span class="nc" id="L71">            		,&quot;/webjars/**&quot;, &quot;/swagger/**&quot;</span>
+<span class="nc" id="L72">            		,&quot;/css/**&quot;</span>
+<span class="nc" id="L73">            		,&quot;/configuration/**&quot;</span>
+<span class="nc" id="L74">            		,&quot;/swagger-resources/**&quot;</span>
+<span class="nc" id="L75">            		, &quot;/v2/api-docs&quot;</span>
+<span class="nc" id="L76">  	        		,&quot;/swagger/**&quot;</span>
+<span class="nc" id="L77">  	        		,&quot;/v3/**&quot;</span>
+<span class="nc" id="L78">  	        		,&quot;/v2/api-docs/**&quot;</span>
+<span class="nc" id="L79">  	        		,&quot;/api-docs/&quot;</span>
+<span class="nc" id="L80">  	        		,&quot;/api-docs/**&quot;</span>
+<span class="nc" id="L81">  	        		,&quot;/v3/api-docs&quot;</span>
+<span class="nc" id="L82">  	        		,&quot;/v3/api-docs/**&quot; </span>
+<span class="nc" id="L83">  	        		,&quot;/configuration/ui&quot;</span>
+<span class="nc" id="L84">  	        		,&quot;/swagger-resources&quot;</span>
+<span class="nc" id="L85">  	        		,&quot;/configuration/security&quot;</span>
+<span class="nc" id="L86">  	        		,&quot;/swagger-ui.html&quot;</span>
+<span class="nc" id="L87">  	        		,&quot;/webjars/**&quot;</span>
+<span class="nc" id="L88">  	        		,&quot;/swagger-resources/configuration/ui&quot; </span>
+<span class="nc" id="L89">  	        		,&quot;/swagger-ui.html&quot;</span>
+<span class="nc" id="L90">  	        		,&quot;/swagger-resources/configuration/security&quot;</span>
+<span class="nc" id="L91">  	        		,&quot;/swagger-ui/**&quot;</span>
+<span class="nc" id="L92">  	        		,&quot;/error/**&quot;</span>
+<span class="nc" id="L93">  	        		,&quot;/v2/api-docs/.yaml&quot;</span>
+<span class="nc" id="L94">  	        		,&quot;/v2/api-docs/swagger-config&quot;</span>
+<span class="nc" id="L95">  	        		,&quot;/participant/**&quot;</span>
+<span class="nc" id="L96">  	        		,&quot;/swagger-ui/&quot;</span>
+<span class="nc" id="L97">  	        		,&quot;/swagger-ui/**&quot;</span>
+<span class="nc" id="L98">  	        		,&quot;/swagger-ui&quot;).permitAll()</span>
+<span class="nc" id="L99">	        .antMatchers(&quot;/admin/**&quot;).hasRole(&quot;ADMIN&quot;)</span>
+<span class="nc" id="L100">	        .antMatchers(&quot;/**&quot;,&quot;/produtos/**&quot;,&quot;/produtos&quot;).hasAnyRole(&quot;ADMIN&quot;, &quot;USER&quot;)</span>
+<span class="nc" id="L101">	        .and().formLogin()</span>
+<span class="nc" id="L102">	        .and().logout().logoutSuccessUrl(&quot;/login&quot;).permitAll()</span>
+<span class="nc" id="L103">	        .and().csrf().disable();</span>
+			
+<span class="nc" id="L105">	  }</span>
+	  
+	//  @Override
+      public void configure(WebSecurity web) throws Exception {
+<span class="nc" id="L109">              web.ignoring()</span>
+              // Spring Security should completely ignore URLs starting with /resources/
+<span class="nc" id="L111">                              .antMatchers(</span>
+<span class="nc" id="L112">                            		&quot;swagger.json&quot;</span>
+<span class="nc" id="L113">                            		,&quot;/login&quot;</span>
+<span class="nc" id="L114">                	         		,&quot;/ide/**&quot;</span>
+<span class="nc" id="L115">                  	        		,&quot;/v2/&quot;</span>
+<span class="nc" id="L116">                  	        		,&quot;/v2/**&quot;</span>
+<span class="nc" id="L117">                            		, &quot;/resources/**&quot;</span>
+<span class="nc" id="L118">                            		,&quot;/webjars/**&quot;, &quot;/swagger/**&quot;</span>
+<span class="nc" id="L119">                            		,&quot;/css/**&quot;</span>
+<span class="nc" id="L120">                            		,&quot;/configuration/**&quot;</span>
+<span class="nc" id="L121">                            		,&quot;/swagger-resources/**&quot;</span>
+<span class="nc" id="L122">                            		, &quot;/v2/api-docs&quot;</span>
+<span class="nc" id="L123">                  	        		,&quot;/swagger/**&quot;</span>
+<span class="nc" id="L124">                  	        		,&quot;/v3/**&quot;</span>
+<span class="nc" id="L125">                  	        		,&quot;/v2/api-docs/**&quot;</span>
+<span class="nc" id="L126">                  	        		,&quot;/api-docs/&quot;</span>
+<span class="nc" id="L127">                  	        		,&quot;/api-docs/**&quot;</span>
+<span class="nc" id="L128">                  	        		,&quot;/v3/api-docs&quot;</span>
+<span class="nc" id="L129">                  	        		,&quot;/v3/api-docs/**&quot; </span>
+<span class="nc" id="L130">                  	        		,&quot;/configuration/ui&quot;</span>
+<span class="nc" id="L131">                  	        		,&quot;/swagger-resources&quot;</span>
+<span class="nc" id="L132">                  	        		,&quot;/configuration/security&quot;</span>
+<span class="nc" id="L133">                  	        		,&quot;/swagger-ui.html&quot;</span>
+<span class="nc" id="L134">                  	        		,&quot;/webjars/**&quot;</span>
+<span class="nc" id="L135">                  	        		,&quot;/swagger-resources/configuration/ui&quot; </span>
+<span class="nc" id="L136">                  	        		,&quot;/swagger-ui.html&quot;</span>
+<span class="nc" id="L137">                  	        		,&quot;/swagger-resources/configuration/security&quot;</span>
+<span class="nc" id="L138">                  	        		,&quot;/swagger-ui/**&quot;</span>
+<span class="nc" id="L139">                  	        		,&quot;/error/**&quot;</span>
+<span class="nc" id="L140">                  	        		,&quot;/v2/api-docs/.yaml&quot;</span>
+<span class="nc" id="L141">                  	        		,&quot;/v2/api-docs/swagger-config&quot;</span>
+<span class="nc" id="L142">                  	        		,&quot;/participant/**&quot;</span>
+<span class="nc" id="L143">                  	        		,&quot;/swagger-ui/&quot;</span>
+<span class="nc" id="L144">                  	        		,&quot;/swagger-ui/**&quot;</span>
+<span class="nc" id="L145">                  	        		,&quot;/swagger-ui&quot;);</span>
+<span class="nc" id="L146">      }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span>FeiraNaMaoTest (17/04/2021 16:37:53)</div></body></html>
