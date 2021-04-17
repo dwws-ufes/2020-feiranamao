@@ -41,7 +41,6 @@ export class CrudService {
     this.loadHeaders();
 
     let url = `${environment.URL_API}/${endpoint}`;
-    console.log("Pedido feito em:", endpoint, body)
     return this.http.post<T>(
       url,
       JSON.stringify(body),

@@ -1,4 +1,4 @@
-<h1 class="title">Meu carrinho</h1>
+<h1 class="title">Revisar Pedido</h1>
 
 <div class="container">
   <div>
@@ -29,11 +29,11 @@
       <form (ngSubmit)="enviarPedido(descricao)" class="cart-form">
         <div class="form-group">
           <label for="description">Observações</label>
-          <input name="description" id="description" type="text"
-            [(ngModel)]="descricao" class="form-control">
+          <textarea name="description" id="description" type="text"
+            [(ngModel)]="descricao" class="form-control" rows="2"></textarea>
         </div>
 
-        <button type="submit">Fazer pedido</button>
+        <button type="submit">Concluir</button>
       </form>
     </ng-container>
 

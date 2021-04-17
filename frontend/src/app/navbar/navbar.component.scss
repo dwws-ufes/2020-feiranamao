@@ -70,23 +70,3 @@ button {
   }
 }
 
-.cart-button {
-  width: max-content;
-  margin: 0 auto;
-  background-color: var(--primary-color);
-  color: #fff;
-  padding: 10px 16px;
-  border-radius: 6px;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  transition: background-color 0.3s;
-  span:last-child {
-    margin-left: 8px;
-  }
-  &:hover {
-    text-decoration: none;
-    background-color: adjust-color($color: #467302, $lightness: -5%);
-  }
-
-}

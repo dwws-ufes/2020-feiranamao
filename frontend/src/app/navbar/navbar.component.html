@@ -9,10 +9,6 @@
       <li><a [routerLink]="['admin-loja']" *ngIf="ehDono">Minha loja</a></li>
       <li><a [routerLink]="['admin-produto']" *ngIf="ehDono">Meus produtos</a></li>
     </ul>
-    <a  [routerLink]="['page-cart']" type="button" class="cart-button">
-      <span class="material-icons">shopping_cart</span>
-      <span>Carrinho</span>
-    </a>
   </div>
   <div class="logout">
     <button class="danger" (click)="logout()">

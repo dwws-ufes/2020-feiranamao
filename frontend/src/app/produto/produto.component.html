@@ -1,6 +1,11 @@
-<h1>{{loja?.nome}}</h1>
-
-<div class="container">
+<div style="padding: 20px;">
+  <h1>{{loja?.nome}}</h1>
+  <a (click)="fecharPedido()" type="button" class="cart-button" style="float: right;margin-right: 50px;color:white;">
+    <span class="material-icons">shopping_cart</span>
+    <span >Finalizar pedido</span>
+  </a>
+</div>
+<div class="container" style="">
   <div class="list">
     <ng-container *ngIf="produtos.length; else notFoundProdutos">
       <ng-container *ngFor="let produto of produtos">

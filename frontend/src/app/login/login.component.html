@@ -1,7 +1,9 @@
 <div class="d-flex justify-content-center align-items-center min-height-100 h-100">
   <div class="auth-container">
     <div class="loginPanel m-5 p-7">
-      <h3 class="gwt-Label title3 loginTitle"><p>login é necessário!</p></h3>
+      <h3 class="gwt-Label title3 loginTitle"><p>
+        <img _ngcontent-jdi-c75="" src="/assets/images/logo.svg" alt="logo da Feira na Mão">
+      </p></h3>
       <form [formGroup]="formLogin">
         <fieldset class="form-group">
           <label class="ajust-text">Usuario</label>
@@ -26,8 +28,8 @@
             ERRO
                </div>
         </fieldset>
-        <div class="d-flex justify-content-rigth">
-          <button class="gwt-Button loginEnterBtn" (click)="validLogin()" color="primary">Entrar</button>
+        <div class="d-flex justify-content-rigth" style="padding-top: 15px;">
+          <button class="cart-button" (click)="validLogin()" color="primary">Entrar</button>
           <!-- <button class="btn ajust-buttom-login" type="button" (click)="validLogin()">Entrar</button> -->
         </div>
       </form>

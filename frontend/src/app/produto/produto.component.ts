@@ -3,6 +3,7 @@ import { AccountService } from '../services/account.service';
 import { ProdutoModel } from '../viewModel/produtos.view-model';
 import { ProdutoService } from '../services/produto.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { LojaModel } from '../viewModel/loja.view-model';
 import { mergeMap, map } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -20,6 +21,7 @@ export class ProdutoComponent implements OnInit {
   constructor(
     private produtoService: ProdutoService,
     private route: ActivatedRoute,
+    private router: Router,
     private _snackBar: MatSnackBar
   ) { }
 
@@ -37,6 +39,9 @@ export class ProdutoComponent implements OnInit {
       })
     ).subscribe();
 
+  }
+  fecharPedido(){
+    this.router.navigate(['/page-cart']);
   }
   editProduto(produto: ProdutoModel) {
     //return null;
