@@ -42,8 +42,6 @@ private UsuarioRepository usuariosRepostory;
 @Autowired
 private LojasRepository lojasRepostory;
 
-
-
 @Rule
 public ExpectedException thrown = ExpectedException.none();
 
