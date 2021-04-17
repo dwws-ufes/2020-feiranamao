@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountService } from '../services/account.service';
+import { UsuarioService } from '../services/usuario.service';
+import { UsuarioModel } from '../viewModel/usuario.view-model';
 
 @Component({
   selector: 'f-navbar',
@@ -10,14 +12,21 @@ import { AccountService } from '../services/account.service';
 export class NavbarComponent implements OnInit {
 
   ehDono: boolean = false;
+  ehAdmin: boolean = false;
 
   constructor(
     private router: Router,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private usuarioService: UsuarioService
   ) { }
 
   ngOnInit(): void {
-    // this.ehDono = this.accountService.dono;
+    this.usuarioService.getUsuario()
+    .subscribe((r: UsuarioModel) => {
+      console.log(r)
+      this.ehAdmin = r.login === "application-user";
+      this.ehDono = r.dono;
+    });
   }
 
   logout() {

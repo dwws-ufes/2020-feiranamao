@@ -21,9 +21,8 @@
               <td>***</td>
               <td><span *ngIf="usuario.dono">Sim</span></td>
               <td>
-               <button type="button" class="btn btn-warning btn-sm" (click)="editUsuario(usuario)">Editar</button>
-                <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteUsuario(usuario)">Deletar</button>
-
+                <button type="button" class="btn btn-warning btn-sm" (click)="editUsuario(usuario)">Editar</button>
+                <button type="button" class="btn btn-danger btn-sm ml-1" *ngIf="usuario.login !== 'application-user'" (click)="deleteUsuario(usuario)">Deletar</button>
             </td>
           </tr>
         </tbody>
@@ -62,8 +61,8 @@
           <label class="form-check-label" for="dono">Dono de loja</label>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-add-car">Salvar</button>
-        <button type="reset" class="btn btn-secondary btn-add-car" (click)="cleanForm(f)">Cancelar</button>
+        <button type="submit" class="btn btn-primary" style="margin-right: 10px;">Salvar</button>
+        <button type="reset" class="btn btn-secondary" (click)="cleanForm(f)">Cancelar</button>
       </form>
   </div>
 </div>

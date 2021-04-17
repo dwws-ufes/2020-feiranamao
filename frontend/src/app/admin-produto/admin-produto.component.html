@@ -43,12 +43,16 @@
         </div>
         <div class="form-group">
           <label for="urlImagem">Foto</label>
-          <input type="text" [(ngModel)]="produto.url" id="urlImagem" name="urlImagem" #urlImagem="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && urlImagem.invalid }" placeholder="Informe a URL da urlImagem">
+          <div [hidden]="!produto.url" style="min-height: 100px;">
+            <img [src]="produto.url" width="150" />
+          </div>
+          <div>
+            <button type="button" class="btn btn-secondary" (click)="editImg = !editImg">Editar Foto</button>
+            <input [hidden]="!editImg" type="text" [(ngModel)]="produto.url" id="urlImagem" name="urlImagem" #urlImagem="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && urlImagem.invalid }" placeholder="Informe a URL da urlImagem">
+          </div>
           <div *ngIf="f.submitted && urlImagem.invalid" class="invalid-feedback">
           </div>
-          <div style="min-height: 100px;">
-            <img [src]="produto.url" width="60" />
-          </div>
+
         </div>
         <div class="form-group">
           <label for="descricao">Descricao</label>
@@ -84,8 +88,8 @@
              <!-- <div *ngIf="preco.errors.required">username é obrigatório</div>-->
           </div>
         </div>
-        <button type="submit" class="btn btn-primary btn-add-car">Salvar</button>
-        <button type="reset" class="btn btn-secondary btn-add-car" (click)="cleanForm(f)">Cancelar</button>
+        <button type="submit" class="btn btn-primary" style="margin-right: 10px;">Salvar</button>
+        <button type="reset" class="btn btn-secondary" (click)="cleanForm(f)">Cancelar</button>
       </form>
   </div>
 </div>

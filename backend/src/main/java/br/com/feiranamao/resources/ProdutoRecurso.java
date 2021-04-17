@@ -33,15 +33,15 @@ public class ProdutoRecurso  {
 	
 	@ApiOperation(value=" Retorna Lista de Produtos")
 	@GetMapping("/produtos")
-	public List<Produto> listaProdutos(){		
-		return produtosRepository.findAll();
+	public List<Produto> listaProdutos(@AuthenticationPrincipal final Usuario user){		
+		return produtosRepository.findByLoja(lojaRepository.findByUsuario(user));
 	}
 	
 	@ApiOperation(value="Procurar produtos por nome")
     @RequestMapping(value = "produtos/{nome}", method = RequestMethod.GET)
 	public List<Produto> findByName(@PathVariable(value = "nome") String nome) {
 		return produtosRepository.findByName(nome);
-	}
+	} 
 	
     @ApiOperation(value=" Salvar Produto")
 	@PostMapping("/produto")

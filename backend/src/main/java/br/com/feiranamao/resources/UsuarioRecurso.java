@@ -42,9 +42,9 @@ public class UsuarioRecurso  {
 
 	@ApiOperation(value=" Retorna Usuario logado")
 	@GetMapping("/usuario")
-  public Usuario getUsuarioAtual(@AuthenticationPrincipal final Usuario user) throws Exception {
-	  return user;
-  }
+	public Usuario getUsuarioAtual(@AuthenticationPrincipal final Usuario user) throws Exception {
+		return user;
+	}
 
 
     @ApiOperation(value="Procurar usuarios por nome")

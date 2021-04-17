@@ -15,6 +15,8 @@ export class AdminProdutoComponent implements OnInit {
   produto = {} as ProdutoModel;
   categorias = [{id: 1, name: "Folha"}, {id: 2, name: "Legume"}]
 
+  editImg = false;
+
   constructor(private produtoService: ProdutoService) { }
 
   ngOnInit(): void {

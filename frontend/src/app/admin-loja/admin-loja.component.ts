@@ -16,6 +16,8 @@ export class AdminLojaComponent implements OnInit {
     logo: "",
   } as LojaModel;
 
+  editImg = false;
+
   constructor(
     private lojaService: LojaService,
   ) { }

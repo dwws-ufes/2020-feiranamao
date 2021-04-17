@@ -12,6 +12,10 @@ export class UsuarioService {
 
   constructor(private crudService: CrudService) { }
 
+  getUsuario() {
+    return this.crudService.getGenerico<UsuarioModel>('usuario');
+  }
+
   getUsuarios() {
     return this.crudService.getGenerico<UsuarioModel[]>('usuarios');
   }

@@ -48,8 +48,7 @@ export class LoginComponent implements OnInit {
 
     this.accountService.authenticationService(this.formLogin.value.login, this.formLogin.value.senha)
     .subscribe((response: any) => {
-
-      this.router.navigate(['/perfil']);
+      this.router.navigate(['/page-lojas']);
     });
   }
 }
