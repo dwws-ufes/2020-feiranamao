@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>Produto.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">FeiraNaMaoTest (17/04/2021 16:37:53)</a> &gt; <a href="../../index.html" class="el_group">backend</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">br.com.feiranamao.model</a> &gt; <span class="el_source">Produto.java</span></div><h1>Produto.java</h1><pre class="source lang-java linenums">package br.com.feiranamao.model;
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name=&quot;PRODUTO&quot;)
+public class Produto implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	
+		@Id 
+		@NotNull
+		@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = &quot;seq_produto&quot;)
+		@SequenceGenerator(name=&quot;seq_produto&quot;, sequenceName = &quot;seq_produto&quot;, initialValue = 1)
+		private long id;
+
+		private String name;
+		private String descricao;
+		private double preco;
+		private double custo;
+		private int estoque;
+		
+		@ManyToOne //(cascade = CascadeType.PERSIST)
+		private Categoria categoria;
+		@ManyToOne
+		private Loja loja;
+		private String urlImagem;
+		private String unidadeVenda;
+<span class="fc" id="L38">		public Produto(){</span>
+<span class="fc" id="L39">		}</span>
+
+		public long getId() {
+<span class="fc" id="L42">			return id;</span>
+		}
+
+		public void setId(long id) {
+<span class="nc" id="L46">			this.id = id;</span>
+<span class="nc" id="L47">		}</span>
+
+		public String getName() {
+<span class="nc" id="L50">			return name;</span>
+		}
+
+		public void setName(String name) {
+<span class="nc" id="L54">			this.name = name;</span>
+<span class="nc" id="L55">		}</span>
+
+		public String getDescricao() {
+<span class="nc" id="L58">			return descricao;</span>
+		}
+
+		public void setDescricao(String descricao) {
+<span class="fc" id="L62">			this.descricao = descricao;</span>
+<span class="fc" id="L63">		}</span>
+
+		public double getPreco() {
+<span class="nc" id="L66">			return preco;</span>
+		}
+
+		public void setPreco(float preco) {
+<span class="nc" id="L70">			this.preco = preco;</span>
+<span class="nc" id="L71">		}</span>
+
+		public double getCusto() {
+<span class="nc" id="L74">			return custo;</span>
+		}
+
+		public void setCusto(float custo) {
+<span class="fc" id="L78">			this.custo = custo;</span>
+<span class="fc" id="L79">		}</span>
+
+		public int getEstoque() {
+<span class="nc" id="L82">			return estoque;</span>
+		}
+
+		public void setEstoque(int estoque) {
+<span class="fc" id="L86">			this.estoque = estoque;</span>
+<span class="fc" id="L87">		}</span>
+
+		public Loja getIdLoja() {
+<span class="nc" id="L90">			return loja;</span>
+		}
+
+		public void setIdLoja(Loja loja) {
+<span class="nc" id="L94">			this.loja = loja;</span>
+<span class="nc" id="L95">		}</span>
+		
+		public Categoria getCategoria() {
+<span class="nc" id="L98">			return categoria;</span>
+		}
+
+		public void setCategoria(Categoria categoria) {
+<span class="fc" id="L102">			this.categoria = categoria;</span>
+<span class="fc" id="L103">		}</span>
+
+		public String getUrl() {
+<span class="nc" id="L106">			return urlImagem;</span>
+		}
+
+		public void setUrl(String urlImagem) {
+<span class="fc" id="L110">			this.urlImagem = urlImagem;</span>
+<span class="fc" id="L111">		}</span>
+
+		public String getUnidadeVenda() {
+<span class="nc" id="L114">			return unidadeVenda;</span>
+		}
+
+		public void setUnidadeVenda(String unidadeVenda) {
+<span class="fc" id="L118">			this.unidadeVenda = unidadeVenda;</span>
+<span class="fc" id="L119">		}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span>FeiraNaMaoTest (17/04/2021 16:37:53)</div></body></html>

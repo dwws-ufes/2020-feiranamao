@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>SwaggerConfiguration.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">FeiraNaMaoTest (17/04/2021 16:37:53)</a> &gt; <a href="../../index.html" class="el_group">backend</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">br.com.feiranamao.config</a> &gt; <span class="el_source">SwaggerConfiguration.java</span></div><h1>SwaggerConfiguration.java</h1><pre class="source lang-java linenums">package br.com.feiranamao.config;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.web.reactive.config.WebFluxConfigurer;
+
+import io.swagger.v3.oas.models.Components;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.info.License;
+import io.swagger.v3.oas.models.media.StringSchema;
+import io.swagger.v3.oas.models.parameters.Parameter;
+import io.swagger.v3.oas.models.security.OAuthFlow;
+import io.swagger.v3.oas.models.security.OAuthFlows;
+import io.swagger.v3.oas.models.security.Scopes;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
+import io.swagger.v3.oas.models.security.SecurityScheme;
+import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.ParameterBuilder;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.schema.ModelRef;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.ApiKey;
+import springfox.documentation.service.AuthorizationScope;
+import springfox.documentation.service.Contact;
+import springfox.documentation.service.SecurityReference;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spi.service.contexts.SecurityContext;
+import springfox.documentation.spring.data.rest.configuration.SpringDataRestConfiguration;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import springfox.documentation.swagger2.annotations.EnableSwagger2WebFlux;
+import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
+
+@Configuration
+@EnableSwagger2WebFlux
+<span class="nc" id="L43">public class SwaggerConfiguration implements WebFluxConfigurer { </span>
+
+	@Bean
+	public Docket api() {
+<span class="nc" id="L47">	    return new Docket(DocumentationType.SWAGGER_2)</span>
+<span class="nc" id="L48">	      .apiInfo(apiInfo())</span>
+<span class="nc" id="L49">	      .securityContexts(Arrays.asList(securityContext()))</span>
+<span class="nc" id="L50">	      .securitySchemes(Arrays.asList(apiKey()))</span>
+<span class="nc" id="L51">	      .select()</span>
+<span class="nc" id="L52">	      .apis(RequestHandlerSelectors.basePackage(&quot;br.com.feiranamao&quot;))  </span>
+<span class="nc" id="L53">	      .paths(PathSelectors.any())</span>
+<span class="nc" id="L54">	      .build();</span>
+	} 
+	
+	@Bean
+	public OpenAPI customOpenAPI() {
+<span class="nc" id="L59">		return new OpenAPI()</span>
+<span class="nc" id="L60">				 .components(new Components()</span>
+						 
+<span class="nc" id="L62">	                        .addSecuritySchemes(&quot;Basic&quot;, new SecurityScheme()</span>
+<span class="nc" id="L63">	    							.type(SecurityScheme.Type.HTTP)</span>
+<span class="nc" id="L64">	    							.scheme(&quot;basic&quot;)</span>
+	    					)
+	                        
+<span class="nc" id="L67">	                        .addSecuritySchemes(&quot;Bearer&quot;,</span>
+<span class="nc" id="L68">	       		                 new SecurityScheme().type(SecurityScheme.Type.HTTP)</span>
+<span class="nc" id="L69">	       		                 .scheme(&quot;bearer&quot;).bearerFormat(&quot;JWT&quot;)</span>
+<span class="nc" id="L70">	       		                .in(SecurityScheme.In.HEADER).name(&quot;Authorization&quot;))</span>
+	                        
+<span class="nc" id="L72">	                        .addParameters(&quot;Version&quot;, new Parameter()</span>
+<span class="nc" id="L73">	                                .in(&quot;header&quot;)</span>
+<span class="nc" id="L74">	                                .name(&quot;Version&quot;)</span>
+<span class="nc" id="L75">	                                .schema(new StringSchema())</span>
+<span class="nc" id="L76">	                                .required(false)))</span>
+				 
+<span class="nc" id="L78">				 			.security(Arrays.asList(</span>
+<span class="nc" id="L79">	                        new SecurityRequirement().addList(&quot;Basic&quot;),</span>
+<span class="nc" id="L80">	                        new SecurityRequirement().addList(&quot;Bearer&quot;)))</span>
+				 			
+<span class="nc" id="L82">	               .info(new Info()</span>
+<span class="nc" id="L83">				.title(&quot;Feira na mão&quot;)</span>
+<span class="nc" id="L84">				 .version(&quot;2.1a&quot;)</span>
+<span class="nc" id="L85">				 .description(&quot;\nAPI desenvolvida pelos alunos de graduação e mestrado da UFES.&quot;</span>
+				 		+ &quot;\n&lt;br&gt;&lt;br&gt;Sendo parte aplicação construida para a como trabalho avaliativo da disciplina de Desenvolvimeto Web e Web Semantica.&quot;
+				 		+ &quot;\n&lt;br&gt;&lt;br&gt;O códido está aberto e hospedado no GitHub da disciplina em DWWS 2020 UFES [dwws-ufes](https://github.com/dwws-ufes/2020-feiranamao).&quot;
+				 		+ &quot;\n&lt;br&gt;&lt;br&gt;Utilizamos no projeto OAUTH2 acesso aos recursos. &quot;
+				 		+ &quot;\n&lt;br&gt;&quot;
+				 		+ &quot;\n&lt;br&gt;&lt;b&gt;Passos:&lt;/b&gt;&quot;
+				 		+ &quot;\n&lt;br&gt;&quot;
+				 		+ &quot;\n&lt;br&gt;`1.` Antes de realizar a requisição de autenticação é necessário informar as credenciais de acesso `Basic` para testes de autorização.&quot;
+				 		+ &quot;\n&lt;br&gt; &lt;b&gt;username: &lt;/b&gt;feiranamao &lt;b&gt;password: &lt;/b&gt; fer123@@ &quot;
+				 		+ &quot;\n&lt;br&gt;&quot;
+				 		+ &quot;\n&lt;br&gt;`2.` Logo após é possível requisitar a chave de autenticação JWT. &quot;
+				 		+ &quot;&lt;br&gt;&lt;b&gt;grant_type: &lt;/b&gt;password &lt;b&gt;username: &lt;/b&gt;application-user &lt;b&gt;password: &lt;/b&gt; password &quot;
+				 		+ &quot;\n&lt;br&gt;&quot;
+				 		+ &quot;\n&lt;br&gt;`3.` Em posse do token é necessário remover as credenciais `basic` e inserir o token `bearer` utilizando o botão `Authorize`&quot;
+				 		+ &quot;\n&lt;br&gt;&quot;
+				 		+ &quot;\n&lt;br&gt;`4.` Estando devidamente autorizado é possível utilizar os recursos.&quot;)
+				 
+<span class="nc" id="L102">				 .termsOfService(&quot;https://github.com/dwws-ufes/2020-feiranamao&quot;)</span>
+<span class="nc" id="L103">				 .license(new License().name(&quot;UFES&quot;).url(&quot;https://github.com/dwws-ufes/2020-feiranamao&quot;)));</span>
+	}
+	 private ApiInfo apiInfo() {
+<span class="nc" id="L106">		    return new ApiInfo(</span>
+<span class="nc" id="L107">		      &quot;Feira na mão 1.0&quot;,</span>
+<span class="nc" id="L108">		      &quot;Api desenvolvida pelos alunos de graduação e metrado da ufes&quot;,</span>
+<span class="nc" id="L109">		      &quot;1.0&quot;,</span>
+<span class="nc" id="L110">		      &quot;Terms of service&quot;,</span>
+<span class="nc" id="L111">		      new Contact(&quot;UFES&quot;, &quot;https://github.com/dwws-ufes/2020-feiranamao&quot;, &quot;ufes@ufes.com&quot;),</span>
+<span class="nc" id="L112">		      &quot;License of API&quot;,</span>
+<span class="nc" id="L113">		      &quot;API license URL&quot;,</span>
+<span class="nc" id="L114">		      Collections.emptyList());</span>
+		}
+	 
+	 private ApiKey apiKey() { 
+<span class="nc" id="L118">		    return new ApiKey(&quot;Bearer&quot;, &quot;Authorization&quot;, &quot;header&quot;); </span>
+		}
+	 
+	 private SecurityContext securityContext() { 
+<span class="nc" id="L122">		    return SecurityContext.builder().securityReferences(defaultAuth()).build(); </span>
+		} 
+
+		private List&lt;SecurityReference&gt; defaultAuth() { 
+<span class="nc" id="L126">		    AuthorizationScope authorizationScope = new AuthorizationScope(&quot;global&quot;, &quot;accessEverything&quot;); </span>
+<span class="nc" id="L127">		    AuthorizationScope[] authorizationScopes = new AuthorizationScope[1]; </span>
+<span class="nc" id="L128">		    authorizationScopes[0] = authorizationScope; </span>
+<span class="nc" id="L129">		    return Arrays.asList(new SecurityReference(&quot;JWT&quot;, authorizationScopes)); </span>
+		}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span>FeiraNaMaoTest (17/04/2021 16:37:53)</div></body></html>

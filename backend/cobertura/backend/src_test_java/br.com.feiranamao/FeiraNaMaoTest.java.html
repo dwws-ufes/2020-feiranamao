@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>FeiraNaMaoTest.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">FeiraNaMaoTest (17/04/2021 16:37:53)</a> &gt; <a href="../../index.html" class="el_group">backend</a> &gt; <a href="../index.html" class="el_bundle">src/test/java</a> &gt; <a href="index.source.html" class="el_package">br.com.feiranamao</a> &gt; <span class="el_source">FeiraNaMaoTest.java</span></div><h1>FeiraNaMaoTest.java</h1><pre class="source lang-java linenums">package br.com.feiranamao;
+
+import static org.junit.Assert.assertSame;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ExpectedException;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import br.com.feiranamao.model.Categoria;
+import br.com.feiranamao.model.Loja;
+import br.com.feiranamao.model.Produto;
+import br.com.feiranamao.model.Usuario;
+import br.com.feiranamao.repository.CategoriasRepository;
+import br.com.feiranamao.repository.LojasRepository;
+import br.com.feiranamao.repository.ProdutosRepository;
+import br.com.feiranamao.repository.UsuarioRepository;
+
+@RunWith(SpringRunner.class)
+@DataJpaTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+<span class="fc" id="L31">public class FeiraNaMaoTest {</span>
+		
+@Autowired
+private CategoriasRepository categoriasRepository;
+
+@Autowired
+private ProdutosRepository produtosRepository;
+
+@Autowired
+private UsuarioRepository usuariosRepostory;
+
+@Autowired
+private LojasRepository lojasRepostory;
+
+@Rule
+<span class="fc" id="L46">public ExpectedException thrown = ExpectedException.none();</span>
+
+@Test
+public void categoriesShouldPersist() {
+	
+<span class="fc" id="L51">	produtosRepository.deleteAll();</span>
+<span class="fc" id="L52">	categoriasRepository.deleteAll();</span>
+	
+<span class="fc" id="L54">	List&lt;Categoria&gt; categorias = new ArrayList&lt;Categoria&gt;();</span>
+<span class="fc" id="L55">	Categoria frutas = new Categoria();</span>
+<span class="fc" id="L56">	frutas.setName(&quot;Frutas&quot;);</span>
+<span class="fc" id="L57">	categorias.add(frutas);</span>
+	
+<span class="fc" id="L59">	Categoria legumes = new Categoria();</span>
+<span class="fc" id="L60">	legumes.setName(&quot;Legumes&quot;);</span>
+<span class="fc" id="L61">	categorias.add(legumes);</span>
+	
+<span class="fc" id="L63">	Categoria verduras = new Categoria();</span>
+<span class="fc" id="L64">	verduras.setName(&quot;Verduras&quot;);</span>
+<span class="fc" id="L65">	categorias.add(verduras);</span>
+	
+<span class="fc" id="L67">	this.categoriasRepository.saveAll(categorias);</span>
+	
+<span class="fc" id="L69">	 int qtd = this.categoriasRepository.findAll().size();</span>
+	 
+<span class="fc" id="L71">	assertEquals(qtd,3);</span>
+<span class="fc" id="L72">	assertEquals(legumes.getName(),&quot;Legumes&quot;);</span>
+<span class="fc" id="L73">	assertEquals(legumes.getId(),legumes.getId());</span>
+<span class="fc" id="L74">}</span>
+
+
+
+@Test
+public void usuariosShouldPersist() {
+	
+<span class="fc" id="L81">	produtosRepository.deleteAll();</span>
+<span class="fc" id="L82">	categoriasRepository.deleteAll();</span>
+<span class="fc" id="L83">	lojasRepostory.deleteAll();</span>
+<span class="fc" id="L84">	usuariosRepostory.deleteAll();</span>
+	
+	
+<span class="fc" id="L87">	List&lt;Usuario&gt; usuarios = new ArrayList&lt;Usuario&gt;();</span>
+<span class="fc" id="L88">	Usuario leonardo = new Usuario();</span>
+<span class="fc" id="L89">	leonardo.setNome(&quot;Leonardo&quot;);</span>
+<span class="fc" id="L90">	leonardo.setLogin(&quot;leonardo&quot;);</span>
+<span class="fc" id="L91">	leonardo.setSenha(&quot;123&quot;);</span>
+<span class="fc" id="L92">	usuarios.add(leonardo);</span>
+	
+<span class="fc" id="L94">	Usuario ciro = new Usuario();</span>
+<span class="fc" id="L95">	ciro.setNome(&quot;Ciro&quot;);</span>
+<span class="fc" id="L96">	ciro.setLogin(&quot;ciro&quot;);</span>
+<span class="fc" id="L97">	ciro.setSenha(&quot;123&quot;);</span>
+<span class="fc" id="L98">	usuarios.add(ciro);</span>
+	
+<span class="fc" id="L100">	Usuario ryan = new Usuario();</span>
+<span class="fc" id="L101">	ryan.setNome(&quot;Ryan&quot;);</span>
+<span class="fc" id="L102">	ryan.setLogin(&quot;ryan&quot;);</span>
+<span class="fc" id="L103">	ryan.setSenha(&quot;123&quot;);</span>
+<span class="fc" id="L104">	usuarios.add(ryan);</span>
+	
+<span class="fc" id="L106">	Usuario matheus = new Usuario();</span>
+<span class="fc" id="L107">	matheus.setNome(&quot;Matheus&quot;);</span>
+<span class="fc" id="L108">	matheus.setLogin(&quot;matheus&quot;);</span>
+<span class="fc" id="L109">	matheus.setSenha(&quot;123&quot;);</span>
+<span class="fc" id="L110">	usuarios.add(matheus);</span>
+	
+<span class="fc" id="L112">	Usuario rogeiro = new Usuario();</span>
+<span class="fc" id="L113">	rogeiro.setNome(&quot;Rogerio&quot;);</span>
+<span class="fc" id="L114">	rogeiro.setLogin(&quot;rogerio&quot;);</span>
+<span class="fc" id="L115">	rogeiro.setSenha(&quot;123&quot;);</span>
+<span class="fc" id="L116">	usuarios.add(rogeiro);</span>
+	
+<span class="fc" id="L118">	this.usuariosRepostory.saveAll(usuarios);</span>
+	
+<span class="fc" id="L120">	int qtd = this.usuariosRepostory.findAll().size();</span>
+	
+<span class="fc" id="L122">	assertEquals(qtd,5);</span>
+	
+<span class="fc" id="L124">}</span>
+
+@Test
+public void produtosShouldPersist() {
+	
+<span class="fc" id="L129">	produtosRepository.deleteAll();</span>
+<span class="fc" id="L130">	categoriasRepository.deleteAll();</span>
+	
+<span class="fc" id="L132">	Categoria frutas = new Categoria();</span>
+<span class="fc" id="L133">	frutas.setName(&quot;Frutas&quot;);</span>
+<span class="fc" id="L134">	categoriasRepository.save(frutas);</span>
+	
+<span class="fc" id="L136">	Produto abacate = new Produto();</span>
+<span class="fc" id="L137">	abacate.setCategoria(frutas);</span>
+<span class="fc" id="L138">	abacate.setCusto(Float.parseFloat(&quot;1.2&quot;));</span>
+<span class="fc" id="L139">	abacate.setEstoque(100);</span>
+<span class="fc" id="L140">	abacate.setDescricao(&quot;Abacate&quot;);</span>
+<span class="fc" id="L141">	abacate.setUnidadeVenda(&quot;UN&quot;);</span>
+<span class="fc" id="L142">	abacate.setUrl(&quot;https://s2.glbimg.com/ew1z80L80DVKWV8z7XDqQZA4anw=/261x122:4670x3948/924x0/smart/filters:strip_icc()/s.glbimg.com/es/ge/f/original/2014/11/20/abacate.jpg&quot;);</span>
+	
+<span class="fc" id="L144">	int qtd = this.categoriasRepository.findAll().size();</span>
+	
+<span class="fc" id="L146">	assertEquals(qtd,1);</span>
+	
+<span class="fc" id="L148">}		</span>
+		
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span>FeiraNaMaoTest (17/04/2021 16:37:53)</div></body></html>

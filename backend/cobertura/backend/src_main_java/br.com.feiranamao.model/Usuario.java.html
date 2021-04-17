@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>Usuario.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">FeiraNaMaoTest (17/04/2021 16:37:53)</a> &gt; <a href="../../index.html" class="el_group">backend</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">br.com.feiranamao.model</a> &gt; <span class="el_source">Usuario.java</span></div><h1>Usuario.java</h1><pre class="source lang-java linenums">package br.com.feiranamao.model;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.mapping.List;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+@Entity
+@Table(name=&quot;USUARIO&quot;)
+public class Usuario implements UserDetails {
+
+	private static final long serialVersionUID = 1L;
+
+			@Id
+		    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = &quot;seq_usuario&quot;)
+			@SequenceGenerator(name=&quot;seq_usuario&quot;, sequenceName = &quot;seq_usuario&quot;, initialValue = 1)
+		    private Long id;
+
+//			@Column(name = &quot;username&quot;)
+			@NotNull
+		    private String login;
+		    
+		    @NotNull
+		    private String nome;
+
+//		    @Column(name = &quot;password&quot;)
+		    @NotNull
+		    private String senha;
+		    
+		    private boolean dono;
+
+		    private boolean accountNonExpired;
+
+		    private boolean accountNonLocked;
+
+		    private boolean credentialsNonExpired;
+		    
+		    private boolean enabled; 
+		    
+//		    @JsonManagedReference
+ 		    @OneToOne(optional=true, fetch = FetchType.LAZY, mappedBy = &quot;usuario&quot;)
+		    private Loja loja;
+		    
+			/*  
+			 @Enumerated(EnumType.STRING)
+		    @ElementCollection(fetch = FetchType.EAGER)
+		    private List&lt;Role&gt; roles;
+			 */
+<span class="fc" id="L59">		    public Usuario() {</span>
+<span class="fc" id="L60">		        this.accountNonExpired = true;</span>
+<span class="fc" id="L61">		        this.accountNonLocked = true;</span>
+<span class="fc" id="L62">		        this.credentialsNonExpired = true;</span>
+<span class="fc" id="L63">		        this.enabled = true;</span>
+<span class="fc" id="L64">		    }</span>
+
+		    @Override
+		    public String getUsername() {
+<span class="nc" id="L68">		        return login;</span>
+		    }
+		    
+		    @Override
+		    public String getPassword() {
+<span class="nc" id="L73">		        return senha;</span>
+		    }
+		    
+		    @Override
+		    public boolean isAccountNonExpired() {
+<span class="nc" id="L78">		        return accountNonExpired;</span>
+		    }
+
+		    @Override
+		    public boolean isAccountNonLocked() {
+<span class="nc" id="L83">		        return accountNonLocked;</span>
+		    }
+
+		    @Override
+		    public boolean isCredentialsNonExpired() {
+<span class="nc" id="L88">		        return credentialsNonExpired;</span>
+		    }
+
+		    @Override
+		    public boolean isEnabled() {
+<span class="nc" id="L93">		        return true;</span>
+		    }
+
+			@Override
+			public Collection&lt;? extends GrantedAuthority&gt; getAuthorities() {
+				// TODO Auto-generated method stub
+<span class="nc" id="L99">				return null;</span>
+			}
+
+			public Long getId() {
+<span class="fc" id="L103">				return id;</span>
+			}
+			
+			public String getLogin() {
+<span class="nc" id="L107">				return login;</span>
+			}
+
+			public void setLogin(String login) {
+<span class="fc" id="L111">				this.login = login;</span>
+<span class="fc" id="L112">			}</span>
+
+			public String getNome() {
+<span class="nc" id="L115">				return nome;</span>
+			}
+
+			public void setNome(String nome) {
+<span class="fc" id="L119">				this.nome = nome;</span>
+<span class="fc" id="L120">			}</span>
+
+			public String getSenha() {
+<span class="nc" id="L123">				return senha;</span>
+			}
+
+			public void setSenha(String senha) {
+<span class="fc" id="L127">				this.senha = senha;</span>
+<span class="fc" id="L128">			}</span>
+
+			public boolean isDono() {
+<span class="nc" id="L131">				return dono;</span>
+			}
+
+			public void setDono(boolean dono) {
+<span class="nc" id="L135">				this.dono = dono;</span>
+<span class="nc" id="L136">			}</span>
+
+			public Loja getLoja() {
+<span class="nc" id="L139">				return loja;</span>
+			}
+
+//			public void setLoja(Loja loja) {
+//				this.loja = loja;
+//			}			
+		
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span>FeiraNaMaoTest (17/04/2021 16:37:53)</div></body></html>

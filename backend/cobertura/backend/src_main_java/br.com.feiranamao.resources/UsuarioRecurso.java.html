@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>UsuarioRecurso.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">FeiraNaMaoTest (17/04/2021 16:37:53)</a> &gt; <a href="../../index.html" class="el_group">backend</a> &gt; <a href="../index.html" class="el_bundle">src/main/java</a> &gt; <a href="index.source.html" class="el_package">br.com.feiranamao.resources</a> &gt; <span class="el_source">UsuarioRecurso.java</span></div><h1>UsuarioRecurso.java</h1><pre class="source lang-java linenums">package br.com.feiranamao.resources;
+
+import java.util.List;
+import java.util.Optional;
+
+import br.com.feiranamao.model.Loja;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import br.com.feiranamao.model.Usuario;
+import br.com.feiranamao.repository.UsuarioRepository;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+@Api(value=&quot;Feira Na Mão&quot;)
+@CrossOrigin(origins = &quot;http://localhost:4200&quot;)
+@RestController
+<span class="nc" id="L28">public class UsuarioRecurso  {</span>
+
+	@Autowired
+	UsuarioRepository usuarioRepository;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
+	
+	@ApiOperation(value=&quot; Retorna Lista de Usuarios&quot;)
+	@GetMapping(&quot;/usuarios&quot;)
+	public List&lt;Usuario&gt; listaUsuario(){
+<span class="nc" id="L40">		return usuarioRepository.findAll();</span>
+	}
+
+	@ApiOperation(value=&quot; Retorna Usuario logado&quot;)
+	@GetMapping(&quot;/usuario&quot;)
+	public Usuario getUsuarioAtual(@AuthenticationPrincipal final Usuario user) throws Exception {
+<span class="nc" id="L46">		return user;</span>
+	}
+
+
+    @ApiOperation(value=&quot;Procurar usuarios por nome&quot;)
+    @RequestMapping(value = &quot;usuarios/{nome}&quot;, method = RequestMethod.GET)
+	public Optional&lt;Usuario&gt; findByUsername(@PathVariable(value = &quot;nome&quot;) String nome) {
+<span class="nc" id="L53">		return usuarioRepository.findByLogin(nome);</span>
+	}
+	
+    @ApiOperation(value=&quot; Salvar Usuario&quot;)
+	@PostMapping(&quot;/usuario&quot;)
+	public Usuario salvarUsuario(@RequestBody Usuario usuario) throws Exception {
+<span class="nc" id="L59">		usuario.setSenha(passwordEncoder.encode(usuario.getPassword()));</span>
+		
+<span class="nc" id="L61">    	return usuarioRepository.save(usuario);</span>
+	}
+	
+    @ApiOperation(value=&quot;Apagar Usuario&quot;)
+	@DeleteMapping(&quot;/usuario/{id}&quot;)
+	public void deletePoints(@PathVariable(value = &quot;id&quot;) Long id) {
+<span class="nc" id="L67">    	usuarioRepository.deleteById(id);</span>
+<span class="nc" id="L68">	}</span>
+	
+    @ApiOperation(value=&quot;Atualizar Usuario&quot;)
+	@PutMapping(&quot;/usuario&quot;)
+	public Usuario updatePoints(@RequestBody Usuario usuario) {
+<span class="nc" id="L73">		return usuarioRepository.save(usuario);</span>
+	}
+    
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span>FeiraNaMaoTest (17/04/2021 16:37:53)</div></body></html>
