@@ -21,7 +21,7 @@ O projeto é baseado nas tecnologias Java com Spring Boot para backend e Angular
 > git clone https://github.com/dwws-ufes/2020-feiranamao
 ```
 
-## Banco de dados
+## :whale2: Banco de dados
 ```bash
 # Executar container Docker
 > docker-compose up -d
