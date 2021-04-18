@@ -1,125 +1,74 @@
-package online.feiranamao.core.domain;
-
+package br.com.feiranamao.model;
 import java.io.Serializable;
 import java.util.Set;
-import java.util.List;
-import java.math.BigDecimal;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-@Entity
-public class Loja implements Serializable {
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+@Entity
+@Table(name="LOJA")
+public class Loja implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
 
+		@Id
+		@NotNull
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_loja")
+		@SequenceGenerator(name="seq_loja", sequenceName = "seq_loja", initialValue = 1)
+		private long id;
 
-
-    
-	@NotNull
-	@Column(name = "nome", unique = true)
-	private  nome;
-    
-
-    
-	@NotNull
-	@Column(name = "id", unique = true)
-	public String id;
-    
-
-
-
-
+		@OneToMany(mappedBy = "loja")
+		private Set<Produto> produtos;
 		
-		@OneToMany(mappedBy="Target")
-		private Set<Produto> Source;
+		@NotNull
+		private String nome;
 		
-	
-
+		private String logo;
 		
-		@OneToOne
-		@JoinColumn(name = "Target_id")
-		private Usuario Target;
+		@OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(nullable = false, name="usuario_id", referencedColumnName="id")
+		private Usuario usuario;
 		
-	
-
-		
-		@OneToMany(mappedBy="Target")
-		private Set<Pedido> Source;
-		
-	
-
-
-	public Loja() {
-		super();
-	}
-
-
-
-	public  getNome() {
-		return nome;
-	}
-	
-	public void setNome( nome) {
-		this.nome = nome;
-	}
-
-	public String getId() {
-		return id;
-	}
-	
-	public void setId(String id) {
-		this.id = id;
-	}
-
-
-
-
-		
-		public Set<Produto> getSource() {
-			return Source;
+		public long getId() {
+			return id;
 		}
-		
-		public void setSource(Set<Produto> Source) {
-			this.Source = Source;
+
+		public void setId(long id) {
+			this.id = id;
 		}
-		
+
+		public String getNome() {
+			return nome;
+		}
+
+		public void setNome(String nome) {
+			this.nome = nome;
+		}
+
+		public void setUsuario(Usuario usuario) {
+			this.usuario = usuario;
+		}
+
+		public String getLogo() {
+			return logo;
+		}
+
+		public void setLogo(String logo) {
+			this.logo = logo;
+		}
 	
-
-		
-		public Usuario getTarget() {
-			return Target;
-		}
-		
-		public void setTarget(Usuario Target) {
-			this.Target = Target;
-		}
-		
-	
-
-		
-		public Set<Pedido> getSource() {
-			return Source;
-		}
-		
-		public void setSource(Set<Pedido> Source) {
-			this.Source = Source;
-		}
-		
-	
-
-
-
-
-
 }
