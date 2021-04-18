@@ -31,7 +31,7 @@ adicionando a raiz do projeto.
     
      cd backend/
      java -jar FeiraNaMao-0.0.1-SNAPSHOT.jar
-    ```
+   ```bash
      > Não foi possível inserir no GitHub visto que é um arquivo fat jar, ultrapassa o tamanho máximo de arquivo permitido na plataforma.
     
 2.  Gerar build e iniciar na maquina local 
