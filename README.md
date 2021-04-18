@@ -103,11 +103,11 @@ Utilize as credenciais do usuário Super Admin
 | aplication-user  | feiranamao  |
 
 ## Funções Extras implementadas
-* Comparação dos códigos gerados pelo frameweb com o código efetivamente implementado. (Utilizamos o código php disponibilizado)
-* Implementação de funcionalidades em containers (Docker com docker- composer)
-* Testes Unitários    (Junit)  
-* Cobertura de Testes (Jacoco)
-* Documentação de API (swagger)
+* :one: Comparação dos códigos gerados pelo frameweb com o código efetivamente implementado. (Utilizamos o código php disponibilizado)
+* :two: Implementação de funcionalidades em containers (Docker com docker- composer)
+* :three: Testes Unitários    (Junit)  
+* :four: Cobertura de Testes (Jacoco)
+* :five: Documentação de API (swagger)
 
 ## Documentação da API disponível em: 
 http://localhost:8380/swagger-ui/index.html?url=/v3/api-docs/
