@@ -1,0 +1,23 @@
+Categoria 66.69%
+
+ItemPedido 59.43%
+
+Loja 55.63%
+
+Pedido 49.46%
+
+Produto 63.32%
+
+Usuario 39.34%
+
+CategoriasRepository 55.14%
+
+LojasRepository 41.18%
+
+PedidosRepository 57.31%
+
+ProdutosRepository 31.26%
+
+PedidoRecurso 33.17%
+
+ProdutoRecurso 28.84%
