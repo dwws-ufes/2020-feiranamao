@@ -20,7 +20,8 @@ git clone https://github.com/dwws-ufes/2020-feiranamao
 docker-compose up -d
 ```
 
-# Backend - Utilize uma das opções abaixo para execução da API Feira na mão
+# Backend 
+### Utilize uma das opções abaixo para execução da API Feira na mão
 1. Baixar  [FeiraNaMao-0.0.1-SNAPSHOT.jar]( https://drive.google.com/file/d/1aO6LG4faPHh14jSJD2-Wt7eCkV4bQc3-/view?usp=sharing "Google Drive")
 adicionando a raiz do projeto. 
  
