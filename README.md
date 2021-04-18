@@ -39,7 +39,7 @@ adicionando a raiz do projeto.
         java -jar FeiraNaMao-0.0.1-SNAPSHOT.jar
         ```
      
-3. No eclipse ou sua IDE de preferência execute a aplicação Maven com Spring Boot por meio do arquivo 
+3. Execute o ambiente de desenvolvimento do Spring Boot de sua preferência ( Utilizamos a IDE Eclipse ) 
      > Executar a classe principal do Spring `FeiraNaMaoAplication.java` 
 
 
@@ -48,7 +48,7 @@ adicionando a raiz do projeto.
 # FrontEnd
 ### Utilize uma das opções abaixo para execução FrondEnd
 
-1. Execute o ambiente de desenvolvimento do Angular
+1. Execute o ambiente de desenvolvimento do Angular de sua preferência (Utilizamos o VS Code)
 ```
 cd frontend/
 npm install
