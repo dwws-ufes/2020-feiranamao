@@ -30,17 +30,18 @@ O projeto é baseado nas tecnologias Java com Spring Boot para backend e Angular
 # BackEnd 
 ### :checkered_flag: Utilizar uma das opções abaixo para execução da API Feira na mão
 1. Baixar  [FeiraNaMao-0.0.1-SNAPSHOT.jar]( https://drive.google.com/file/d/1UeypFa6dQNBXesuMpKAEj0-IP-n78J97/view?usp=sharing "Google Drive")
-adicionando a raiz do projeto. 
+adicionando a raiz do backend. 
  
+ 1. Subir servidor na máquina local 
      ```bash
      # Navegar até a pasta do backend
      > cd backend/
-     # Gerar o build da versão
+     # Executar o FatJar
      > java -jar FeiraNaMao-0.0.1-SNAPSHOT.jar
      ```
      > :warning: Não foi possível inserir no GitHub visto que é um arquivo fat jar, ultrapassa o tamanho máximo de arquivo permitido na plataforma.
     
-2.  Gerar build e iniciar na maquina local 
+2.  Gerar build e subir servidor na máquina local
         
      ```bash
      # Navegue até a pasta do backend
@@ -53,7 +54,7 @@ adicionando a raiz do projeto.
      > java -jar FeiraNaMao-0.0.1-SNAPSHOT.jar
      ```
      
-3. Execute o ambiente de desenvolvimento do Spring Boot de sua preferência ( Utilizamos a IDE Eclipse ) 
+3. Executar o ambiente de desenvolvimento do Spring Boot de sua preferência ( Utilizamos a IDE Eclipse ) 
      > Executar a classe principal do Spring `FeiraNaMaoAplication.java` 
 
 ----
