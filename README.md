@@ -1,8 +1,8 @@
-![logo](https://i.imgur.com/VOcmF6W.png)
+![logo](https://i.ibb.co/41jhpNj/68747470733a2f2f692e696d6775722e636f6d2f564f636d4636572e706e67-removebg-preview.png)
 
 *****
 
-[![License](https://i.ibb.co/41jhpNj/68747470733a2f2f692e696d6775722e636f6d2f564f636d4636572e706e67-removebg-preview.png)](/LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 Trabalho desenvolvido na disciplina Desenvolvimento Web e Web Semântica da UFES 2020/2, com proposito de aplicar conceitos de arquitetura, desenvolvimento web e web semântica.
 
