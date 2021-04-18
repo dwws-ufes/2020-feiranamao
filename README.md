@@ -20,7 +20,7 @@ git clone https://github.com/dwws-ufes/2020-feiranamao
 docker-compose up -d
 ```
 
-# Backend 
+# BackEnd 
 ### Utilize uma das opções abaixo para execução da API Feira na mão
 1. Baixar  [FeiraNaMao-0.0.1-SNAPSHOT.jar]( https://drive.google.com/file/d/1aO6LG4faPHh14jSJD2-Wt7eCkV4bQc3-/view?usp=sharing "Google Drive")
 adicionando a raiz do projeto. 
@@ -38,7 +38,9 @@ adicionando a raiz do projeto.
 ----
 
 ## Frontend
-Execute o ambiente de desenvolvimento do Angular
+### Utilize uma das opções abaixo para execução FrondEnd
+
+1. Execute o ambiente de desenvolvimento do Angular
 ```
 cd .\frontend\
 
@@ -47,6 +49,21 @@ npm install
 ng serve --open
 
 ```
+2. Subir servidor na máquina local
+```
+cd frontend\dist\frontend
+http-server -a localhost -p 80 
+```
+
+3. Gerar build e subir servidor na máquina local
+```
+cd frontend\
+ng build --prod
+npm install -g http-server
+cd dist\frontend
+http-server -a localhost -p 80 
+```
+
 ## Primeiro Acesso
 Utilize as credenciais do usuario Super Admin
 
