@@ -23,7 +23,7 @@ docker-compose up -d
 ## Backend
 No eclipse ou sua IDE de preferencia execute a aplicação Maven com Spring Boot por meio do arquivo 
 ```
-FeiraNaMaoApplication.java (pacote br.com.feiranamao)
+java -jar FeiraNaMao-0.0.1-SNAPSHOT.jar
 ```
 
 ## Frontend
@@ -44,9 +44,9 @@ Utilize as credenciais do usuario Super Admin
 | aplication-user  | feiranamao  |
 
 ## Funções Extras implementadas
-* Comparação das fontes geradas (Utilizamos o código php disponibilizado)
-* Docker utilizando o docker- composer
-* Testes Unitários  - Junit 
+* Comparação dos códigos gerados pelo frameweb com o código efetivamente implementado. (Utilizamos o código php disponibilizado)
+* Implementação de funcionalidades em containers (Docker com docker- composer)
+* Testes Unitários    (Junit)  
 * Cobertura de Testes (Jacoco)
 * Documentação de API (swagger)
 
