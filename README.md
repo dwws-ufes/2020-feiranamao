@@ -35,12 +35,12 @@ adicionando a raiz do projeto.
     
 2.  Gerar build e iniciar na maquina local 
         
-        ```bash
-        cd backend/
-        mvn build (Obrigatório configurar variáveis de ambiente) ou no eclipse utilize a opção run as Maven Install 
-        copy C:\Users\%username%\.m2\repository\br\com\feiranamao\FeiraNaMao\0.0.1-SNAPSHOT\FeiraNaMao-0.0.1-SNAPSHOT.jar FeiraNaMao-0.0.1-SNAPSHOT.jar 
-        java -jar FeiraNaMao-0.0.1-SNAPSHOT.jar
-        ```
+     ```bash
+     cd backend/
+     mvn build (Obrigatório configurar variáveis de ambiente) ou no eclipse utilize a opção run as Maven Install 
+     copy C:\Users\%username%\.m2\repository\br\com\feiranamao\FeiraNaMao\0.0.1-SNAPSHOT\FeiraNaMao-0.0.1-SNAPSHOT.jar FeiraNaMao-0.0.1-SNAPSHOT.jar 
+     java -jar FeiraNaMao-0.0.1-SNAPSHOT.jar
+     ```
      
 3. Execute o ambiente de desenvolvimento do Spring Boot de sua preferência ( Utilizamos a IDE Eclipse ) 
      > Executar a classe principal do Spring `FeiraNaMaoAplication.java` 
