@@ -36,6 +36,9 @@ http://localhost:8380/swagger-ui/index.html?url=/v3/api-docs/
 Execute o ambiente de desenvolvimento do Angular
 ```
 cd .\frontend\
+
+npm install
+
 ng serve --open
 
 ```
