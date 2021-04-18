@@ -75,7 +75,7 @@ adicionando a raiz do projeto.
 ```bash
 # Navegar até a pasta que tem um build previamente gerado
 > cd frontend\dist\frontend
-# Intalar servidor Web Local (Necessário NodeJS)
+# Instalar servidor Web Local (Necessário NodeJS)
 > npm install -g http-server
 # Iniciar Servidor Web
 > http-server -a localhost -p 80 
@@ -89,7 +89,7 @@ adicionando a raiz do projeto.
 > ng build --prod
 # Navegar até a pasta que tem um build previamente gerado
 > cd frontend\dist\frontend
-# Intalar servidor Web Local (Necessário NodeJS)
+# Instalar servidor Web Local (Necessário NodeJS)
 > npm install -g http-server
 # Iniciar Servidor Web
 > http-server -a localhost -p 80 
