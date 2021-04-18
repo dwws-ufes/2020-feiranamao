@@ -25,15 +25,11 @@ docker-compose up -d
 adicionando a raiz do projeto. 
   > Não foi possível inserir no git visto que é um arquivo fat jar, que ultrapassa o limite máximo permitido.
 
-    ```
-    java -jar FeiraNaMao-0.0.1-SNAPSHOT.jar
-    ```
+    `java -jar FeiraNaMao-0.0.1-SNAPSHOT.jar`
     
 2.  Executar o `mvn build` para gerar o arquivo FeiraNaMao-0.0.1-SNAPSHOT.jar 
     
-    ```
-    java -jar FeiraNaMao-0.0.1-SNAPSHOT.jar
-    ```
+    `java -jar FeiraNaMao-0.0.1-SNAPSHOT.jar`
 3. No eclipse ou sua IDE de preferencia execute a aplicação Maven com Spring Boot por meio do arquivo 
 > Executar a classe principal do Spring FeiraNaMaoAplication.java
 
