@@ -27,7 +27,7 @@ O projeto é baseado nas tecnologias Java com Spring Boot para backend e Angular
 > docker-compose up -d
 ```
 ----
-# BackEnd 
+# :calling: BackEnd 
 ### :checkered_flag: Utilize uma das opções abaixo para execução da API Feira na mão
 1. Baixar  [FeiraNaMao-0.0.1-SNAPSHOT.jar]( https://drive.google.com/file/d/1aO6LG4faPHh14jSJD2-Wt7eCkV4bQc3-/view?usp=sharing "Google Drive")
 adicionando a raiz do projeto. 
@@ -98,7 +98,7 @@ adicionando a raiz do projeto.
 ## :unlock: Primeiro Acesso
 Utilize as credenciais do usuário Super Admin
 
-| :trollface Usuário |:key: Senha |
+| :trollface: Usuário |:key: Senha |
 | ------------- | ------------- |
 | aplication-user  | feiranamao  |
 
