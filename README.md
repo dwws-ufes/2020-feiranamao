@@ -27,7 +27,8 @@ adicionando a raiz do projeto.
  
     ``` 
      cd backend/
-     java -jar FeiraNaMao-0.0.1-SNAPSHOT.jar```
+     java -jar FeiraNaMao-0.0.1-SNAPSHOT.jar
+    ```
      > Não foi possível inserir no git visto que é um arquivo fat jar, que ultrapassa o limite máximo permitido.
     
 2.  Gerar build e iniciar na maquina local 
