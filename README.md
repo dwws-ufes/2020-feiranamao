@@ -22,6 +22,11 @@ docker-compose up -d
 
 ## Backend
 No eclipse ou sua IDE de preferencia execute a aplicação Maven com Spring Boot por meio do arquivo 
+
+* Baixar o arquivo FeiraNaMao-0.0.1-SNAPSHOT.jar disponível em https://drive.google.com/file/d/1aO6LG4faPHh14jSJD2-Wt7eCkV4bQc3-/view?usp=sharing
+adicionando a raiz do projeto. Não foi possível inserir no git visto que é um arquivo fat jar, que ultrapassa o limite máximo permitido.
+
+Solução alternativa seria executar o mvn build para gerar o arquivo .jar do build ou até mesmo executar a classe principal do Spring FeiraNaMaoAplication
 ```
 java -jar FeiraNaMao-0.0.1-SNAPSHOT.jar
 ```
