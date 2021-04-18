@@ -61,17 +61,8 @@ adicionando a raiz do projeto.
 # FrontEnd
 ### :checkered_flag: Utilizar uma das opções abaixo para execução FrontEnd
 
-1. Executar o ambiente de desenvolvimento do Angular de sua preferência (Utilizamos o VS Code)
-```bash
-# Navegar até a pasta do FrontEnd
-> cd frontend/
-# Instalar as independências do projeto
-> npm install
-# Executar aplicação Angular 11
-> ng serve --open
 
-```
-2. Subir servidor na máquina local
+1. Subir servidor na máquina local
 ```bash
 # Navegar até a pasta que tem um build previamente gerado
 > cd frontend\dist\frontend
@@ -81,7 +72,7 @@ adicionando a raiz do projeto.
 > http-server -a localhost -p 80 
 ```
 
-3. Gerar build e subir servidor na máquina local
+2. Gerar build e subir servidor na máquina local
 ```bash
 # Navegar até a pasta do FrontEnd
 > cd frontend\
@@ -93,6 +84,17 @@ adicionando a raiz do projeto.
 > npm install -g http-server
 # Iniciar Servidor Web
 > http-server -a localhost -p 80 
+```
+
+3. Executar o ambiente de desenvolvimento do Angular de sua preferência (Utilizamos o VS Code)
+```bash
+# Navegar até a pasta do FrontEnd
+> cd frontend/
+# Instalar as independências do projeto
+> npm install
+# Executar aplicação Angular 11
+> ng serve --open
+
 ```
 ----
 ## Primeiro Acesso
