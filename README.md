@@ -58,6 +58,7 @@ ng serve --open
 2. Subir servidor na máquina local
 ```
 cd frontend\dist\frontend
+npm install -g http-server
 http-server -a localhost -p 80 
 ```
 
