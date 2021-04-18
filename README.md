@@ -4,7 +4,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-  * <a href="#:whale2:-clonar-repositório">Clonar Repositório</a>
+  * <a href="#clonar-repositório">Clonar Repositório</a>
   * <a href="#backend">BackEnd</a>
   * <a href="#frontend">FrontEnd</a>
   * <a href="#primeiro-acesso">Primeiro Acesso</a>
@@ -14,20 +14,20 @@ Trabalho desenvolvido na disciplina Desenvolvimento Web e Web Semântica da UFES
 
 O projeto é baseado nas tecnologias Java com Spring Boot para backend e Angular para o frontend. Como base de dados é usado o Postgres.
 
-# :floppy_disk: Clonar Repositório
+# Clonar Repositório
 
 ```bash
 # Clonar pasta do projeto
 > git clone https://github.com/dwws-ufes/2020-feiranamao
 ```
 
-## :whale2: Banco de dados
+## Banco de dados
 ```bash
 # Executar container Docker
 > docker-compose up -d
 ```
 ----
-# :calling: BackEnd 
+# BackEnd 
 ### :checkered_flag: Utilize uma das opções abaixo para execução da API Feira na mão
 1. Baixar  [FeiraNaMao-0.0.1-SNAPSHOT.jar]( https://drive.google.com/file/d/1aO6LG4faPHh14jSJD2-Wt7eCkV4bQc3-/view?usp=sharing "Google Drive")
 adicionando a raiz do projeto. 
@@ -58,8 +58,8 @@ adicionando a raiz do projeto.
 
 ----
 
-# :computer: FrontEnd
-### :checkered_flag: Utilize uma das opções abaixo para execução FrondEnd
+# FrontEnd
+### :checkered_flag: Utilize uma das opções abaixo para execução FrontEnd
 
 1. Execute o ambiente de desenvolvimento do Angular de sua preferência (Utilizamos o VS Code)
 ```bash
@@ -95,7 +95,7 @@ adicionando a raiz do projeto.
 > http-server -a localhost -p 80 
 ```
 ----
-## :unlock: Primeiro Acesso
+## Primeiro Acesso
 Utilize as credenciais do usuário Super Admin
 
 | :trollface: Usuário |:key: Senha |
@@ -114,5 +114,3 @@ http://localhost:8380/swagger-ui/index.html?url=/v3/api-docs/
 
 ![Print Swagger](https://i.ibb.co/F3wCYG2/feiranamao.png)
 **************
-
-
