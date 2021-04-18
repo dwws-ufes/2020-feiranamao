@@ -43,9 +43,7 @@ adicionando a raiz do projeto.
 1. Execute o ambiente de desenvolvimento do Angular
 ```
 cd .\frontend\
-
 npm install
-
 ng serve --open
 
 ```
