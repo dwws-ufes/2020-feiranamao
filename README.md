@@ -4,7 +4,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-  * <a href="#configuracoes-recomendadas">Configurações recomendadas de desenvolvimento</a>
+  * <a href="#clonar-repositório">Clonar Repositório</a>
   * <a href="#backend">BackEnd</a>
   * <a href="#frontend">FrontEnd</a>
   * <a href="#primeiro-acesso">Primeiro Acesso</a>
@@ -14,7 +14,7 @@ Trabalho desenvolvido na disciplina Desenvolvimento Web e Web Semântica da UFES
 
 O projeto é baseado nas tecnologias Java com Spring Boot para backend e Angular para o frontend. Como base de dados é usado o Postgres.
 
-# Configurações recomendadas de desenvolvimento
+# Clonar Repositório
 
 ```bash
 # Clonar pasta do projeto
