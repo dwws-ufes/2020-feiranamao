@@ -14,7 +14,7 @@ Trabalho desenvolvido na disciplina Desenvolvimento Web e Web Semântica da UFES
 
 O projeto é baseado nas tecnologias Java com Spring Boot para backend e Angular para o frontend. Como base de dados é usado o Postgres.
 
-# Clonar Repositório
+# :floppy_disk: Clonar Repositório
 
 ```bash
 # Clonar pasta do projeto
@@ -58,7 +58,7 @@ adicionando a raiz do projeto.
 
 ----
 
-# FrontEnd
+# :computer: FrontEnd
 ### :checkered_flag: Utilize uma das opções abaixo para execução FrondEnd
 
 1. Execute o ambiente de desenvolvimento do Angular de sua preferência (Utilizamos o VS Code)
@@ -95,10 +95,10 @@ adicionando a raiz do projeto.
 > http-server -a localhost -p 80 
 ```
 ----
-## Primeiro Acesso
+## :unlock: Primeiro Acesso
 Utilize as credenciais do usuário Super Admin
 
-| Usuário |Senha |
+| :trollface Usuário |:key: Senha |
 | ------------- | ------------- |
 | aplication-user  | feiranamao  |
 
