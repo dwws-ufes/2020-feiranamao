@@ -31,11 +31,12 @@ adicionando a raiz do projeto.
      > Não foi possível inserir no git visto que é um arquivo fat jar, que ultrapassa o limite máximo permitido.
     
 2.  Gerar build e iniciar na maquina local 
-     ```
+        ```
         cd backend/
         mvn build (Obrigatório configurar variáveis de ambiente) ou no eclipse utilize a opção run as Maven Install 
         copy C:\Users\%username%\.m2\repository\br\com\feiranamao\FeiraNaMao\0.0.1-SNAPSHOT\FeiraNaMao-0.0.1-SNAPSHOT.jar FeiraNaMao-0.0.1-SNAPSHOT.jar 
-        java -jar FeiraNaMao-0.0.1-SNAPSHOT.jar```
+        java -jar FeiraNaMao-0.0.1-SNAPSHOT.jar
+        ```
      
 3. No eclipse ou sua IDE de preferência execute a aplicação Maven com Spring Boot por meio do arquivo 
      > Executar a classe principal do Spring `FeiraNaMaoAplication.java` 
