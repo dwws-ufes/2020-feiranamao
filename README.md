@@ -8,7 +8,7 @@
   * <a href="#backend">BackEnd</a>
   * <a href="#frontend">FrontEnd</a>
   * <a href="#primeiro-acesso">Primeiro Acesso</a>
-  * <a href="#da-api">Extras</a>
+  * <a href="#funções-Extras-implementadas">Extras</a>
 
 Trabalho desenvolvido na disciplina Desenvolvimento Web e Web Semântica da UFES 2020/2, com proposito de aplicar conceitos de arquitetura, desenvolvimento web e web semântica.
 
