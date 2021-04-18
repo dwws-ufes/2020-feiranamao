@@ -4,12 +4,11 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-  * <a href="#abstract">Resumo</a>
-  * <a href="#rest-api---configuracao-">Configurações recomendadas de desenvolvimento</a>
-  * <a href="#web-app---backend-">BackEnd</a>
-  * <a href="#web-app---frontend-">FrontEnd</a>
-  * <a href="#web-app---primeiroacesso-">Primeiro Acesso</a>
-  * <a href="#web-app---extra-">Extras</a>
+  * <a href="#configuracoes-recomendadas">Configurações recomendadas de desenvolvimento</a>
+  * <a href="#backend">BackEnd</a>
+  * <a href="#frontend">FrontEnd</a>
+  * <a href="#primeiro-acesso">Primeiro Acesso</a>
+  * <a href="#da-api">Extras</a>
 
 Trabalho desenvolvido na disciplina Desenvolvimento Web e Web Semântica da UFES 2020/2, com proposito de aplicar conceitos de arquitetura, desenvolvimento web e web semântica.
 
