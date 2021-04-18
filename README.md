@@ -31,7 +31,7 @@ adicionando a raiz do projeto.
     
     ```java -jar FeiraNaMao-0.0.1-SNAPSHOT.jar```
 3. No eclipse ou sua IDE de preferencia execute a aplicação Maven com Spring Boot por meio do arquivo 
-> Executar a classe principal do Spring `FeiraNaMaoAplication.java` 
+     > Executar a classe principal do Spring `FeiraNaMaoAplication.java` 
 
 
 ----
