@@ -37,7 +37,7 @@ adicionando a raiz do projeto.
 
 ----
 
-## Frontend
+# Frontend
 ### Utilize uma das opções abaixo para execução FrondEnd
 
 1. Execute o ambiente de desenvolvimento do Angular
