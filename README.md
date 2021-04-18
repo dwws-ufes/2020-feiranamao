@@ -4,12 +4,12 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-  • <a href="#abstract">Resumo</a>
-  • <a href="#rest-api---configuracao-">Configurações recomendadas de desenvolvimento</a>
-  • <a href="#web-app---backend-">BackEnd</a>
-  • <a href="#web-app---frontend-">FrontEnd</a>
-  • <a href="#web-app---primeiroacesso-">Primeiro Acesso</a>
-  • <a href="#web-app---extra-">Extras</a>
+  * <a href="#abstract">Resumo</a>
+  * <a href="#rest-api---configuracao-">Configurações recomendadas de desenvolvimento</a>
+  * <a href="#web-app---backend-">BackEnd</a>
+  * <a href="#web-app---frontend-">FrontEnd</a>
+  * <a href="#web-app---primeiroacesso-">Primeiro Acesso</a>
+  * <a href="#web-app---extra-">Extras</a>
 
 
 
@@ -37,18 +37,24 @@ docker-compose up -d
 adicionando a raiz do projeto. 
  
      ```bash
-     cd backend/
-     java -jar FeiraNaMao-0.0.1-SNAPSHOT.jar
+     # Navegue até a pasta do backend
+     > cd backend/
+     # Gere o build da versão
+     > java -jar FeiraNaMao-0.0.1-SNAPSHOT.jar
      ```
      > Não foi possível inserir no GitHub visto que é um arquivo fat jar, ultrapassa o tamanho máximo de arquivo permitido na plataforma.
     
 2.  Gerar build e iniciar na maquina local 
         
      ```bash
-     cd backend/
-     mvn build (Obrigatório configurar variáveis de ambiente) ou no eclipse utilize a opção run as Maven Install 
-     copy C:\Users\%username%\.m2\repository\br\com\feiranamao\FeiraNaMao\0.0.1-SNAPSHOT\FeiraNaMao-0.0.1-SNAPSHOT.jar FeiraNaMao-0.0.1-SNAPSHOT.jar 
-     java -jar FeiraNaMao-0.0.1-SNAPSHOT.jar
+     # Navegue até a pasta do backend
+     > cd backend/
+     # Gere o build da versão
+     > mvn build (Obrigatório configurar variáveis de ambiente) ou no eclipse utilize a opção run as Maven Install 
+     # Copie o arquivo de build gerado para pasta local
+     > copy C:\Users\%username%\.m2\repository\br\com\feiranamao\FeiraNaMao\0.0.1-SNAPSHOT\FeiraNaMao-0.0.1-SNAPSHOT.jar FeiraNaMao-0.0.1-SNAPSHOT.jar 
+     # Execute o FatJar
+     > java -jar FeiraNaMao-0.0.1-SNAPSHOT.jar
      ```
      
 3. Execute o ambiente de desenvolvimento do Spring Boot de sua preferência ( Utilizamos a IDE Eclipse ) 
