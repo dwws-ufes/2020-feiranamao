@@ -1,6 +1,5 @@
 ![logo](https://i.imgur.com/VOcmF6W.png)
 
-# Feira na Mão
 *****
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
