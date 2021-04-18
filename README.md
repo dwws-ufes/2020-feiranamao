@@ -39,7 +39,7 @@ ng serve --open
 ## Primeiro Acesso
 Utilize as credenciais do usuario Super Admin
 
-| Usuario |Senha |
+| Usuário |Senha |
 | ------------- | ------------- |
 | aplication-user  | feiranamao  |
 
