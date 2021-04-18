@@ -27,16 +27,15 @@ docker-compose up -d
 1. Baixar  [FeiraNaMao-0.0.1-SNAPSHOT.jar]( https://drive.google.com/file/d/1aO6LG4faPHh14jSJD2-Wt7eCkV4bQc3-/view?usp=sharing "Google Drive")
 adicionando a raiz do projeto. 
  
-    ```bash
-    
+     ```bash
      cd backend/
      java -jar FeiraNaMao-0.0.1-SNAPSHOT.jar
-   ```bash
+     ```
      > Não foi possível inserir no GitHub visto que é um arquivo fat jar, ultrapassa o tamanho máximo de arquivo permitido na plataforma.
     
 2.  Gerar build e iniciar na maquina local 
-        ```bash
         
+        ```bash
         cd backend/
         mvn build (Obrigatório configurar variáveis de ambiente) ou no eclipse utilize a opção run as Maven Install 
         copy C:\Users\%username%\.m2\repository\br\com\feiranamao\FeiraNaMao\0.0.1-SNAPSHOT\FeiraNaMao-0.0.1-SNAPSHOT.jar FeiraNaMao-0.0.1-SNAPSHOT.jar 
@@ -54,7 +53,6 @@ adicionando a raiz do projeto.
 
 1. Execute o ambiente de desenvolvimento do Angular de sua preferência (Utilizamos o VS Code)
 ```bash
-
 cd frontend/
 npm install
 ng serve --open
@@ -62,7 +60,6 @@ ng serve --open
 ```
 2. Subir servidor na máquina local
 ```bash
-
 cd frontend\dist\frontend
 npm install -g http-server
 http-server -a localhost -p 80 
@@ -70,7 +67,6 @@ http-server -a localhost -p 80
 
 3. Gerar build e subir servidor na máquina local
 ```bash
-
 cd frontend\
 ng build --prod
 npm install -g http-server
