@@ -28,14 +28,14 @@ O projeto é baseado nas tecnologias Java com Spring Boot para backend e Angular
 ```
 ----
 # BackEnd 
-### :checkered_flag: Utilize uma das opções abaixo para execução da API Feira na mão
+### :checkered_flag: Utilizar uma das opções abaixo para execução da API Feira na mão
 1. Baixar  [FeiraNaMao-0.0.1-SNAPSHOT.jar]( https://drive.google.com/file/d/1aO6LG4faPHh14jSJD2-Wt7eCkV4bQc3-/view?usp=sharing "Google Drive")
 adicionando a raiz do projeto. 
  
      ```bash
-     # Navegue até a pasta do backend
+     # Navegar até a pasta do backend
      > cd backend/
-     # Gere o build da versão
+     # Gerar o build da versão
      > java -jar FeiraNaMao-0.0.1-SNAPSHOT.jar
      ```
      > :warning: Não foi possível inserir no GitHub visto que é um arquivo fat jar, ultrapassa o tamanho máximo de arquivo permitido na plataforma.
@@ -45,11 +45,11 @@ adicionando a raiz do projeto.
      ```bash
      # Navegue até a pasta do backend
      > cd backend/
-     # Gere o build da versão
+     # Gerar o build da versão
      > mvn build (Obrigatório configurar variáveis de ambiente) ou no eclipse utilize a opção run as Maven Install 
-     # Copie o arquivo de build gerado para pasta local
+     # Copar o arquivo de build gerado para pasta local
      > copy C:\Users\%username%\.m2\repository\br\com\feiranamao\FeiraNaMao\0.0.1-SNAPSHOT\FeiraNaMao-0.0.1-SNAPSHOT.jar FeiraNaMao-0.0.1-SNAPSHOT.jar 
-     # Execute o FatJar
+     # Executar o FatJar
      > java -jar FeiraNaMao-0.0.1-SNAPSHOT.jar
      ```
      
@@ -59,9 +59,9 @@ adicionando a raiz do projeto.
 ----
 
 # FrontEnd
-### :checkered_flag: Utilize uma das opções abaixo para execução FrontEnd
+### :checkered_flag: Utilizar uma das opções abaixo para execução FrontEnd
 
-1. Execute o ambiente de desenvolvimento do Angular de sua preferência (Utilizamos o VS Code)
+1. Executar o ambiente de desenvolvimento do Angular de sua preferência (Utilizamos o VS Code)
 ```bash
 # Navegar até a pasta do FrontEnd
 > cd frontend/
