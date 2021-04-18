@@ -27,12 +27,6 @@ No eclipse ou sua IDE de preferencia execute a aplicação Maven com Spring Boot
 FeiraNaMaoApplication.java (pacote br.com.feiranamao)
 ```
 
-### Documentação da API disponível em: 
-http://localhost:8380/swagger-ui/index.html?url=/v3/api-docs/
-
-![Print Swagger](https://i.ibb.co/F3wCYG2/feiranamao.png)
-**************
-
 ## Frontend
 Execute o ambiente de desenvolvimento do Angular
 ```
@@ -43,3 +37,24 @@ npm install
 ng serve --open
 
 ```
+## Primeiro Acesso
+Utilize as credenciais do usuario Super Admin
+Usuario: aplication-user
+Senha: feiranamao
+
+## Funções Extras implementadas
+
+Comparação das fontes geradas (Utilizamos o código php disponibilizado)
+
+Docker utilizando o docker- composer 
+Testes Unitários  - Junit 
+Cobertura de Testes (Jacoco)
+Documentação de API (swagger)
+
+### Documentação da API disponível em: 
+http://localhost:8380/swagger-ui/index.html?url=/v3/api-docs/
+
+![Print Swagger](https://i.ibb.co/F3wCYG2/feiranamao.png)
+**************
+
+
