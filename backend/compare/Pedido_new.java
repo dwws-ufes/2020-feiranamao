@@ -1,126 +1,69 @@
-package online.feiranamao.core.domain;
-
+package br.com.feiranamao.model;
 import java.io.Serializable;
-import java.util.Set;
-import java.util.List;
-import java.math.BigDecimal;
 
-import javax.persistence.Column;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name="PEDIDO")
 public class Pedido implements Serializable {
-
+	
 	private static final long serialVersionUID = 1L;
-
-
-
-    
-	@NotNull
-	@Column(name = "_id", unique = true)
-	private String _id;
-    
-
-    
-	@NotNull
-	@Column(name = "data", unique = true)
-	private  data;
-    
-
-
-
-
-		
-		@ManyToOne
-		@JoinColumn(name = "Source_id")
-		private Usuario Source;
-		
 	
-
+		@Id 
+		@NotNull
+		@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_pedido")
+		@SequenceGenerator(name="seq_pedido", sequenceName = "seq_pedido", initialValue = 1)
+		private long pedido_id;
 		
-		@OneToMany(mappedBy="Source")
-		private Set<ItemPedido> Target;
-		
-	
+		@OneToMany(targetEntity =  ItemPedido.class, cascade =CascadeType.ALL)
+		@JoinColumn(name="id_pedido", referencedColumnName = "pedido_id")
+	    private Set<ItemPedido> itemPedido;
 
-		
-		@ManyToOne
-		@JoinColumn(name = "Target_id")
-		private Loja Target;
-		
-	
-
-
-	public Pedido() {
-		super();
-	}
-
-
-
-	public String get_id() {
-		return _id;
-	}
-	
-	public void set_id(String _id) {
-		this._id = _id;
-	}
-
-	public  getData() {
-		return data;
-	}
-	
-	public void setData( data) {
-		this.data = data;
-	}
-
-
-
-
-		
-		public Usuario getSource() {
-			return Source;
+		public Set<ItemPedido> getItemPedido() {
+			return itemPedido;
 		}
 		
-		public void setSource(Usuario Source) {
-			this.Source = Source;
+		public long getId_loja() {
+			return id_loja;
+		}
+
+		public void setId_loja(long id_loja) {
+			this.id_loja = id_loja;
+		}
+
+		private long id_loja;
+
+		public void setItemPedido(Set<ItemPedido> itemPedido) {
+			this.itemPedido = itemPedido;
+		}
+
+		public long getPedido_id() {
+			return pedido_id;
+		}
+
+		public void setPedido_id(long pedido_id) {
+			this.pedido_id = pedido_id;
 		}
 		
-	
-
+		private String obs;
 		
-		public Set<ItemPedido> getTarget() {
-			return Target;
+		public String getObs() {
+			return obs;
 		}
-		
-		public void setTarget(Set<ItemPedido> Target) {
-			this.Target = Target;
+
+		public void setObs(String obs) {
+			this.obs = obs;
 		}
-		
-	
-
-		
-		public Loja getTarget() {
-			return Target;
-		}
-		
-		public void setTarget(Loja Target) {
-			this.Target = Target;
-		}
-		
-	
-
-
-
-
 
 }

@@ -1,182 +1,121 @@
-package online.feiranamao.core.domain;
-
+package br.com.feiranamao.model;
 import java.io.Serializable;
-import java.util.Set;
-import java.util.List;
-import java.math.BigDecimal;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name="PRODUTO")
 public class Produto implements Serializable {
-
+	
 	private static final long serialVersionUID = 1L;
-
-
-
-    
-	@NotNull
-	@Column(name = "_id", unique = true)
-	private String _id;
-    
-
-    
-	@NotNull
-	@Column(name = "nome", unique = true)
-	private String nome;
-    
-
-    
-	@NotNull
-	@Column(name = "descricao", unique = true)
-	private String descricao;
-    
-
-    
-	@NotNull
-	@Column(name = "preco", unique = true)
-	private float preco;
-    
-
-    
-	@NotNull
-	@Column(name = "custo", unique = true)
-	private float custo;
-    
-
-    
-	@NotNull
-	@Column(name = "estoque", unique = true)
-	private int estoque;
-    
-
-
-
-
-		
-		@OneToMany(mappedBy="Target")
-		private Set<ItemPedido> Source;
-		
 	
+		@Id 
+		@NotNull
+		@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_produto")
+		@SequenceGenerator(name="seq_produto", sequenceName = "seq_produto", initialValue = 1)
+		private long id;
 
+		private String name;
+		private String descricao;
+		private double preco;
+		private double custo;
+		private int estoque;
 		
+		@ManyToOne //(cascade = CascadeType.PERSIST)
+		private Categoria categoria;
 		@ManyToOne
-		@JoinColumn(name = "Target_id")
-		private Loja Target;
-		
-	
+		private Loja loja;
+		private String urlImagem;
+		private String unidadeVenda;
+		public Produto(){
+		}
 
-		
-		@ManyToOne
-		@JoinColumn(name = "Target_id")
-		private Categoria Target;
-		
-	
+		public long getId() {
+			return id;
+		}
 
+		public void setId(long id) {
+			this.id = id;
+		}
 
-	public Produto() {
-		super();
-	}
+		public String getName() {
+			return name;
+		}
 
+		public void setName(String name) {
+			this.name = name;
+		}
 
+		public String getDescricao() {
+			return descricao;
+		}
 
-	public String get_id() {
-		return _id;
-	}
-	
-	public void set_id(String _id) {
-		this._id = _id;
-	}
+		public void setDescricao(String descricao) {
+			this.descricao = descricao;
+		}
 
-	public String getNome() {
-		return nome;
-	}
-	
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+		public double getPreco() {
+			return preco;
+		}
 
-	public String getDescricao() {
-		return descricao;
-	}
-	
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
+		public void setPreco(float preco) {
+			this.preco = preco;
+		}
 
-	public float getPreco() {
-		return preco;
-	}
-	
-	public void setPreco(float preco) {
-		this.preco = preco;
-	}
+		public double getCusto() {
+			return custo;
+		}
 
-	public float getCusto() {
-		return custo;
-	}
-	
-	public void setCusto(float custo) {
-		this.custo = custo;
-	}
+		public void setCusto(float custo) {
+			this.custo = custo;
+		}
 
-	public int getEstoque() {
-		return estoque;
-	}
-	
-	public void setEstoque(int estoque) {
-		this.estoque = estoque;
-	}
+		public int getEstoque() {
+			return estoque;
+		}
 
+		public void setEstoque(int estoque) {
+			this.estoque = estoque;
+		}
 
+		public Loja getIdLoja() {
+			return loja;
+		}
 
-
-		
-		public Set<ItemPedido> getSource() {
-			return Source;
+		public void setIdLoja(Loja loja) {
+			this.loja = loja;
 		}
 		
-		public void setSource(Set<ItemPedido> Source) {
-			this.Source = Source;
+		public Categoria getCategoria() {
+			return categoria;
 		}
-		
-	
 
-		
-		public Loja getTarget() {
-			return Target;
+		public void setCategoria(Categoria categoria) {
+			this.categoria = categoria;
 		}
-		
-		public void setTarget(Loja Target) {
-			this.Target = Target;
+
+		public String getUrl() {
+			return urlImagem;
 		}
-		
-	
 
-		
-		public Categoria getTarget() {
-			return Target;
+		public void setUrl(String urlImagem) {
+			this.urlImagem = urlImagem;
 		}
-		
-		public void setTarget(Categoria Target) {
-			this.Target = Target;
+
+		public String getUnidadeVenda() {
+			return unidadeVenda;
 		}
-		
-	
 
-
-
-
+		public void setUnidadeVenda(String unidadeVenda) {
+			this.unidadeVenda = unidadeVenda;
+		}
 
 }
