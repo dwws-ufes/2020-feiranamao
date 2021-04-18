@@ -4,7 +4,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-  * <a href="#clonar-repositório">Clonar Repositório</a>
+  * <a href="#:whale2:-clonar-repositório">Clonar Repositório</a>
   * <a href="#backend">BackEnd</a>
   * <a href="#frontend">FrontEnd</a>
   * <a href="#primeiro-acesso">Primeiro Acesso</a>
