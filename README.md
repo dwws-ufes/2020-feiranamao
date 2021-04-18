@@ -28,7 +28,7 @@ O projeto é baseado nas tecnologias Java com Spring Boot para backend e Angular
 ```
 ----
 # BackEnd 
-### Utilize uma das opções abaixo para execução da API Feira na mão
+### :checkered_flag: Utilize uma das opções abaixo para execução da API Feira na mão
 1. Baixar  [FeiraNaMao-0.0.1-SNAPSHOT.jar]( https://drive.google.com/file/d/1aO6LG4faPHh14jSJD2-Wt7eCkV4bQc3-/view?usp=sharing "Google Drive")
 adicionando a raiz do projeto. 
  
@@ -59,7 +59,7 @@ adicionando a raiz do projeto.
 ----
 
 # FrontEnd
-### Utilize uma das opções abaixo para execução FrondEnd
+### :checkered_flag: Utilize uma das opções abaixo para execução FrondEnd
 
 1. Execute o ambiente de desenvolvimento do Angular de sua preferência (Utilizamos o VS Code)
 ```bash
