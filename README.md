@@ -12,11 +12,13 @@ O projeto é baseado nas tecnologias Java com Spring Boot para backend e Angular
 # Configurações recomendadas de desenvolvimento
 
 ```
+
 git clone https://github.com/dwws-ufes/2020-feiranamao
 ```
 
 ## Banco de dados
 ```
+
 docker-compose up -d
 ```
 
@@ -25,7 +27,8 @@ docker-compose up -d
 1. Baixar  [FeiraNaMao-0.0.1-SNAPSHOT.jar]( https://drive.google.com/file/d/1aO6LG4faPHh14jSJD2-Wt7eCkV4bQc3-/view?usp=sharing "Google Drive")
 adicionando a raiz do projeto. 
  
-    ``` 
+    ```
+    
      cd backend/
      java -jar FeiraNaMao-0.0.1-SNAPSHOT.jar
     ```
@@ -33,6 +36,7 @@ adicionando a raiz do projeto.
     
 2.  Gerar build e iniciar na maquina local 
         ```
+        
         cd backend/
         mvn build (Obrigatório configurar variáveis de ambiente) ou no eclipse utilize a opção run as Maven Install 
         copy C:\Users\%username%\.m2\repository\br\com\feiranamao\FeiraNaMao\0.0.1-SNAPSHOT\FeiraNaMao-0.0.1-SNAPSHOT.jar FeiraNaMao-0.0.1-SNAPSHOT.jar 
@@ -50,6 +54,7 @@ adicionando a raiz do projeto.
 
 1. Execute o ambiente de desenvolvimento do Angular de sua preferência (Utilizamos o VS Code)
 ```
+
 cd frontend/
 npm install
 ng serve --open
@@ -57,6 +62,7 @@ ng serve --open
 ```
 2. Subir servidor na máquina local
 ```
+
 cd frontend\dist\frontend
 npm install -g http-server
 http-server -a localhost -p 80 
@@ -64,6 +70,7 @@ http-server -a localhost -p 80
 
 3. Gerar build e subir servidor na máquina local
 ```
+
 cd frontend\
 ng build --prod
 npm install -g http-server
