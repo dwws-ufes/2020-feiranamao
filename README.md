@@ -100,7 +100,7 @@ Credenciais do usuário Super Admin
 
 | :trollface: Usuário |:key: Senha |
 | ------------- | ------------- |
-| aplication-user  | feiranamao  |
+| application-user  | password  |
 
 ## Funções Extras implementadas
 * :one: Comparação dos códigos gerados pelo frameweb com o código efetivamente implementado. (Utilizamos o código php disponibilizado)
