@@ -96,7 +96,7 @@ adicionando a raiz do projeto.
 ```
 ----
 ## Primeiro Acesso
-Utilize as credenciais do usuário Super Admin
+Credenciais do usuário Super Admin
 
 | :trollface: Usuário |:key: Senha |
 | ------------- | ------------- |
