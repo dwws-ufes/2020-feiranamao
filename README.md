@@ -96,7 +96,7 @@ adicionando a raiz do projeto.
 ```
 ----
 ## Primeiro Acesso
-Utilize as credenciais do usuario Super Admin
+Utilize as credenciais do usuário Super Admin
 
 | Usuário |Senha |
 | ------------- | ------------- |
