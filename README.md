@@ -48,7 +48,7 @@ adicionando a raiz do backend.
      > cd backend/
      # Gerar o build da versão
      > mvn build (Obrigatório configurar variáveis de ambiente) ou no eclipse utilize a opção run as Maven Install 
-     # Copar o arquivo de build gerado para pasta local
+     # Copiar o arquivo de build gerado para pasta local utilizando prompt de comando (CMD)
      > copy C:\Users\%username%\.m2\repository\br\com\feiranamao\FeiraNaMao\0.0.1-SNAPSHOT\FeiraNaMao-0.0.1-SNAPSHOT.jar FeiraNaMao-0.0.1-SNAPSHOT.jar 
      # Executar o FatJar
      > java -jar FeiraNaMao-0.0.1-SNAPSHOT.jar
