@@ -1,6 +1,6 @@
 
 /* Create URL Default APIs */
-const URL_DEFAULT_API = 'localhost:4200';
+const URL_DEFAULT_API = 'localhost';
 const PROTOCOL_HTTPS = false;
 const HTTP_API = PROTOCOL_HTTPS ? 'https://' : 'http://';
 const URL_API = HTTP_API + URL_DEFAULT_API;

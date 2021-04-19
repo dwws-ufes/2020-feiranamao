@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private accountService: AccountService
   ) {
-    //translate.setDefaultLang('pt-br');
+
   }
 
   ngOnInit() {
@@ -38,11 +38,6 @@ export class LoginComponent implements OnInit {
       'senha': [null, Validators.compose([Validators.required, Validators.min(4)])],
     });
   }
-
-  // validLogin() {
-  // this.router.navigate(['dashboard']);
-  // const user: UserAccountViewModel = new UserAccountViewModel(this.form.value);
-  // }
 
   validLogin() {
 

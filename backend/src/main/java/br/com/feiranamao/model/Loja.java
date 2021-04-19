@@ -27,7 +27,7 @@ public class Loja implements Serializable {
 
 		@Id
 		@NotNull
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_loja")
+		@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_loja")
 		@SequenceGenerator(name="seq_loja", sequenceName = "seq_loja", initialValue = 1)
 		private long id;
 

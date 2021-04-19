@@ -1,13 +1,19 @@
 ### STAGE 1: Build ###
 FROM node:12.7-alpine AS build
 WORKDIR /usr/src/app
-COPY package.json ./
-RUN npm install
-COPY . .
-RUN npm run build
+#COPY package.json ./
+#RUN npm install
+COPY ./dist/frontend .
+#RUN npm run build
+
+#cd frontend\
+#RUN ng build --prod
+RUN npm install -g http-server
+#RUN cd ./dist/frontend
+CMD http-server -a localhost -p 80
 
 ### STAGE 2: Run ###
-FROM nginx:1.17.1-alpine
-COPY default.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /usr/src/app/dist/frontend /usr/share/nginx/html
-EXPOSE 80
+#FROM nginx:1.17.1-alpine
+#COPY default.conf /etc/nginx/conf.d/default.conf
+#COPY --from=build /usr/src/app /usr/share/nginx/html
+#EXPOSE 80

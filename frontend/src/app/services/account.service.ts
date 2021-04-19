@@ -4,8 +4,6 @@ import { environment } from 'src/environments/environment';
 import { ServiceRequestViewModel } from '../viewModel/service-request.view-model';
 import { OauthAccountViewModel } from '../viewModel/oauth.response.view-model';
 import { map } from 'rxjs/operators';
-import { UsuarioService } from './usuario.service';
-
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +21,6 @@ export class AccountService {
 
   constructor(
     private httpClient: HttpClient,
-    // private usuarioService: UsuarioService
   ) { }
 
 
@@ -48,8 +45,6 @@ export class AccountService {
         this.username = username;
         this.password = password;
         this.registerSuccessfulLogin(username, password, tokenData.access_token);
-
-        this.getDetalhesUsuarioLogado();
       })
       );
   }
@@ -63,11 +58,6 @@ export class AccountService {
     sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username);
     sessionStorage.setItem(this.JWT_SESSION_ATTRIBUTE_NAME, acess_token);
   }
-
-  getDetalhesUsuarioLogado() {
-    // this.usuarioService.getUsuario().subscribe(user => this.dono = user.dono);
-  }
-
 
   logout() {
     sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);

@@ -46,9 +46,6 @@ public class ProdutoRecurso  {
     @ApiOperation(value=" Salvar Produto")
 	@PostMapping("/produto")
 	public Produto salvarProduto(@RequestBody Produto produto, @AuthenticationPrincipal final Usuario user) throws Exception {
-    	
-//    	System.out.println(lojaRepository.findByUsuario(user).getNome());
-    	
     	produto.setIdLoja(lojaRepository.findByUsuario(user));
     	
 		return produtosRepository.save(produto);
