@@ -21,25 +21,25 @@ services:
 #apagando dados do banco modelo antigo:
 #docker volume rm 2020-feiranamao_feiranamao-data
 
-  #backend:
-  #  build: ./backend
-  #  container_name: backend
-  #  ports:
-  #    - 8380:8380
-  #  depends_on:
-  #    - postgres
-  #  networks:
-  #    - net_feiranamao
+  backend:
+    build: ./backend
+    container_name: backend
+    ports:
+      - 8380:8380
+    depends_on:
+      - postgres
+    networks:
+      - net_feiranamao
 
-  #frontend:
-  #  build: ./frontend
-  #  container_name: frontend
-  #  ports:
-  #    - 80:80
-  #  depends_on:
-  #    - backend
-  #  networks:
-  #    - net_feiranamao
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - 80:80
+    depends_on:
+      - backend
+    networks:
+      - net_feiranamao
 
 #CRIA O VOLUME QUE É USADO PARA O BANCO
 volumes:
