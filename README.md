@@ -106,7 +106,7 @@ adicionando a raiz do backend.
 > ng serve --open
 
 ```
- [Acessar](http://localhost:"localhost")
+ [Abrir navegador Localhost](http://localhost:"localhost")
  
 ----
 ## Primeiro Acesso
