@@ -41,7 +41,7 @@ adicionando a raiz do backend.
      ```
      > :warning: Não foi possível inserir no GitHub visto que é um arquivo fat jar, ultrapassa o tamanho máximo de arquivo permitido na plataforma.
     
-    [![Acessar](http://localhost:8380/swagger-ui/index.html?configUrl=/v3/api-docs/)](/localhost)
+    [Acessar](http://localhost:8380/swagger-ui/index.html?configUrl=/v3/api-docs/ "localhost")
     
 2.  Gerar build e subir servidor na máquina local
         
@@ -56,13 +56,13 @@ adicionando a raiz do backend.
      > java -jar FeiraNaMao-0.0.1-SNAPSHOT.jar
      ```
       
-    [![Acessar](http://localhost:8380/swagger-ui/index.html?configUrl=/v3/api-docs/)](/localhost)
+    [Acessar](http://localhost:8380/swagger-ui/index.html?configUrl=/v3/api-docs/ "localhost")
     
 3. Executar o ambiente de desenvolvimento do Spring Boot de sua preferência ( Utilizamos a IDE Eclipse ) 
      > Executar a classe principal do Spring `FeiraNaMaoAplication.java` 
 
    
-    [![Acessar](http://localhost:8380/swagger-ui/index.html?configUrl=/v3/api-docs/)](/localhost)
+    [Acessar](http://localhost:8380/swagger-ui/index.html?configUrl=/v3/api-docs/ "localhost")
     
 ----
 
@@ -79,8 +79,8 @@ adicionando a raiz do backend.
 # Iniciar Servidor Web
 > http-server -a localhost -p 80 
 ```
-[![Acessar](http://localhost)](/localhost)
-
+ [Acessar](http://localhost:"localhost")
+ 
 2. Gerar build e subir servidor na máquina local
 ```bash
 # Navegar até a pasta do FrontEnd
@@ -94,7 +94,7 @@ adicionando a raiz do backend.
 # Iniciar Servidor Web
 > http-server -a localhost -p 80 
 ```
-[![Acessar](http://localhost:4200)](/localhost)
+ [Acessar](http://localhost:"localhost")
 
 3. Executar o ambiente de desenvolvimento do Angular de sua preferência (Utilizamos o VS Code)
 ```bash
@@ -106,7 +106,7 @@ adicionando a raiz do backend.
 > ng serve --open
 
 ```
-[![Acessar](http://localhost:4200)](/localhost)
+ [Acessar](http://localhost:"localhost")
 ----
 ## Primeiro Acesso
 Credenciais do usuário Super Admin
