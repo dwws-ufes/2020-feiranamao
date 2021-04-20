@@ -4,6 +4,7 @@ RUN mkdir -p /workspace
 WORKDIR /workspace
 COPY pom.xml /workspace
 COPY src /workspace/src
+COPY src/main/resources/application.properties.prod  /workspace/src/main/resources/application.properties
 RUN mvn -f pom.xml clean package
 
 FROM openjdk:11
