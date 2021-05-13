@@ -1,4 +1,5 @@
 <div class="item">
+  <i class="item__info" *ngIf="sparqlData" (click)="openDialog()">i</i>
   <div class="image">
     <img [attr.src]="produto?.url" [attr.alt]="produto?.name">
   </div>
@@ -17,7 +18,10 @@
   <button class="item__action plus" (click)="adicionarAoCarrinho(produto)" >
     <span class="material-icons">add</span>
   </button>
-  <button class="item__action minus" *ngIf="existeNoCarrinho(produto)" (click)="removeDoCarrinho(produto)">
+  <button class="item__action minus" *ngIf="existeNoCarrinho(produto)"
+    (click)="removeDoCarrinho(produto)">
     <span class="material-icons">remove</span>
   </button>
 </div>
+
+

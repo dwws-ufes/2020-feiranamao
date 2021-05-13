@@ -23,7 +23,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.usuarioService.getUsuario()
     .subscribe((r: UsuarioModel) => {
-      console.log(r)
+      // console.log(r)
       this.ehAdmin = r.login === "application-user";
       this.ehDono = r.dono;
     });

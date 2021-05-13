@@ -3,26 +3,26 @@
     <h5 class="card-header">Lista de produtos</h5>
     <div class="card-body">
       <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Id</th>
-              <th scope="col">Nome</th>
-              <th scope="col">Categoria</th>
-              <th scope="col">Estoque</th>
-              <th scope="col">Preço</th>
-              <th scope="col">Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let produto of produtos">
-              <td>{{produto.id}}</td>
-              <td>{{produto.name}}</td>
-              <td>{{produto.categoria.name}}</td>
-              <td>{{produto.estoque}}</td>
-              <td>{{produto.preco}}</td>
-              <td>
-                <button type="button" class="btn btn-warning btn-sm" (click)="edit(produto)">Editar</button>
-                <button type="button" class="btn btn-danger btn-sm ml-1" (click)="delete(produto)">Deletar</button>
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Estoque</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let produto of produtos">
+            <td>{{produto.id}}</td>
+            <td>{{produto.name}}</td>
+            <td>{{produto.categoria.name}}</td>
+            <td>{{produto.estoque}}</td>
+            <td>{{produto.preco}}</td>
+            <td>
+              <button type="button" class="btn btn-warning btn-sm" (click)="edit(produto)">Editar</button>
+              <button type="button" class="btn btn-danger btn-sm ml-1" (click)="delete(produto)">Deletar</button>
             </td>
           </tr>
         </tbody>
@@ -63,8 +63,9 @@
         </div>
         <div class="form-group">
           <label for="Categoria">Categoria</label>
-          <select class="form-control" name="idCategoria" [(ngModel)]="produto.categoria" #categoria="ngModel" >
-            <option *ngFor="let categoria of categorias" [value]="categoria.id" [selected]='produto?.categoria?.id === categoria.id' >{{ categoria.name }}</option>
+          <select class="form-control" name="idCategoria" [(ngModel)]="produto.categoria" #idCategoria="ngModel" >
+            <option *ngFor="let categoria of categorias"
+              [value]="categoria" [selected]='produto?.categoria?.id === categoria.id'>{{ categoria.name }}</option>
           </select>
         </div>
         <div class="form-group">

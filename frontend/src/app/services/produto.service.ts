@@ -27,9 +27,10 @@ export class ProdutoService {
 
   saveProduto(produto: ProdutoModel) {
     let p = JSON.parse(JSON.stringify(produto));
-    p.categoria = {id:produto.categoria}
+    const { id } = produto.categoria;
+    p.categoria = { id };
     return this.crudService.postGenerico<ProdutoModel>('produto',p);
-   }
+  }
 
   deleteProduto(id: string) {
       return this.crudService.deleteGenerico<ProdutoModel>('produto',id);

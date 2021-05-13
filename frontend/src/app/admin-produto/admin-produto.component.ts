@@ -25,7 +25,7 @@ export class AdminProdutoComponent implements OnInit {
   }
 
   save(form: NgForm) {
-    console.log(form);
+    // console.log(form);
     if (this.produto.id !== undefined) {
       this.produtoService.updateProduto(this.produto).subscribe(() => {
         this.cleanForm(form);
@@ -46,7 +46,7 @@ export class AdminProdutoComponent implements OnInit {
   }
   getCategorias() {
     this.produtoService.getCategorias().subscribe(res => {
-      console.log(this.categorias)
+      // console.log(this.categorias)
       console.log(res)
       this.categorias = res;
     });
