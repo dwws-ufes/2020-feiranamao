@@ -57,24 +57,31 @@ public class SemanticRecurso  {
 		Model model = ModelFactory.createDefaultModel();
 		
 		//Namesapaces
-		String feiraNameSpace = "http://localhost/resources/Produto";
+		String feiraNameSpace = "http://localhost:8380/resources/Produto/#";
+		model.setNsPrefix("fei", feiraNameSpace);
+		
+		String dbpNameSpace = "https://dbpedia.org/resource/";		
+		model.setNsPrefix("dbp", dbpNameSpace);
 		
 		//Classes do vocabulario
 		Resource resourceX = ResourceFactory.createResource(feiraNameSpace+"X");
 			
 		//Propriedades
-		Property propertyPreco = ResourceFactory.createProperty(feiraNameSpace+"/Preco");
-		
+		Property propertyPreco = ResourceFactory.createProperty(feiraNameSpace+"Preco");
+		Property priceVocabulary = ResourceFactory.createProperty(dbpNameSpace+"Price");
+				
 		List<Produto> produtos = produtosRepository.findAll();
 				
 		for (Produto produto : produtos) {
-			model.createResource(feiraNameSpace+"/"+removerAcentos(produto.getName()))
+			model.createResource(feiraNameSpace+removerAcentos(produto.getName()))
 			//.addProperty(RDF.type, resourceX)
 			.addProperty(RDFS.label, produto.getName())
 			.addProperty(RDFS.comment, produto.getDescricao())
-			.addProperty(propertyPreco, String.valueOf(produto.getPreco()));
+			.addProperty(priceVocabulary, String.valueOf(produto.getPreco()));
 		} 
 		    
+		response.setContentType("text/xml");
+		
 	    try (PrintWriter out = response.getWriter()){
 	    	model.write(out, "RDF/XML");
 	    }
