@@ -164,9 +164,10 @@
 		<dependency>
 			<groupId>org.apache.jena</groupId>
 			<artifactId>apache-jena-libs</artifactId>
-			<type>pom</type>
 			<version>4.0.0</version>
+			<type>pom</type>
 		</dependency>
+
 	</dependencies>
 
 	<build>

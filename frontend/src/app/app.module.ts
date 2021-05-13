@@ -21,6 +21,8 @@ import { AdminProdutoComponent } from './admin-produto/admin-produto.component';
 import { CartItemComponent } from './cart/cart-item/cart-item.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SuccessComponent } from './success/success.component';
+import { DialogProdutoInfoComponent } from './produto/dialog-produto-info/dialog-produto-info.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { SuccessComponent } from './success/success.component';
     AdminLojaComponent,
     AdminProdutoComponent,
     CartItemComponent,
-    SuccessComponent
+    SuccessComponent,
+    DialogProdutoInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ import { SuccessComponent } from './success/success.component';
     FormsModule,
     MatIconModule,
     BrowserAnimationsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

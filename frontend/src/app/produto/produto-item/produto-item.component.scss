@@ -84,6 +84,24 @@
   padding: 10px;
 }
 
+.item__info {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: lightblue;
+  display: grid;
+  place-content: center center;
+  color: white;
+  font-weight: 700;
+  transition: background-color 150ms ease-in-out;
+  &:hover {
+    background-color: blue;
+  }
+}
+
 .item__name{
   float: left;
 }
