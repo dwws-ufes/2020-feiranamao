@@ -26,7 +26,11 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/vocab"
+              {
+                "glob": "feira.owl",
+                "input": "src/vocab/",
+                "output": "/vocab/"
+              }
             ],
             "styles": [
               "src/styles.scss"
