@@ -42,10 +42,11 @@
 .count {
   position: absolute;
   bottom: 0;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   left: 50%;
   transform-origin: 50% 50%;
   font-size: 36px;
+  line-height: 36px;
   font-weight: 700;
 }
 
@@ -91,15 +92,16 @@
   left: 10px;
   width: 24px;
   height: 24px;
+  cursor: pointer;
   border-radius: 50%;
-  background-color: lightblue;
+  background-color: var(--secondary-color, #A61103);
   display: grid;
   place-content: center center;
   color: white;
   font-weight: 700;
   transition: background-color 150ms ease-in-out;
   &:hover {
-    background-color: blue;
+    background-color: var(--secondary-color-light, #D95204);
   }
 }
 

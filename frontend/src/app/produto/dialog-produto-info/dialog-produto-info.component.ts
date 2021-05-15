@@ -5,6 +5,7 @@ export type DialogData = {
   nome: string;
   gordura: number;
   descricao: string;
+  proteina: number;
 } | null | undefined
 
 @Component({

@@ -15,6 +15,7 @@ export class SparqlService {
 WHERE {
 ?uri rdfs:label "${produto}"@pt;
 rdfs:comment ?descricao;
+dbp:protein ?proteina;
 dbp:fat ?gordura .
 FILTER (langMatches(lang(?descricao),"PT"))
 }`;

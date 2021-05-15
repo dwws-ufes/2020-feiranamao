@@ -24,12 +24,14 @@ export class ProdutoItemComponent implements OnInit {
     this.contador = this.carrinhoService.quantidadeItem(this.produto.id);
     this.sparqlService.getSparqlProduto(this.produto.name).subscribe({
       next: (data: any) => {
+        console.log(`${this.produto.name}`, data);
         if (data.results.bindings.length !== 0) {
-          const { gordura, descricao } = data.results.bindings[0];
+          const { gordura, descricao, proteina } = data.results.bindings[0];
           this.sparqlData = {
               nome: this.produto.name,
               gordura: gordura.value,
-              descricao: descricao.value
+              descricao: descricao.value,
+              proteina: proteina.value
           };
         } else {
           this.sparqlData = null;
