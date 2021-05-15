@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PathVariable;
 import br.com.feiranamao.model.Produto;
 import br.com.feiranamao.model.Usuario;
 import br.com.feiranamao.repository.ProdutosRepository;
@@ -50,14 +51,60 @@ public class SemanticRecurso  {
 	LojasRepository lojaRepository;
 	    
 	@ApiOperation(value=" Retorna Lista de Produtos em RDF")
-	@GetMapping("/resources/produtos")
+	@GetMapping("/resources/")
 	@ResponseBody
 	public void listaProdutosRDF(HttpServletResponse response) throws ServletException, IOException {
 				
 		Model model = ModelFactory.createDefaultModel();
 		
 		//Namesapaces
-		String feiraNameSpace = "http://localhost:8380/resources/Produto/#";
+		String feiraNameSpace = "http://localhost:8380/resources/#";
+		model.setNsPrefix("fei", feiraNameSpace);
+		
+		String dbpNameSpace = "https://dbpedia.org/resource/";		
+		model.setNsPrefix("dbp", dbpNameSpace);
+		
+		String schNameSpace = "https://schema.org/";		
+		model.setNsPrefix("sch", schNameSpace);
+		
+		//Classes do vocabulario
+		Resource productClass = ResourceFactory.createResource(schNameSpace+"Product");
+		Resource foodClass = ResourceFactory.createResource(dbpNameSpace+"Food");
+		Resource feiraProductClass = ResourceFactory.createResource(feiraNameSpace+"Product");
+			
+		//Propriedades
+		Property propertyPrice = ResourceFactory.createProperty(feiraNameSpace+"price");
+				
+		List<Produto> produtos = produtosRepository.findAll();
+				
+		for (Produto produto : produtos) {
+			model.createResource(feiraNameSpace+removerAcentos(produto.getName()))			
+			.addProperty(propertyPrice, String.valueOf(produto.getPreco()))			
+			.addProperty(RDFS.comment, produto.getDescricao())
+			.addProperty(RDFS.label, produto.getName())			
+			.addProperty(RDF.type, foodClass)
+			.addProperty(RDF.type, productClass)
+			.addProperty(RDF.type, feiraProductClass)
+			;
+		} 
+		    
+		response.setContentType("text/xml");
+		
+	    try (PrintWriter out = response.getWriter()){
+	    	model.write(out, "RDF/XML");
+	    }
+	}
+	
+	
+	@ApiOperation(value=" Retorna Lista de Produtos em RDF")
+	@GetMapping("/resources/{param}")
+	@ResponseBody
+	public void listaProdutoRDF(HttpServletResponse response) throws ServletException, IOException {
+				
+		Model model = ModelFactory.createDefaultModel();
+		
+		//Namesapaces
+		String feiraNameSpace = "http://localhost:8380/resources/#";
 		model.setNsPrefix("fei", feiraNameSpace);
 		
 		String dbpNameSpace = "https://dbpedia.org/resource/";		
@@ -86,7 +133,8 @@ public class SemanticRecurso  {
 	    	model.write(out, "RDF/XML");
 	    }
 	}
-    
+	
+	
 	public static String removerAcentos(String str) {
 	    return Normalizer.normalize(str, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").replace(" ", "-");
 	}
