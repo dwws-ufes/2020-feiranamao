@@ -110,21 +110,29 @@ public class SemanticRecurso  {
 		String dbpNameSpace = "https://dbpedia.org/resource/";		
 		model.setNsPrefix("dbp", dbpNameSpace);
 		
+		String schNameSpace = "https://schema.org/";		
+		model.setNsPrefix("sch", schNameSpace);
+		
 		//Classes do vocabulario
-		Resource resourceX = ResourceFactory.createResource(feiraNameSpace+"X");
+		Resource productClass = ResourceFactory.createResource(schNameSpace+"Product");
+		Resource foodClass = ResourceFactory.createResource(dbpNameSpace+"Food");
+		Resource feiraProductClass = ResourceFactory.createResource(feiraNameSpace+"Product");
 			
 		//Propriedades
-		Property propertyPreco = ResourceFactory.createProperty(feiraNameSpace+"Preco");
-		Property priceVocabulary = ResourceFactory.createProperty(dbpNameSpace+"Price");
+		Property propertyPrice = ResourceFactory.createProperty(feiraNameSpace+"price");
 				
 		List<Produto> produtos = produtosRepository.findAll();
 				
 		for (Produto produto : produtos) {
-			model.createResource(feiraNameSpace+removerAcentos(produto.getName()))
-			//.addProperty(RDF.type, resourceX)
-			.addProperty(RDFS.label, produto.getName())
+			//if(produto.getName().equals(@PathVariable(value="someID")))
+			model.createResource(feiraNameSpace+removerAcentos(produto.getName()))			
+			.addProperty(propertyPrice, String.valueOf(produto.getPreco()))			
 			.addProperty(RDFS.comment, produto.getDescricao())
-			.addProperty(priceVocabulary, String.valueOf(produto.getPreco()));
+			.addProperty(RDFS.label, produto.getName())			
+			.addProperty(RDF.type, foodClass)
+			.addProperty(RDF.type, productClass)
+			.addProperty(RDF.type, feiraProductClass)
+			;
 		} 
 		    
 		response.setContentType("text/xml");
