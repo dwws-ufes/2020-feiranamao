@@ -37,6 +37,7 @@ import reactor.netty.http.server.HttpServerRequest;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Property;
+import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.ResourceFactory;
 import org.apache.jena.vocabulary.RDF;
@@ -111,7 +112,7 @@ public class SemanticRecurso  {
 		Model model = ModelFactory.createDefaultModel();
 		
 		//Namesapaces
-		String feiraNameSpace = "http://localhost:8380/resources/#";
+		String feiraNameSpace = "http://localhost:8380/resources/";
 		model.setNsPrefix("fei", feiraNameSpace);
 		
 		String dbpNameSpace = "https://dbpedia.org/resource/";		
@@ -156,7 +157,7 @@ public class SemanticRecurso  {
 		Model model = ModelFactory.createDefaultModel();
 		
 		//Namesapaces
-		String feiraNameSpace = "http://localhost:8380/resources/products/#";
+		String feiraNameSpace = "http://localhost:8380/resources/products/";
 		model.setNsPrefix("fei", feiraNameSpace);
 		
 		String dbpNameSpace = "https://dbpedia.org/resource/";		
@@ -187,42 +188,6 @@ public class SemanticRecurso  {
 			;
 		} 
 		
-		model.createResource(feiraNameSpace+"Pera")			
-		.addProperty(propertyPrice, "1")			
-		.addProperty(RDFS.comment, "Pera")
-		.addProperty(RDFS.label, "Pera")			
-		.addProperty(RDF.type, foodClass)
-		.addProperty(RDF.type, productClass)
-		.addProperty(RDF.type, feiraProductClass)
-		;
-		
-		model.createResource(feiraNameSpace+"Uva")			
-		.addProperty(propertyPrice, "1")			
-		.addProperty(RDFS.comment, "Uva")
-		.addProperty(RDFS.label, "Uva")			
-		.addProperty(RDF.type, foodClass)
-		.addProperty(RDF.type, productClass)
-		.addProperty(RDF.type, feiraProductClass)
-		;
-		
-		model.createResource(feiraNameSpace+"Maça")			
-		.addProperty(propertyPrice, "1")			
-		.addProperty(RDFS.comment, "Maça")
-		.addProperty(RDFS.label, "Maça")			
-		.addProperty(RDF.type, foodClass)
-		.addProperty(RDF.type, productClass)
-		.addProperty(RDF.type, feiraProductClass)
-		;
-		
-		model.createResource(feiraNameSpace+"SaladaMista")			
-		.addProperty(propertyPrice, "1")			
-		.addProperty(RDFS.comment, "SaladaMista")
-		.addProperty(RDFS.label, "SaladaMista")			
-		.addProperty(RDF.type, foodClass)
-		.addProperty(RDF.type, productClass)
-		.addProperty(RDF.type, feiraProductClass)
-		;
-		    
 		response.setContentType("text/xml");
 		
 	    try (PrintWriter out = response.getWriter()){
