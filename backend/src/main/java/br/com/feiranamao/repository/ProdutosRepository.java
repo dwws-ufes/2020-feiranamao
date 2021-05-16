@@ -23,4 +23,6 @@ public interface ProdutosRepository
 	@Transactional
   	@Query("UPDATE Produto u SET u.estoque = u.estoque - :incremento WHERE u.id = :id")
 	public void setFixedEstoqueFor(@Param("id")long id, @Param("incremento")int quantidade);
+
+	Produto findAllById(Long id);
 }
