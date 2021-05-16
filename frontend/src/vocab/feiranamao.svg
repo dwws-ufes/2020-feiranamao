@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
+ width="789" height="317" viewBox="0 0 789 317">
+ onmousemove="movetip(evt)" onmouseup="endmove()">
+<rect x="0" y="0" width="100%" height="100%" style="fill:#F0F8FF;"/>
+<script type="application/ecmascript"> <![CDATA[
+var dragtipid = null; var dragcase = false; function init(evt){
+if (window.svgDocument==null) svgDocument = evt.target.ownerDocument;
+}
+function movetip(evt){if (dragtipid!=null){ dragcase = true;
+var tip=svgDocument.getElementById(dragtipid);
+tip.setAttributeNS(null,"x",evt.clientX-2);
+tip.setAttributeNS(null,"y",evt.clientY-2);
+}}
+function endmove(){dragtipid = null;}
+function startmove(evt,id){dragtipid = id; dragcase = false;
+var tip=svgDocument.getElementById(dragtipid);
+tip.setAttributeNS(null,"x",evt.clientX-2);
+tip.setAttributeNS(null,"y",evt.clientY-2);
+}
+function Showtip(evt,id){ dragtipid = null;
+var tip=svgDocument.getElementById(id);
+var vis=tip.getAttributeNS(null,"visibility");
+if (vis=="hidden"){
+tip.setAttributeNS(null,"x",evt.clientX-2);
+tip.setAttributeNS(null,"y",evt.clientY-2);
+tip.setAttributeNS(null,"visibility","visible");
+}}
+function Hidetip(id){ dragtipid = null; if (dragcase==false){
+var tip=svgDocument.getElementById(id);
+tip.setAttributeNS(null,"visibility","hidden");
+}}
+]]></script>
+<defs><linearGradient id="activ1" x1="0%" y1="0%" x2="100%" y2="0%">
+<stop offset="0%" style="stop-color:#FFFF00;stop-opacity:1"/>
+<stop offset="100%" style="stop-color:#FFFFF0;stop-opacity:1"/>
+</linearGradient></defs>
+<g id="2000962416"><polygon points="592,255 757,255 757,307 592,307 "
+style="fill:url(#activ1); stroke-width:1;stroke:Black;"/>
+<line x1="596" y1="274" x2="755" y2="274"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:14px;kerning:0;word-spacing:-1px;fill:Black;font-weight:bold;">
+<tspan x="608" y="271">Produto{feiranamao}</tspan>
+</text>
+<line x1="596" y1="274" x2="755" y2="274"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:12px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="596" y="286">preço:price{dbpedia.org}</tspan>
+</text>
+</g>
+<g id="2000961994"><polygon points="544,90 658,90 658,139 544,139 "
+style="fill:url(#activ1); stroke-width:1;stroke:Black;"/>
+<line x1="548" y1="126" x2="656" y2="126"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:14px;kerning:0;word-spacing:-1px;fill:Black;font-weight:bold;">
+<tspan x="576" y="106">Product</tspan>
+<tspan x="558" y="123">{schema.org}</tspan>
+</text>
+</g>
+<g id="2000962133"><polygon points="683,88 779,88 779,143 683,143 "
+style="fill:url(#activ1); stroke-width:1;stroke:Black;"/>
+<line x1="687" y1="124" x2="777" y2="124"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:14px;kerning:0;word-spacing:-1px;fill:Black;font-weight:bold;">
+<tspan x="715" y="104">Food</tspan>
+<tspan x="689" y="121">{dbpedia.org}</tspan>
+</text>
+</g>
+<g id="2000961855"><polygon points="244,102 409,102 409,151 244,151 "
+style="fill:url(#activ1); stroke-width:1;stroke:Black;"/>
+<line x1="248" y1="138" x2="407" y2="138"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:14px;kerning:0;word-spacing:-1px;fill:Black;font-weight:bold;">
+<tspan x="264" y="118">FoodEstablishment</tspan>
+<tspan x="283" y="135">{schema.org}</tspan>
+</text>
+</g>
+<g id="2000962275"><polygon points="258,247 423,247 423,296 258,296 "
+style="fill:url(#activ1); stroke-width:1;stroke:Black;"/>
+<line x1="262" y1="266" x2="421" y2="266"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:14px;kerning:0;word-spacing:-1px;fill:Black;font-weight:bold;">
+<tspan x="273" y="263">Barraca{feiranamao}</tspan>
+</text>
+<line x1="262" y1="266" x2="421" y2="266"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:12px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="262" y="278">foto:base64Binary</tspan>
+</text>
+</g>
+<g id="2000962553"><path d="M337,247 L337,151 "
+style="fill:none;stroke-width:3;stroke:#8000FF;"/>
+<polygon points="340,157 337,151 334,157 "
+style="fill:#F0F0F0;stroke-width:1;stroke:Black;"/>
+</g>
+<g id="2000962564"><path d="M616,255 L616,139 "
+style="fill:none;stroke-width:3;stroke:#8000FF;"/>
+<polygon points="619,145 616,139 613,145 "
+style="fill:#F0F0F0;stroke-width:1;stroke:Black;"/>
+</g>
+<g id="2000962602"><path d="M423,273 L592,273 "
+style="fill:none;stroke-width:1;stroke:Black;"/>
+<line x1="586" y1="270" x2="592" y2="273"
+ style="stroke-width:1;stroke:Black;"/>
+<line x1="586" y1="276" x2="592" y2="273"
+ style="stroke-width:1;stroke:Black;"/>
+<text style="font-family:Arial;font-size:12px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="531" y="271">vende</tspan>
+</text>
+<text style="font-family:Arial;font-size:12px;kerning:0;word-spacing:-1px;fill:Black;">
+<tspan x="570" y="271">1..*</tspan>
+</text>
+</g>
+<g id="2000962574"><path d="M727,255 L727,143 "
+style="fill:none;stroke-width:3;stroke:#8000FF;"/>
+<polygon points="730,149 727,143 724,149 "
+style="fill:#F0F0F0;stroke-width:1;stroke:Black;"/>
+</g>
+</svg>

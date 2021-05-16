@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import br.com.feiranamao.model.Produto;
 import br.com.feiranamao.model.Usuario;
 import br.com.feiranamao.repository.ProdutosRepository;
+import br.com.feiranamao.repository.CategoriasRepository;
 import br.com.feiranamao.repository.LojasRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -51,95 +52,43 @@ public class SemanticRecurso  {
 	@Autowired
 	ProdutosRepository produtosRepository;
 	
+	static String feiraNameSpace = "http://localhost:8380/resources/products/";
+	static String dbpNameSpace = "https://dbpedia.org/resource/";
+	static String schNameSpace = "https://schema.org/";		
+	
 	@Autowired
 	LojasRepository lojaRepository;
 	 
 	@ApiOperation(value="Procurar produtos por nome")
-    @RequestMapping(value = "/resources/products/{id}", method = RequestMethod.GET)
-	public void listaProdutoRDFpK(HttpServletResponse response, HttpServerRequest request, @PathVariable(value = "id") String id) throws IOException {
-			
-	Model model = ModelFactory.createDefaultModel();
-	
-	//Namesapaces
-	String feiraNameSpace = "http://localhost:8380/resources/products/#";
-	model.setNsPrefix("fei", feiraNameSpace);
-	
-	String dbpNameSpace = "https://dbpedia.org/resource/";		
-	model.setNsPrefix("dbp", dbpNameSpace);
-	
-	String schNameSpace = "https://schema.org/";		
-	model.setNsPrefix("sch", schNameSpace);
-	
-	//Classes do vocabulario
-	Resource productClass = ResourceFactory.createResource(schNameSpace+"Product");
-	Resource foodClass = ResourceFactory.createResource(dbpNameSpace+"Food");
-	Resource feiraProductClass = ResourceFactory.createResource(feiraNameSpace+"Product");
+    @RequestMapping(value = "/resources/products/{nome}", method = RequestMethod.GET)
+	public void listaProdutoRDFpK(HttpServletResponse response, HttpServerRequest request, @PathVariable(value = "nome") String nome) throws IOException {
 		
-	//Propriedades
-	Property propertyPrice = ResourceFactory.createProperty(feiraNameSpace+"price");
-			
-			
-	List<Produto> produtos = produtosRepository.findByName(id);
-	
-	for (Produto produto : produtos) {
-		model.createResource(feiraNameSpace+removerAcentos(produto.getName()))			
-		.addProperty(propertyPrice, String.valueOf(produto.getPreco()))			
-		.addProperty(RDFS.comment, produto.getDescricao())
-		.addProperty(RDFS.label, produto.getName())			
-		.addProperty(RDF.type, foodClass)
-		.addProperty(RDF.type, productClass)
-		.addProperty(RDF.type, feiraProductClass)
-		;
+		Model model = createJenaModel();
+				
+		List<Produto> produtos = produtosRepository.findByName(nome);
 		
-	}
-	 
-	    
-	response.setContentType("text/xml");
-	
-    try (PrintWriter out = response.getWriter()){
-    	model.write(out, "RDF/XML");
-    }
+		for (Produto produto : produtos) {
+			addProdutoModel(model, produto);			
+		}
+		 		    
+		response.setContentType("text/xml");
+		
+	    try (PrintWriter out = response.getWriter()){
+	    	model.write(out, "RDF/XML");
+	    }
 	} 
+	
 	@ApiOperation(value=" Retorna Lista de Produtos em RDF")
-	@GetMapping("/resources/")
+	@GetMapping("/resources/products")
 	@ResponseBody
 	public void listaProdutoRDF(HttpServletResponse response, HttpServerRequest request) throws ServletException, IOException {
-					
-			System.out.print("Teste");
-			System.out.print(response);
-			//System.out.print(request.fullPath());
 			
-		Model model = ModelFactory.createDefaultModel();
-		
-		//Namesapaces
-		String feiraNameSpace = "http://localhost:8380/resources/";
-		model.setNsPrefix("fei", feiraNameSpace);
-		
-		String dbpNameSpace = "https://dbpedia.org/resource/";		
-		model.setNsPrefix("dbp", dbpNameSpace);
-		
-		String schNameSpace = "https://schema.org/";		
-		model.setNsPrefix("sch", schNameSpace);
-		
-		//Classes do vocabulario
-		Resource productClass = ResourceFactory.createResource(schNameSpace+"Product");
-		Resource foodClass = ResourceFactory.createResource(dbpNameSpace+"Food");
-		Resource feiraProductClass = ResourceFactory.createResource(feiraNameSpace+"Product");
-			
-		//Propriedades
-		Property propertyPrice = ResourceFactory.createProperty(feiraNameSpace+"price");
+		Model model = createJenaModel();
 				
 		List<Produto> produtos = produtosRepository.findAll();
 				
 		for (Produto produto : produtos) {
-			model.createResource(feiraNameSpace+removerAcentos(produto.getName()))			
-			.addProperty(propertyPrice, String.valueOf(produto.getPreco()))			
-			.addProperty(RDFS.comment, produto.getDescricao())
-			.addProperty(RDFS.label, produto.getName())			
-			.addProperty(RDF.type, foodClass)
-			.addProperty(RDF.type, productClass)
-			.addProperty(RDF.type, feiraProductClass)
-			;
+			addProdutoModel(model, produto);
 		} 
 		    
 		response.setContentType("text/xml");
@@ -149,52 +98,29 @@ public class SemanticRecurso  {
 	    }
 	}
 	
-	
-	@ApiOperation(value=" Retorna Lista de Produtos em RDF")
-	@GetMapping("/resources/{param}")
-	@ResponseBody
-	public void listaProdutoRDF(HttpServletResponse response, HttpServletRequest request, @PathVariable(value = "param") String param) throws ServletException, IOException {
+	public static Model createJenaModel() {
 		Model model = ModelFactory.createDefaultModel();
 		
 		//Namesapaces
-		String feiraNameSpace = "http://localhost:8380/resources/products/";
 		model.setNsPrefix("fei", feiraNameSpace);
-		
-		String dbpNameSpace = "https://dbpedia.org/resource/";		
-		model.setNsPrefix("dbp", dbpNameSpace);
-		
-		String schNameSpace = "https://schema.org/";		
+		model.setNsPrefix("dbp", dbpNameSpace);	
 		model.setNsPrefix("sch", schNameSpace);
 		
-		//Classes do vocabulario
-		Resource productClass = ResourceFactory.createResource(schNameSpace+"Product");
-		Resource foodClass = ResourceFactory.createResource(dbpNameSpace+"Food");
-		Resource feiraProductClass = ResourceFactory.createResource(feiraNameSpace+"Product");
-			
-		//Propriedades
-		Property propertyPrice = ResourceFactory.createProperty(feiraNameSpace+"price");
-				
-		List<Produto> produtos = produtosRepository.findAll();
-				
-		for (Produto produto : produtos) {
-			//if(produto.getName().equals(@PathVariable(value="someID")))
-			model.createResource(feiraNameSpace+removerAcentos(produto.getName()))			
-			.addProperty(propertyPrice, String.valueOf(produto.getPreco()))			
-			.addProperty(RDFS.comment, produto.getDescricao())
-			.addProperty(RDFS.label, produto.getName())			
-			.addProperty(RDF.type, foodClass)
-			.addProperty(RDF.type, productClass)
-			.addProperty(RDF.type, feiraProductClass)
-			;
-		} 
-		
-		response.setContentType("text/xml");
-		
-	    try (PrintWriter out = response.getWriter()){
-	    	model.write(out, "RDF/XML");
-	    }
+		return model;
 	}
 	
+	public static void addProdutoModel(Model model, Produto produto) {
+		model.createResource(feiraNameSpace+removerAcentos(produto.getName()))			
+			.addProperty(ResourceFactory.createProperty(dbpNameSpace+"price"), String.valueOf(produto.getPreco()))
+			.addProperty(ResourceFactory.createProperty(schNameSpace+"category"), produto.getCategoria().getName())
+			.addProperty(ResourceFactory.createProperty(schNameSpace+"image"), produto.getUrl())
+			.addProperty(RDFS.comment, produto.getDescricao())
+			.addProperty(RDFS.label, produto.getName())
+			.addProperty(RDF.type, ResourceFactory.createResource(dbpNameSpace+"Food"))
+			.addProperty(RDF.type, ResourceFactory.createResource(schNameSpace+"Product"))
+			.addProperty(RDF.type, ResourceFactory.createResource(feiraNameSpace+"Product"))
+		;
+	}
 	
 	public static String removerAcentos(String str) {
 	    return Normalizer.normalize(str, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").replace(" ", "-");
