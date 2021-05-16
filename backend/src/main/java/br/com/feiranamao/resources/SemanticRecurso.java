@@ -56,12 +56,7 @@ public class SemanticRecurso  {
 	@ApiOperation(value="Procurar produtos por nome")
     @RequestMapping(value = "/resources/products/{id}", method = RequestMethod.GET)
 	public void listaProdutoRDFpK(HttpServletResponse response, HttpServerRequest request, @PathVariable(value = "id") String id) throws IOException {
-		
-		System.out.println("Teste");
-		System.out.println(id);
-		//System.out.println(request.uri());
-		//System.out.print(request.fullPath());
-		
+			
 	Model model = ModelFactory.createDefaultModel();
 	
 	//Namesapaces
